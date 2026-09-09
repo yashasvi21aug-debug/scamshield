@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">ScamShield Quick Scan</string>
+    <string name="share_target_title">🛡️ ScamShield Quick Scan</string>
+    <string name="home_subtitle">Share suspicious messages, links, or QR codes to ScamShield from any app.</string>
+    <string name="how_it_works_title">How Quick Scan Works</string>
+    <string name="how_it_works_sms">1. In Messages/WhatsApp: Long press message → Share → 🛡️ ScamShield Quick Scan</string>
+    <string name="how_it_works_url">2. In Browser: Tap Menu → Share → 🛡️ ScamShield Quick Scan</string>
+    <string name="how_it_works_qr">3. In Gallery: Open QR screenshot → Share → 🛡️ ScamShield Quick Scan</string>
+    <string name="privacy_guarantee">🔒 ScamShield processes content only when you explicitly share it. No background SMS surveillance or permissions required.</string>
+    <string name="backend_status_checking">Checking ScamShield backend…</string>
+    <string name="backend_status_connected">Connected to ScamShield Engine</string>
+    <string name="backend_status_unreachable">ScamShield couldn\'t reach the analysis server.</string>
+    <string name="configure_server">Configure Backend URL</string>
+    <string name="server_url_hint">http://10.0.2.2:5000 or https://...</string>
+    <string name="save">Save</string>
+    <string name="cancel">Cancel</string>
+
+    <!-- Scan Results UI -->
+    <string name="scanning_title">Analyzing Suspicious Content…</string>
+    <string name="scanning_detail">Consulting AI Behavioral Engine &amp; Threat Intelligence</string>
+    <string name="trust_score_label">Trust Score</string>
+    <string name="why_label">Why was this score assigned?</string>
+    <string name="recommended_action_label">Recommended Action</string>
+    <string name="view_full_analysis">View Full Analysis</string>
+    <string name="try_again">Try Again</string>
+    <string name="dismiss">Dismiss</string>
+    <string name="no_qr_found">No readable QR code was found in the shared image.</string>
+    <string name="empty_content">No readable text or image was received from the share sheet.</string>
+    <string name="payload_too_large">Shared content exceeds the maximum allowed analysis size.</string>
+    <string name="disclaimer_note">Risk assessment based on analyzed indicators, not a guarantee of safety.</string>
+</resources>

@@ -1,0 +1,2768 @@
+{
+  "scans": [
+    {
+      "scanId": "scan-1788964788938-dnuthn",
+      "type": "qr",
+      "inputHash": "672bfa46130877d619eb3a56b32e20346999281d4a295db19f9ef42255028eee",
+      "sanitizedInput": "upi://pay?pa=fake_refund_dept@okaxis&pn=SBI_REFUND_PORTAL&am=7500&tn=ScanToReceive",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 83,
+      "riskLevel": "LIKELY SAFE",
+      "detectedCategory": "UPI Payment QR",
+      "detectedIndicators": [
+        {
+          "name": "Pre-set High Payment Amount (₹7500)",
+          "severity": "Medium",
+          "explanation": "The QR code has an enforced high transaction amount pre-filled.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "⚠️ Verify the recipient name and payment details before completing a payment",
+          "description": "ScamShield cannot guarantee the identity of the payment recipient solely from QR content. Never enter your UPI PIN to receive money.",
+          "type": "warning",
+          "priority": 0
+        },
+        {
+          "action": "🛑 Disengage and do not reply",
+          "description": "Replying confirms your contact identity to automated fraud campaigns.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "💳 Remember: You never need a PIN to RECEIVE money",
+          "description": "Entering your UPI PIN authorizes an outgoing debit from your account, never an incoming credit.",
+          "type": "warning",
+          "priority": 2
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:39:48.938Z"
+    },
+    {
+      "scanId": "scan-1788964788929-hj5c3r",
+      "type": "url",
+      "inputHash": "15c1e7cae9812a2cb19a9f5ed2e016ba15f035786d7d748a6f004b967509242f",
+      "sanitizedInput": "https://secure-hdfc-kyc-update.top/login.php",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 33,
+      "riskLevel": "SUSPICIOUS",
+      "detectedCategory": "Suspected HDFC Phishing",
+      "detectedIndicators": [
+        {
+          "name": "High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Suspected Brand Impersonation (HDFC)",
+          "severity": "Critical",
+          "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "domainIntel": {
+          "available": false,
+          "hostname": "secure-hdfc-kyc-update.top",
+          "registrar": "Information unavailable",
+          "domainAge": "Information unavailable",
+          "hasTls": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": {
+        "isValid": true,
+        "url": "https://secure-hdfc-kyc-update.top/login.php",
+        "protocol": "https",
+        "hostname": "secure-hdfc-kyc-update.top",
+        "pathname": "/login.php",
+        "isHttps": true,
+        "isIpv4": false,
+        "isShortener": false,
+        "matchedTld": ".top",
+        "brandSpoofed": "HDFC",
+        "totalDeduction": 85,
+        "threats": [
+          {
+            "title": "High-Risk TLD Extension (.top)",
+            "severity": "High",
+            "icon": "AlertTriangle",
+            "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny."
+          },
+          {
+            "title": "Suspected Brand Impersonation (HDFC)",
+            "severity": "Critical",
+            "icon": "UserX",
+            "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic."
+          }
+        ],
+        "breakdownMeters": {
+          "domainReputation": 10,
+          "phishingIndicators": 56,
+          "domainSimilarity": 92,
+          "communityThreats": 55
+        },
+        "domainAge": "Information unavailable",
+        "registrar": "Information unavailable",
+        "hasTls": false,
+        "tlsIssuer": null
+      },
+      "breakdownMeters": {
+        "domainReputation": 10,
+        "phishingIndicators": 56,
+        "domainSimilarity": 92,
+        "communityThreats": 55
+      },
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:39:48.930Z"
+    },
+    {
+      "scanId": "scan-1788964787753",
+      "type": "url",
+      "inputHash": "775ade189fd8a207d71c95128a5f5910fbd6dd9def89fc898d5ac23ce883e2d3",
+      "sanitizedInput": "http://localhost:3000/internal-test",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "SSRF Network Probe",
+      "detectedIndicators": [
+        {
+          "name": "SSRF Attack / Private Address Target",
+          "severity": "Critical",
+          "explanation": "SSRF Protection: Access to localhost, link-local, or internal hostnames is prohibited.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Block access to internal hostnames",
+          "description": "The destination attempts to address non-public network space.",
+          "type": "critical"
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "ssrfProtection": true
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:39:47.753Z"
+    },
+    {
+      "scanId": "scan-1788964787747-qfkhcm",
+      "type": "sms",
+      "inputHash": "0ee9da688d33cee17f0eefb7401f8639598a312ce95e78d7ad8884010ed385d7",
+      "sanitizedInput": "Your grocery delivery order #8812 has arrived. Thank you for shopping with us!",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 98,
+      "riskLevel": "LIKELY SAFE",
+      "detectedCategory": "Likely Legitimate Communication",
+      "detectedIndicators": [],
+      "recommendations": [
+        {
+          "action": "Safe to proceed with standard caution",
+          "description": "No known scam patterns or intelligence matches were detected.",
+          "type": "safe",
+          "priority": 1
+        },
+        {
+          "action": "Verify sender origin",
+          "description": "Confirm correspondence originates from the organization's official verified channel.",
+          "type": "info",
+          "priority": 2
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "aiEngine": {
+          "available": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:39:47.747Z"
+    },
+    {
+      "scanId": "scan-1788964787721-emwidi",
+      "type": "sms",
+      "inputHash": "f703cda7ff769796526421ccd3319406487ee4ae122a852abb940896a03ead6e",
+      "sanitizedInput": "Dear Customer, Your SBI account will be blocked today due to pending KYC. Click http://sbi-kyc-verify.top immediately to avoid suspension.",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "Malicious Phishing Link",
+      "detectedIndicators": [
+        {
+          "name": "Extreme Urgency Pressure",
+          "severity": "Medium",
+          "explanation": "The message creates artificial panic to force quick action before thinking.",
+          "source": "local"
+        },
+        {
+          "name": "Financial Institution Impersonation",
+          "severity": "High",
+          "explanation": "Message mimics official correspondence from a Banking entity, leveraging institutional trust to deceive you.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "⏱️ Pause: Legitimate organizations give formal advance notice",
+          "description": "Scammers manufacture artificial panic to force hasty decisions. Verify independently.",
+          "type": "info",
+          "priority": 3
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "aiEngine": {
+          "available": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:39:47.723Z"
+    },
+    {
+      "scanId": "scan-1788964138158-plvgzy",
+      "type": "qr",
+      "inputHash": "672bfa46130877d619eb3a56b32e20346999281d4a295db19f9ef42255028eee",
+      "sanitizedInput": "upi://pay?pa=fake_refund_dept@okaxis&pn=SBI_REFUND_PORTAL&am=7500&tn=ScanToReceive",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 83,
+      "riskLevel": "LIKELY SAFE",
+      "detectedCategory": "UPI Payment QR",
+      "detectedIndicators": [
+        {
+          "name": "Pre-set High Payment Amount (₹7500)",
+          "severity": "Medium",
+          "explanation": "The QR code has an enforced high transaction amount pre-filled.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "⚠️ Verify the recipient name and payment details before completing a payment",
+          "description": "ScamShield cannot guarantee the identity of the payment recipient solely from QR content. Never enter your UPI PIN to receive money.",
+          "type": "warning",
+          "priority": 0
+        },
+        {
+          "action": "🛑 Disengage and do not reply",
+          "description": "Replying confirms your contact identity to automated fraud campaigns.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "💳 Remember: You never need a PIN to RECEIVE money",
+          "description": "Entering your UPI PIN authorizes an outgoing debit from your account, never an incoming credit.",
+          "type": "warning",
+          "priority": 2
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:28:58.158Z"
+    },
+    {
+      "scanId": "scan-1788964138150-hzajsl",
+      "type": "url",
+      "inputHash": "15c1e7cae9812a2cb19a9f5ed2e016ba15f035786d7d748a6f004b967509242f",
+      "sanitizedInput": "https://secure-hdfc-kyc-update.top/login.php",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 33,
+      "riskLevel": "SUSPICIOUS",
+      "detectedCategory": "Suspected HDFC Phishing",
+      "detectedIndicators": [
+        {
+          "name": "High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Suspected Brand Impersonation (HDFC)",
+          "severity": "Critical",
+          "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "domainIntel": {
+          "available": false,
+          "hostname": "secure-hdfc-kyc-update.top",
+          "registrar": "Information unavailable",
+          "domainAge": "Information unavailable",
+          "hasTls": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": {
+        "isValid": true,
+        "url": "https://secure-hdfc-kyc-update.top/login.php",
+        "protocol": "https",
+        "hostname": "secure-hdfc-kyc-update.top",
+        "pathname": "/login.php",
+        "isHttps": true,
+        "isIpv4": false,
+        "isShortener": false,
+        "matchedTld": ".top",
+        "brandSpoofed": "HDFC",
+        "totalDeduction": 85,
+        "threats": [
+          {
+            "title": "High-Risk TLD Extension (.top)",
+            "severity": "High",
+            "icon": "AlertTriangle",
+            "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny."
+          },
+          {
+            "title": "Suspected Brand Impersonation (HDFC)",
+            "severity": "Critical",
+            "icon": "UserX",
+            "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic."
+          }
+        ],
+        "breakdownMeters": {
+          "domainReputation": 10,
+          "phishingIndicators": 56,
+          "domainSimilarity": 92,
+          "communityThreats": 55
+        },
+        "domainAge": "Information unavailable",
+        "registrar": "Information unavailable",
+        "hasTls": false,
+        "tlsIssuer": null
+      },
+      "breakdownMeters": {
+        "domainReputation": 10,
+        "phishingIndicators": 56,
+        "domainSimilarity": 92,
+        "communityThreats": 55
+      },
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:28:58.150Z"
+    },
+    {
+      "scanId": "scan-1788964136308",
+      "type": "url",
+      "inputHash": "775ade189fd8a207d71c95128a5f5910fbd6dd9def89fc898d5ac23ce883e2d3",
+      "sanitizedInput": "http://localhost:3000/internal-test",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "SSRF Network Probe",
+      "detectedIndicators": [
+        {
+          "name": "SSRF Attack / Private Address Target",
+          "severity": "Critical",
+          "explanation": "SSRF Protection: Access to localhost, link-local, or internal hostnames is prohibited.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Block access to internal hostnames",
+          "description": "The destination attempts to address non-public network space.",
+          "type": "critical"
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "ssrfProtection": true
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:28:56.308Z"
+    },
+    {
+      "scanId": "scan-1788964136302-ke65j7",
+      "type": "sms",
+      "inputHash": "0ee9da688d33cee17f0eefb7401f8639598a312ce95e78d7ad8884010ed385d7",
+      "sanitizedInput": "Your grocery delivery order #8812 has arrived. Thank you for shopping with us!",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 98,
+      "riskLevel": "LIKELY SAFE",
+      "detectedCategory": "Likely Legitimate Communication",
+      "detectedIndicators": [],
+      "recommendations": [
+        {
+          "action": "Safe to proceed with standard caution",
+          "description": "No known scam patterns or intelligence matches were detected.",
+          "type": "safe",
+          "priority": 1
+        },
+        {
+          "action": "Verify sender origin",
+          "description": "Confirm correspondence originates from the organization's official verified channel.",
+          "type": "info",
+          "priority": 2
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "aiEngine": {
+          "available": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:28:56.302Z"
+    },
+    {
+      "scanId": "scan-1788964136295-svznik",
+      "type": "sms",
+      "inputHash": "f703cda7ff769796526421ccd3319406487ee4ae122a852abb940896a03ead6e",
+      "sanitizedInput": "Dear Customer, Your SBI account will be blocked today due to pending KYC. Click http://sbi-kyc-verify.top immediately to avoid suspension.",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "Malicious Phishing Link",
+      "detectedIndicators": [
+        {
+          "name": "Extreme Urgency Pressure",
+          "severity": "Medium",
+          "explanation": "The message creates artificial panic to force quick action before thinking.",
+          "source": "local"
+        },
+        {
+          "name": "Financial Institution Impersonation",
+          "severity": "High",
+          "explanation": "Message mimics official correspondence from a Banking entity, leveraging institutional trust to deceive you.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "⏱️ Pause: Legitimate organizations give formal advance notice",
+          "description": "Scammers manufacture artificial panic to force hasty decisions. Verify independently.",
+          "type": "info",
+          "priority": 3
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "aiEngine": {
+          "available": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:28:56.296Z"
+    },
+    {
+      "scanId": "scan-1788964113430-j06yx6",
+      "type": "qr",
+      "inputHash": "ffa457c42cdaf69e06b08a23ad83ad234e5a338cb2cb6a4925e262c890164bae",
+      "sanitizedInput": "upi://pay?pa=fake_support@okaxis&pn=SBI_REFUND_PORTAL&am=8500&tn=ScanToReceiveRefund",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 83,
+      "riskLevel": "LIKELY SAFE",
+      "detectedCategory": "UPI Payment QR",
+      "detectedIndicators": [
+        {
+          "name": "Pre-set High Payment Amount (₹8500)",
+          "severity": "Medium",
+          "explanation": "The QR code has an enforced high transaction amount pre-filled.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "⚠️ Verify the recipient name and payment details before completing a payment",
+          "description": "ScamShield cannot guarantee the identity of the payment recipient solely from QR content. Never enter your UPI PIN to receive money.",
+          "type": "warning",
+          "priority": 0
+        },
+        {
+          "action": "🛑 Disengage and do not reply",
+          "description": "Replying confirms your contact identity to automated fraud campaigns.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "💳 Remember: You never need a PIN to RECEIVE money",
+          "description": "Entering your UPI PIN authorizes an outgoing debit from your account, never an incoming credit.",
+          "type": "warning",
+          "priority": 2
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:28:33.431Z"
+    },
+    {
+      "scanId": "scan-1788964113413-0uvsa4",
+      "type": "url",
+      "inputHash": "5cfdbc171450fc82ad7cea6da9935d6b486254e08976b495d3a96b94b7952f0b",
+      "sanitizedInput": "https://secure-hdfc-kyc.top/login",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 33,
+      "riskLevel": "SUSPICIOUS",
+      "detectedCategory": "Suspected HDFC Phishing",
+      "detectedIndicators": [
+        {
+          "name": "High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Suspected Brand Impersonation (HDFC)",
+          "severity": "Critical",
+          "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "domainIntel": {
+          "available": false,
+          "hostname": "secure-hdfc-kyc.top",
+          "registrar": "Information unavailable",
+          "domainAge": "Information unavailable",
+          "hasTls": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": {
+        "isValid": true,
+        "url": "https://secure-hdfc-kyc.top/login",
+        "protocol": "https",
+        "hostname": "secure-hdfc-kyc.top",
+        "pathname": "/login",
+        "isHttps": true,
+        "isIpv4": false,
+        "isShortener": false,
+        "matchedTld": ".top",
+        "brandSpoofed": "HDFC",
+        "totalDeduction": 85,
+        "threats": [
+          {
+            "title": "High-Risk TLD Extension (.top)",
+            "severity": "High",
+            "icon": "AlertTriangle",
+            "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny."
+          },
+          {
+            "title": "Suspected Brand Impersonation (HDFC)",
+            "severity": "Critical",
+            "icon": "UserX",
+            "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic."
+          }
+        ],
+        "breakdownMeters": {
+          "domainReputation": 10,
+          "phishingIndicators": 56,
+          "domainSimilarity": 92,
+          "communityThreats": 55
+        },
+        "domainAge": "Information unavailable",
+        "registrar": "Information unavailable",
+        "hasTls": false,
+        "tlsIssuer": null
+      },
+      "breakdownMeters": {
+        "domainReputation": 10,
+        "phishingIndicators": 56,
+        "domainSimilarity": 92,
+        "communityThreats": 55
+      },
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:28:33.413Z"
+    },
+    {
+      "scanId": "scan-1788964112425",
+      "type": "url",
+      "inputHash": "07842e6e751f17d10532bfff2cd99bfd542392b3b264492a4f39615d5b39e13b",
+      "sanitizedInput": "http://127.0.0.1/admin",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "SSRF Network Probe",
+      "detectedIndicators": [
+        {
+          "name": "SSRF Attack / Private Address Target",
+          "severity": "Critical",
+          "explanation": "SSRF Protection: Target IP address (127.0.0.1) belongs to a private/reserved network range.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Block access to internal hostnames",
+          "description": "The destination attempts to address non-public network space.",
+          "type": "critical"
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "ssrfProtection": true
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:28:32.425Z"
+    },
+    {
+      "scanId": "scan-1788964112413-l1im0a",
+      "type": "sms",
+      "inputHash": "07d36465d7545b071518ed287488f8fe7a4ac3dfe34cbff4e51da35e1589eebc",
+      "sanitizedInput": "URGENT: Your SBI net banking is blocked today. Verify KYC immediately at http://sbi-kyc-verify.top or account will be frozen.",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "Fake KYC Scam",
+      "detectedIndicators": [
+        {
+          "name": "Extreme Urgency Pressure",
+          "severity": "Medium",
+          "explanation": "The message creates artificial panic to force quick action before thinking.",
+          "source": "local"
+        },
+        {
+          "name": "Unsolicited KYC / Identity Demand",
+          "severity": "High",
+          "explanation": "Requests personal identification documents or KYC updates via unverified channels.",
+          "source": "local"
+        },
+        {
+          "name": "Financial Institution Impersonation",
+          "severity": "High",
+          "explanation": "Message mimics official correspondence from a Banking entity, leveraging institutional trust to deceive you.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "🔒 Never share OTP, PIN, CVV, or passwords",
+          "description": "Legitimate institutions will never request confidential security credentials over SMS, chat, or forms.",
+          "type": "warning",
+          "priority": 2
+        },
+        {
+          "action": "⏱️ Pause: Legitimate organizations give formal advance notice",
+          "description": "Scammers manufacture artificial panic to force hasty decisions. Verify independently.",
+          "type": "info",
+          "priority": 3
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "aiEngine": {
+          "available": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:28:32.414Z"
+    },
+    {
+      "scanId": "scan-1788962590296-yw9lcy",
+      "type": "qr",
+      "inputHash": "672bfa46130877d619eb3a56b32e20346999281d4a295db19f9ef42255028eee",
+      "sanitizedInput": "upi://pay?pa=fake_refund_dept@okaxis&pn=SBI_REFUND_PORTAL&am=7500&tn=ScanToReceive",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 83,
+      "riskLevel": "LIKELY SAFE",
+      "detectedCategory": "UPI Payment QR",
+      "detectedIndicators": [
+        {
+          "name": "Pre-set High Payment Amount (₹7500)",
+          "severity": "Medium",
+          "explanation": "The QR code has an enforced high transaction amount pre-filled.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "⚠️ Verify the recipient name and payment details before completing a payment",
+          "description": "ScamShield cannot guarantee the identity of the payment recipient solely from QR content. Never enter your UPI PIN to receive money.",
+          "type": "warning",
+          "priority": 0
+        },
+        {
+          "action": "🛑 Disengage and do not reply",
+          "description": "Replying confirms your contact identity to automated fraud campaigns.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "💳 Remember: You never need a PIN to RECEIVE money",
+          "description": "Entering your UPI PIN authorizes an outgoing debit from your account, never an incoming credit.",
+          "type": "warning",
+          "priority": 2
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:03:10.296Z"
+    },
+    {
+      "scanId": "scan-1788962590290-s0bxg2",
+      "type": "url",
+      "inputHash": "15c1e7cae9812a2cb19a9f5ed2e016ba15f035786d7d748a6f004b967509242f",
+      "sanitizedInput": "https://secure-hdfc-kyc-update.top/login.php",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 33,
+      "riskLevel": "SUSPICIOUS",
+      "detectedCategory": "Suspected HDFC Phishing",
+      "detectedIndicators": [
+        {
+          "name": "High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Suspected Brand Impersonation (HDFC)",
+          "severity": "Critical",
+          "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "domainIntel": {
+          "available": false,
+          "hostname": "secure-hdfc-kyc-update.top",
+          "registrar": "Information unavailable",
+          "domainAge": "Information unavailable",
+          "hasTls": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": {
+        "isValid": true,
+        "url": "https://secure-hdfc-kyc-update.top/login.php",
+        "protocol": "https",
+        "hostname": "secure-hdfc-kyc-update.top",
+        "pathname": "/login.php",
+        "isHttps": true,
+        "isIpv4": false,
+        "isShortener": false,
+        "matchedTld": ".top",
+        "brandSpoofed": "HDFC",
+        "totalDeduction": 85,
+        "threats": [
+          {
+            "title": "High-Risk TLD Extension (.top)",
+            "severity": "High",
+            "icon": "AlertTriangle",
+            "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny."
+          },
+          {
+            "title": "Suspected Brand Impersonation (HDFC)",
+            "severity": "Critical",
+            "icon": "UserX",
+            "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic."
+          }
+        ],
+        "breakdownMeters": {
+          "domainReputation": 10,
+          "phishingIndicators": 56,
+          "domainSimilarity": 92,
+          "communityThreats": 55
+        },
+        "domainAge": "Information unavailable",
+        "registrar": "Information unavailable",
+        "hasTls": false,
+        "tlsIssuer": null
+      },
+      "breakdownMeters": {
+        "domainReputation": 10,
+        "phishingIndicators": 56,
+        "domainSimilarity": 92,
+        "communityThreats": 55
+      },
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:03:10.291Z"
+    },
+    {
+      "scanId": "scan-1788962589869",
+      "type": "url",
+      "inputHash": "775ade189fd8a207d71c95128a5f5910fbd6dd9def89fc898d5ac23ce883e2d3",
+      "sanitizedInput": "http://localhost:3000/internal-test",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "SSRF Network Probe",
+      "detectedIndicators": [
+        {
+          "name": "SSRF Attack / Private Address Target",
+          "severity": "Critical",
+          "explanation": "SSRF Protection: Access to localhost, link-local, or internal hostnames is prohibited.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Block access to internal hostnames",
+          "description": "The destination attempts to address non-public network space.",
+          "type": "critical"
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "ssrfProtection": true
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:03:09.870Z"
+    },
+    {
+      "scanId": "scan-1788962589866-1wu56e",
+      "type": "sms",
+      "inputHash": "0ee9da688d33cee17f0eefb7401f8639598a312ce95e78d7ad8884010ed385d7",
+      "sanitizedInput": "Your grocery delivery order #8812 has arrived. Thank you for shopping with us!",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 98,
+      "riskLevel": "LIKELY SAFE",
+      "detectedCategory": "Likely Legitimate Communication",
+      "detectedIndicators": [],
+      "recommendations": [
+        {
+          "action": "Safe to proceed with standard caution",
+          "description": "No known scam patterns or intelligence matches were detected.",
+          "type": "safe",
+          "priority": 1
+        },
+        {
+          "action": "Verify sender origin",
+          "description": "Confirm correspondence originates from the organization's official verified channel.",
+          "type": "info",
+          "priority": 2
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "aiEngine": {
+          "available": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:03:09.866Z"
+    },
+    {
+      "scanId": "scan-1788962589859-gxwths",
+      "type": "sms",
+      "inputHash": "f703cda7ff769796526421ccd3319406487ee4ae122a852abb940896a03ead6e",
+      "sanitizedInput": "Dear Customer, Your SBI account will be blocked today due to pending KYC. Click http://sbi-kyc-verify.top immediately to avoid suspension.",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "Malicious Phishing Link",
+      "detectedIndicators": [
+        {
+          "name": "Extreme Urgency Pressure",
+          "severity": "Medium",
+          "explanation": "The message creates artificial panic to force quick action before thinking.",
+          "source": "local"
+        },
+        {
+          "name": "Financial Institution Impersonation",
+          "severity": "High",
+          "explanation": "Message mimics official correspondence from a Banking entity, leveraging institutional trust to deceive you.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "⏱️ Pause: Legitimate organizations give formal advance notice",
+          "description": "Scammers manufacture artificial panic to force hasty decisions. Verify independently.",
+          "type": "info",
+          "priority": 3
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "aiEngine": {
+          "available": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:03:09.860Z"
+    },
+    {
+      "scanId": "scan-1788962574153-bp5am5",
+      "type": "qr",
+      "inputHash": "ffa457c42cdaf69e06b08a23ad83ad234e5a338cb2cb6a4925e262c890164bae",
+      "sanitizedInput": "upi://pay?pa=fake_support@okaxis&pn=SBI_REFUND_PORTAL&am=8500&tn=ScanToReceiveRefund",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 83,
+      "riskLevel": "LIKELY SAFE",
+      "detectedCategory": "UPI Payment QR",
+      "detectedIndicators": [
+        {
+          "name": "Pre-set High Payment Amount (₹8500)",
+          "severity": "Medium",
+          "explanation": "The QR code has an enforced high transaction amount pre-filled.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "⚠️ Verify the recipient name and payment details before completing a payment",
+          "description": "ScamShield cannot guarantee the identity of the payment recipient solely from QR content. Never enter your UPI PIN to receive money.",
+          "type": "warning",
+          "priority": 0
+        },
+        {
+          "action": "🛑 Disengage and do not reply",
+          "description": "Replying confirms your contact identity to automated fraud campaigns.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "💳 Remember: You never need a PIN to RECEIVE money",
+          "description": "Entering your UPI PIN authorizes an outgoing debit from your account, never an incoming credit.",
+          "type": "warning",
+          "priority": 2
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:02:54.153Z"
+    },
+    {
+      "scanId": "scan-1788962574147-1ql3j5",
+      "type": "url",
+      "inputHash": "5cfdbc171450fc82ad7cea6da9935d6b486254e08976b495d3a96b94b7952f0b",
+      "sanitizedInput": "https://secure-hdfc-kyc.top/login",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 33,
+      "riskLevel": "SUSPICIOUS",
+      "detectedCategory": "Suspected HDFC Phishing",
+      "detectedIndicators": [
+        {
+          "name": "High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Suspected Brand Impersonation (HDFC)",
+          "severity": "Critical",
+          "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "domainIntel": {
+          "available": false,
+          "hostname": "secure-hdfc-kyc.top",
+          "registrar": "Information unavailable",
+          "domainAge": "Information unavailable",
+          "hasTls": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": {
+        "isValid": true,
+        "url": "https://secure-hdfc-kyc.top/login",
+        "protocol": "https",
+        "hostname": "secure-hdfc-kyc.top",
+        "pathname": "/login",
+        "isHttps": true,
+        "isIpv4": false,
+        "isShortener": false,
+        "matchedTld": ".top",
+        "brandSpoofed": "HDFC",
+        "totalDeduction": 85,
+        "threats": [
+          {
+            "title": "High-Risk TLD Extension (.top)",
+            "severity": "High",
+            "icon": "AlertTriangle",
+            "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny."
+          },
+          {
+            "title": "Suspected Brand Impersonation (HDFC)",
+            "severity": "Critical",
+            "icon": "UserX",
+            "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic."
+          }
+        ],
+        "breakdownMeters": {
+          "domainReputation": 10,
+          "phishingIndicators": 56,
+          "domainSimilarity": 92,
+          "communityThreats": 55
+        },
+        "domainAge": "Information unavailable",
+        "registrar": "Information unavailable",
+        "hasTls": false,
+        "tlsIssuer": null
+      },
+      "breakdownMeters": {
+        "domainReputation": 10,
+        "phishingIndicators": 56,
+        "domainSimilarity": 92,
+        "communityThreats": 55
+      },
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:02:54.147Z"
+    },
+    {
+      "scanId": "scan-1788962573405",
+      "type": "url",
+      "inputHash": "07842e6e751f17d10532bfff2cd99bfd542392b3b264492a4f39615d5b39e13b",
+      "sanitizedInput": "http://127.0.0.1/admin",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "SSRF Network Probe",
+      "detectedIndicators": [
+        {
+          "name": "SSRF Attack / Private Address Target",
+          "severity": "Critical",
+          "explanation": "SSRF Protection: Target IP address (127.0.0.1) belongs to a private/reserved network range.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Block access to internal hostnames",
+          "description": "The destination attempts to address non-public network space.",
+          "type": "critical"
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "ssrfProtection": true
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:02:53.405Z"
+    },
+    {
+      "scanId": "scan-1788962573399-b612n5",
+      "type": "sms",
+      "inputHash": "07d36465d7545b071518ed287488f8fe7a4ac3dfe34cbff4e51da35e1589eebc",
+      "sanitizedInput": "URGENT: Your SBI net banking is blocked today. Verify KYC immediately at http://sbi-kyc-verify.top or account will be frozen.",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "Fake KYC Scam",
+      "detectedIndicators": [
+        {
+          "name": "Extreme Urgency Pressure",
+          "severity": "Medium",
+          "explanation": "The message creates artificial panic to force quick action before thinking.",
+          "source": "local"
+        },
+        {
+          "name": "Unsolicited KYC / Identity Demand",
+          "severity": "High",
+          "explanation": "Requests personal identification documents or KYC updates via unverified channels.",
+          "source": "local"
+        },
+        {
+          "name": "Financial Institution Impersonation",
+          "severity": "High",
+          "explanation": "Message mimics official correspondence from a Banking entity, leveraging institutional trust to deceive you.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "🔒 Never share OTP, PIN, CVV, or passwords",
+          "description": "Legitimate institutions will never request confidential security credentials over SMS, chat, or forms.",
+          "type": "warning",
+          "priority": 2
+        },
+        {
+          "action": "⏱️ Pause: Legitimate organizations give formal advance notice",
+          "description": "Scammers manufacture artificial panic to force hasty decisions. Verify independently.",
+          "type": "info",
+          "priority": 3
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "aiEngine": {
+          "available": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:02:53.399Z"
+    },
+    {
+      "scanId": "scan-1788962475228-v6knyi",
+      "type": "qr",
+      "inputHash": "ffa457c42cdaf69e06b08a23ad83ad234e5a338cb2cb6a4925e262c890164bae",
+      "sanitizedInput": "upi://pay?pa=fake_support@okaxis&pn=SBI_REFUND_PORTAL&am=8500&tn=ScanToReceiveRefund",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 83,
+      "riskLevel": "LIKELY SAFE",
+      "detectedCategory": "UPI Payment QR",
+      "detectedIndicators": [
+        {
+          "name": "Pre-set High Payment Amount (₹8500)",
+          "severity": "Medium",
+          "explanation": "The QR code has an enforced high transaction amount pre-filled.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "⚠️ Verify the recipient name and payment details before completing a payment",
+          "description": "ScamShield cannot guarantee the identity of the payment recipient solely from QR content. Never enter your UPI PIN to receive money.",
+          "type": "warning",
+          "priority": 0
+        },
+        {
+          "action": "🛑 Disengage and do not reply",
+          "description": "Replying confirms your contact identity to automated fraud campaigns.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "💳 Remember: You never need a PIN to RECEIVE money",
+          "description": "Entering your UPI PIN authorizes an outgoing debit from your account, never an incoming credit.",
+          "type": "warning",
+          "priority": 2
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:01:15.228Z"
+    },
+    {
+      "scanId": "scan-1788962475216-9xrzq4",
+      "type": "url",
+      "inputHash": "5cfdbc171450fc82ad7cea6da9935d6b486254e08976b495d3a96b94b7952f0b",
+      "sanitizedInput": "https://secure-hdfc-kyc.top/login",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 33,
+      "riskLevel": "SUSPICIOUS",
+      "detectedCategory": "Suspected HDFC Phishing",
+      "detectedIndicators": [
+        {
+          "name": "High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Suspected Brand Impersonation (HDFC)",
+          "severity": "Critical",
+          "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "domainIntel": {
+          "available": false,
+          "hostname": "secure-hdfc-kyc.top",
+          "registrar": "Information unavailable",
+          "domainAge": "Information unavailable",
+          "hasTls": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": {
+        "isValid": true,
+        "url": "https://secure-hdfc-kyc.top/login",
+        "protocol": "https",
+        "hostname": "secure-hdfc-kyc.top",
+        "pathname": "/login",
+        "isHttps": true,
+        "isIpv4": false,
+        "isShortener": false,
+        "matchedTld": ".top",
+        "brandSpoofed": "HDFC",
+        "totalDeduction": 85,
+        "threats": [
+          {
+            "title": "High-Risk TLD Extension (.top)",
+            "severity": "High",
+            "icon": "AlertTriangle",
+            "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny."
+          },
+          {
+            "title": "Suspected Brand Impersonation (HDFC)",
+            "severity": "Critical",
+            "icon": "UserX",
+            "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic."
+          }
+        ],
+        "breakdownMeters": {
+          "domainReputation": 10,
+          "phishingIndicators": 56,
+          "domainSimilarity": 92,
+          "communityThreats": 55
+        },
+        "domainAge": "Information unavailable",
+        "registrar": "Information unavailable",
+        "hasTls": false,
+        "tlsIssuer": null
+      },
+      "breakdownMeters": {
+        "domainReputation": 10,
+        "phishingIndicators": 56,
+        "domainSimilarity": 92,
+        "communityThreats": 55
+      },
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:01:15.216Z"
+    },
+    {
+      "scanId": "scan-1788962474475",
+      "type": "url",
+      "inputHash": "07842e6e751f17d10532bfff2cd99bfd542392b3b264492a4f39615d5b39e13b",
+      "sanitizedInput": "http://127.0.0.1/admin",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "SSRF Network Probe",
+      "detectedIndicators": [
+        {
+          "name": "SSRF Attack / Private Address Target",
+          "severity": "Critical",
+          "explanation": "SSRF Protection: Target IP address (127.0.0.1) belongs to a private/reserved network range.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Block access to internal hostnames",
+          "description": "The destination attempts to address non-public network space.",
+          "type": "critical"
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "ssrfProtection": true
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:01:14.475Z"
+    },
+    {
+      "scanId": "scan-1788962474465-u3zdp1",
+      "type": "sms",
+      "inputHash": "07d36465d7545b071518ed287488f8fe7a4ac3dfe34cbff4e51da35e1589eebc",
+      "sanitizedInput": "URGENT: Your SBI net banking is blocked today. Verify KYC immediately at http://sbi-kyc-verify.top or account will be frozen.",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "Fake KYC Scam",
+      "detectedIndicators": [
+        {
+          "name": "Extreme Urgency Pressure",
+          "severity": "Medium",
+          "explanation": "The message creates artificial panic to force quick action before thinking.",
+          "source": "local"
+        },
+        {
+          "name": "Unsolicited KYC / Identity Demand",
+          "severity": "High",
+          "explanation": "Requests personal identification documents or KYC updates via unverified channels.",
+          "source": "local"
+        },
+        {
+          "name": "Financial Institution Impersonation",
+          "severity": "High",
+          "explanation": "Message mimics official correspondence from a Banking entity, leveraging institutional trust to deceive you.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "🔒 Never share OTP, PIN, CVV, or passwords",
+          "description": "Legitimate institutions will never request confidential security credentials over SMS, chat, or forms.",
+          "type": "warning",
+          "priority": 2
+        },
+        {
+          "action": "⏱️ Pause: Legitimate organizations give formal advance notice",
+          "description": "Scammers manufacture artificial panic to force hasty decisions. Verify independently.",
+          "type": "info",
+          "priority": 3
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "aiEngine": {
+          "available": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:01:14.466Z"
+    },
+    {
+      "scanId": "scan-1788962274239-v4v23y",
+      "type": "qr",
+      "inputHash": "672bfa46130877d619eb3a56b32e20346999281d4a295db19f9ef42255028eee",
+      "sanitizedInput": "upi://pay?pa=fake_refund_dept@okaxis&pn=SBI_REFUND_PORTAL&am=7500&tn=ScanToReceive",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 83,
+      "riskLevel": "LIKELY SAFE",
+      "detectedCategory": "UPI Payment QR",
+      "detectedIndicators": [
+        {
+          "name": "Pre-set High Payment Amount (₹7500)",
+          "severity": "Medium",
+          "explanation": "The QR code has an enforced high transaction amount pre-filled.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "⚠️ Verify the recipient name and payment details before completing a payment",
+          "description": "ScamShield cannot guarantee the identity of the payment recipient solely from QR content. Never enter your UPI PIN to receive money.",
+          "type": "warning",
+          "priority": 0
+        },
+        {
+          "action": "🛑 Disengage and do not reply",
+          "description": "Replying confirms your contact identity to automated fraud campaigns.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "💳 Remember: You never need a PIN to RECEIVE money",
+          "description": "Entering your UPI PIN authorizes an outgoing debit from your account, never an incoming credit.",
+          "type": "warning",
+          "priority": 2
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T13:57:54.239Z"
+    },
+    {
+      "scanId": "scan-1788962274234-dt8ua9",
+      "type": "url",
+      "inputHash": "15c1e7cae9812a2cb19a9f5ed2e016ba15f035786d7d748a6f004b967509242f",
+      "sanitizedInput": "https://secure-hdfc-kyc-update.top/login.php",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 33,
+      "riskLevel": "SUSPICIOUS",
+      "detectedCategory": "Suspected HDFC Phishing",
+      "detectedIndicators": [
+        {
+          "name": "High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Suspected Brand Impersonation (HDFC)",
+          "severity": "Critical",
+          "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "domainIntel": {
+          "available": false,
+          "hostname": "secure-hdfc-kyc-update.top",
+          "registrar": "Information unavailable",
+          "domainAge": "Information unavailable",
+          "hasTls": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false,
+            "status": "unconfigured"
+          }
+        },
+        "aiEngine": {
+          "available": false
+        }
+      },
+      "urlDetails": {
+        "isValid": true,
+        "url": "https://secure-hdfc-kyc-update.top/login.php",
+        "protocol": "https",
+        "hostname": "secure-hdfc-kyc-update.top",
+        "pathname": "/login.php",
+        "isHttps": true,
+        "isIpv4": false,
+        "isShortener": false,
+        "matchedTld": ".top",
+        "brandSpoofed": "HDFC",
+        "totalDeduction": 85,
+        "threats": [
+          {
+            "title": "High-Risk TLD Extension (.top)",
+            "severity": "High",
+            "icon": "AlertTriangle",
+            "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny."
+          },
+          {
+            "title": "Suspected Brand Impersonation (HDFC)",
+            "severity": "Critical",
+            "icon": "UserX",
+            "explanation": "The domain references 'HDFC' but does NOT belong to official verified infrastructure (hdfcbank.com). This is a classic credential-stealing clone tactic."
+          }
+        ],
+        "breakdownMeters": {
+          "domainReputation": 10,
+          "phishingIndicators": 56,
+          "domainSimilarity": 92,
+          "communityThreats": 55
+        },
+        "domainAge": "Information unavailable",
+        "registrar": "Information unavailable",
+        "hasTls": false,
+        "tlsIssuer": null
+      },
+      "breakdownMeters": {
+        "domainReputation": 10,
+        "phishingIndicators": 56,
+        "domainSimilarity": 92,
+        "communityThreats": 55
+      },
+      "isDemo": false,
+      "createdAt": "2026-09-09T13:57:54.234Z"
+    },
+    {
+      "scanId": "scan-1788962272049",
+      "type": "url",
+      "inputHash": "775ade189fd8a207d71c95128a5f5910fbd6dd9def89fc898d5ac23ce883e2d3",
+      "sanitizedInput": "http://localhost:3000/internal-test",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "SSRF Network Probe",
+      "detectedIndicators": [
+        {
+          "name": "SSRF Attack / Private Address Target",
+          "severity": "Critical",
+          "explanation": "SSRF Protection: Access to localhost, link-local, or internal hostnames is prohibited.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Block access to internal hostnames",
+          "description": "The destination attempts to address non-public network space.",
+          "type": "critical"
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "ssrfProtection": true
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T13:57:52.049Z"
+    },
+    {
+      "scanId": "scan-1788962272045-6pmbga",
+      "type": "sms",
+      "inputHash": "0ee9da688d33cee17f0eefb7401f8639598a312ce95e78d7ad8884010ed385d7",
+      "sanitizedInput": "Your grocery delivery order #8812 has arrived. Thank you for shopping with us!",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 98,
+      "riskLevel": "LIKELY SAFE",
+      "detectedCategory": "Likely Legitimate Communication",
+      "detectedIndicators": [],
+      "recommendations": [
+        {
+          "action": "Safe to proceed with standard caution",
+          "description": "No known scam patterns or intelligence matches were detected.",
+          "type": "safe",
+          "priority": 1
+        },
+        {
+          "action": "Verify sender origin",
+          "description": "Confirm correspondence originates from the organization's official verified channel.",
+          "type": "info",
+          "priority": 2
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "aiEngine": {
+          "available": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T13:57:52.045Z"
+    },
+    {
+      "scanId": "scan-1788962272042-gn6ngp",
+      "type": "sms",
+      "inputHash": "f703cda7ff769796526421ccd3319406487ee4ae122a852abb940896a03ead6e",
+      "sanitizedInput": "Dear Customer, Your SBI account will be blocked today due to pending KYC. Click http://sbi-kyc-verify.top immediately to avoid suspension.",
+      "extractedUrl": null,
+      "qrPayload": null,
+      "trustScore": 5,
+      "riskLevel": "HIGH RISK",
+      "detectedCategory": "Malicious Phishing Link",
+      "detectedIndicators": [
+        {
+          "name": "Extreme Urgency Pressure",
+          "severity": "Medium",
+          "explanation": "The message creates artificial panic to force quick action before thinking.",
+          "source": "local"
+        },
+        {
+          "name": "Financial Institution Impersonation",
+          "severity": "High",
+          "explanation": "Message mimics official correspondence from a Banking entity, leveraging institutional trust to deceive you.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Embedded Link: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Insecure Plaintext Protocol (HTTP)",
+          "severity": "Medium",
+          "explanation": "Traffic is unencrypted, exposing login credentials and data to network eavesdropping or man-in-the-middle tampering.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: High-Risk TLD Extension (.top)",
+          "severity": "High",
+          "explanation": "Top-level domains such as .top have a statistically disproportionate rate of abuse in throwaway phishing campaigns due to minimal registrar scrutiny.",
+          "source": "local"
+        },
+        {
+          "name": "Link Indicator: Suspected Brand Impersonation (SBI)",
+          "severity": "Critical",
+          "explanation": "The domain references 'SBI' but does NOT belong to official verified infrastructure (onlinesbi.sbi, sbi.co.in). This is a classic credential-stealing clone tactic.",
+          "source": "local"
+        }
+      ],
+      "recommendations": [
+        {
+          "action": "🛑 Do not click the link",
+          "description": "The link points to an unverified or high-risk destination flagged by security heuristics.",
+          "type": "critical",
+          "priority": 1
+        },
+        {
+          "action": "⏱️ Pause: Legitimate organizations give formal advance notice",
+          "description": "Scammers manufacture artificial panic to force hasty decisions. Verify independently.",
+          "type": "info",
+          "priority": 3
+        },
+        {
+          "action": "📞 Cross-verify through official channels only",
+          "description": "Look up contact details directly from the organization's verified website or app.",
+          "type": "info",
+          "priority": 4
+        }
+      ],
+      "intelligenceSources": {
+        "localEngine": true,
+        "aiEngine": {
+          "available": false
+        },
+        "threatIntel": {
+          "Google Safe Browsing": {
+            "configured": false,
+            "available": false
+          },
+          "VirusTotal": {
+            "configured": false,
+            "available": false
+          },
+          "URLhaus": {
+            "configured": false,
+            "available": false
+          },
+          "PhishTank": {
+            "configured": false,
+            "available": false
+          }
+        }
+      },
+      "urlDetails": null,
+      "breakdownMeters": null,
+      "isDemo": false,
+      "createdAt": "2026-09-09T13:57:52.043Z"
+    }
+  ],
+  "reports": [
+    {
+      "reportId": "rep-1788964788944-ewlmge",
+      "title": "Test Unit Threat Report",
+      "type": "general",
+      "indicator": "http://malicious-test-test-1788964788943.top",
+      "category": "Banking Fraud",
+      "threatType": "Phishing Link",
+      "description": "Automated unit test threat report for persistence verification.",
+      "evidenceMetadata": {},
+      "reportCount": 2,
+      "confidence": "Medium",
+      "region": "Maharashtra",
+      "status": "Reported",
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:39:48.944Z",
+      "updatedAt": "2026-09-09T14:39:48.955Z"
+    },
+    {
+      "reportId": "rep-1788964138166-9d8lgk",
+      "title": "Test Unit Threat Report",
+      "type": "general",
+      "indicator": "http://malicious-test-test-1788964138165.top",
+      "category": "Banking Fraud",
+      "threatType": "Phishing Link",
+      "description": "Automated unit test threat report for persistence verification.",
+      "evidenceMetadata": {},
+      "reportCount": 2,
+      "confidence": "Medium",
+      "region": "Maharashtra",
+      "status": "Reported",
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:28:58.166Z",
+      "updatedAt": "2026-09-09T14:28:58.177Z"
+    },
+    {
+      "reportId": "rep-1788964113442-r3thmt",
+      "title": "Active Digital Arrest Extortion",
+      "type": "general",
+      "indicator": "+91 98214 09182",
+      "category": "Government Impersonation",
+      "threatType": "WhatsApp Video Call",
+      "description": "Callers impersonating cyber police officers demanding RTGS transfer.",
+      "evidenceMetadata": {},
+      "reportCount": 2,
+      "confidence": "Medium",
+      "region": "Delhi NCR",
+      "status": "Reported",
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:28:33.442Z",
+      "updatedAt": "2026-09-09T14:28:33.456Z"
+    },
+    {
+      "reportId": "rep-1788962590303-1fr1vz",
+      "title": "Test Unit Threat Report",
+      "type": "general",
+      "indicator": "http://malicious-test-test-1788962590302.top",
+      "category": "Banking Fraud",
+      "threatType": "Phishing Link",
+      "description": "Automated unit test threat report for persistence verification.",
+      "evidenceMetadata": {},
+      "reportCount": 2,
+      "confidence": "Medium",
+      "region": "Maharashtra",
+      "status": "Reported",
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:03:10.303Z",
+      "updatedAt": "2026-09-09T14:03:10.312Z"
+    },
+    {
+      "reportId": "rep-1788962574160-q4wgbm",
+      "title": "Active Digital Arrest Extortion",
+      "type": "general",
+      "indicator": "+91 98214 09182",
+      "category": "Government Impersonation",
+      "threatType": "WhatsApp Video Call",
+      "description": "Callers impersonating cyber police officers demanding RTGS transfer.",
+      "evidenceMetadata": {},
+      "reportCount": 2,
+      "confidence": "Medium",
+      "region": "Delhi NCR",
+      "status": "Reported",
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:02:54.160Z",
+      "updatedAt": "2026-09-09T14:02:54.168Z"
+    },
+    {
+      "reportId": "rep-1788962475236-hs5xix",
+      "title": "Active Digital Arrest Extortion",
+      "type": "general",
+      "indicator": "+91 98214 09182",
+      "category": "Government Impersonation",
+      "threatType": "WhatsApp Video Call",
+      "description": "Callers impersonating cyber police officers demanding RTGS transfer.",
+      "evidenceMetadata": {},
+      "reportCount": 2,
+      "confidence": "Medium",
+      "region": "Delhi NCR",
+      "status": "Reported",
+      "isDemo": false,
+      "createdAt": "2026-09-09T14:01:15.236Z",
+      "updatedAt": "2026-09-09T14:01:15.247Z"
+    },
+    {
+      "reportId": "rep-1788962274243-axzghl",
+      "title": "Test Unit Threat Report",
+      "type": "general",
+      "indicator": "http://malicious-test-test-1788962274242.top",
+      "category": "Banking Fraud",
+      "threatType": "Phishing Link",
+      "description": "Automated unit test threat report for persistence verification.",
+      "evidenceMetadata": {},
+      "reportCount": 2,
+      "confidence": "Medium",
+      "region": "Maharashtra",
+      "status": "Reported",
+      "isDemo": false,
+      "createdAt": "2026-09-09T13:57:54.243Z",
+      "updatedAt": "2026-09-09T13:57:54.251Z"
+    }
+  ],
+  "votes": [
+    {
+      "voteId": "vote-1788962274251",
+      "reportId": "rep-1788962274243-axzghl",
+      "userSessionId": "session-1788962274247",
+      "votedAt": "2026-09-09T13:57:54.251Z"
+    },
+    {
+      "voteId": "vote-1788962475247",
+      "reportId": "rep-1788962475236-hs5xix",
+      "userSessionId": "test-session-1788962475233",
+      "votedAt": "2026-09-09T14:01:15.247Z"
+    },
+    {
+      "voteId": "vote-1788962574168",
+      "reportId": "rep-1788962574160-q4wgbm",
+      "userSessionId": "test-session-1788962574158",
+      "votedAt": "2026-09-09T14:02:54.168Z"
+    },
+    {
+      "voteId": "vote-1788962590312",
+      "reportId": "rep-1788962590303-1fr1vz",
+      "userSessionId": "session-1788962590307",
+      "votedAt": "2026-09-09T14:03:10.312Z"
+    },
+    {
+      "voteId": "vote-1788964113456",
+      "reportId": "rep-1788964113442-r3thmt",
+      "userSessionId": "test-session-1788964113438",
+      "votedAt": "2026-09-09T14:28:33.456Z"
+    },
+    {
+      "voteId": "vote-1788964138177",
+      "reportId": "rep-1788964138166-9d8lgk",
+      "userSessionId": "session-1788964138172",
+      "votedAt": "2026-09-09T14:28:58.177Z"
+    },
+    {
+      "voteId": "vote-1788964788955",
+      "reportId": "rep-1788964788944-ewlmge",
+      "userSessionId": "session-1788964788951",
+      "votedAt": "2026-09-09T14:39:48.955Z"
+    }
+  ],
+  "campaigns": [],
+  "events": []
+}

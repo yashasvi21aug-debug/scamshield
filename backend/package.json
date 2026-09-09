@@ -1,0 +1,20 @@
+{
+  "name": "scamshield-backend",
+  "version": "1.0.0",
+  "description": "ScamShield AI - Backend API & Threat Detection Engine",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js",
+    "test": "node test-api.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-rate-limit": "^8.7.0",
+    "helmet": "^8.3.0",
+    "mongoose": "^9.9.5"
+  }
+}

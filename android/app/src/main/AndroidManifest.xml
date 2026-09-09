@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Network permissions required to query ScamShield backend API -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- 
+      PRIVACY & PERMISSION INTEGRITY:
+      Notice that ScamShield Quick Scan requests ZERO SMS read permissions.
+      It operates exclusively when the user deliberately shares text or images 
+      via the standard Android system Share menu (ACTION_SEND).
+    -->
+
+    <application
+        android:allowBackup="false"
+        android:icon="@drawable/ic_shield"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/ic_shield"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ScamShield"
+        android:usesCleartextTraffic="true">
+
+        <!-- Launcher Activity: Information & Server Configuration -->
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.ScamShield">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- Share Target Activity: Appears in system Share sheet as 🛡️ ScamShield Quick Scan -->
+        <activity
+            android:name=".ui.QuickScanActivity"
+            android:exported="true"
+            android:label="@string/share_target_title"
+            android:theme="@style/Theme.ScamShield.Dialog">
+
+            <!-- Accept shared plain text (SMS, copied text, URLs) -->
+            <intent-filter android:label="@string/share_target_title">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+
+            <!-- Accept shared images (QR codes, payment screenshots) -->
+            <intent-filter android:label="@string/share_target_title">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="image/*" />
+            </intent-filter>
+        </activity>
+
+    </application>
+
+</manifest>
