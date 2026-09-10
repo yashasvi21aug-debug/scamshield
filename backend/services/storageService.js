@@ -7,7 +7,9 @@ import { CommunityReport } from '../models/CommunityReport.js';
 import { CommunityVote } from '../models/CommunityVote.js';
 import { ThreatCampaign } from '../models/ThreatCampaign.js';
 import { AnalysisEvent } from '../models/AnalysisEvent.js';
+import { SimulatorAttempt } from '../models/SimulatorAttempt.js';
 import { getDatabaseStatus } from '../config/db.js';
+import { TRAINING_CONCEPTS, SIMULATOR_SCENARIOS } from '../data/simulatorScenarios.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -24,7 +26,9 @@ function readDiskData() {
   try {
     if (fs.existsSync(DISK_FILE)) {
       const raw = fs.readFileSync(DISK_FILE, 'utf8');
-      return JSON.parse(raw);
+      const parsed = JSON.parse(raw);
+      if (!parsed.simulatorAttempts) parsed.simulatorAttempts = [];
+      return parsed;
     }
   } catch (err) {
     console.error("Failed to read degraded disk store:", err.message);
@@ -34,7 +38,8 @@ function readDiskData() {
     reports: [],
     votes: [],
     campaigns: [],
-    events: []
+    events: [],
+    simulatorAttempts: []
   };
 }
 
@@ -168,6 +173,7 @@ class StorageService {
       };
 
       const recentScans = await Scan.find(matchStage).sort({ createdAt: -1 }).limit(6).lean();
+      const progress = await this.getSimulatorProgress(null, includeDemo);
 
       return {
         totalScans: agg.totalScans,
@@ -177,12 +183,23 @@ class StorageService {
         averageTrustScore: agg.avgTrustScore !== null ? Math.round(agg.avgTrustScore * 10) / 10 : null,
         communityReportsCount: reportsCount,
         recentScans,
+        trainingSummary: {
+          scenariosCompleted: progress.scenariosCompleted,
+          averageScore: progress.awarenessScore,
+          weakestCategory: progress.weakestCategory,
+          currentFocus: progress.adaptiveTraining?.focusLabel || 'Urgency Recognition',
+          focusConcept: progress.adaptiveTraining?.focusConcept || 'urgency',
+          conceptProgress: progress.adaptiveTraining?.progress !== undefined ? progress.adaptiveTraining.progress : 100,
+          recommendedChallenge: progress.adaptiveTraining?.recommendedScenarioTitle || 'Urgency Recognition Challenge',
+          recommendedDifficulty: progress.adaptiveTraining?.recommendedDifficulty || 'Beginner'
+        },
         dbStatus: getDatabaseStatus()
       };
     } else {
       const db = readDiskData();
       const scans = db.scans.filter(s => includeDemo || !s.isDemo);
       const reports = db.reports.filter(r => includeDemo || !r.isDemo);
+      const progress = await this.getSimulatorProgress(null, includeDemo);
 
       const totalScans = scans.length;
       let totalScore = 0;
@@ -211,6 +228,16 @@ class StorageService {
         averageTrustScore: totalScans > 0 ? Math.round((totalScore / totalScans) * 10) / 10 : null,
         communityReportsCount: reports.length,
         recentScans: scans.slice(0, 6),
+        trainingSummary: {
+          scenariosCompleted: progress.scenariosCompleted,
+          averageScore: progress.awarenessScore,
+          weakestCategory: progress.weakestCategory,
+          currentFocus: progress.adaptiveTraining?.focusLabel || 'Urgency Recognition',
+          focusConcept: progress.adaptiveTraining?.focusConcept || 'urgency',
+          conceptProgress: progress.adaptiveTraining?.progress !== undefined ? progress.adaptiveTraining.progress : 100,
+          recommendedChallenge: progress.adaptiveTraining?.recommendedScenarioTitle || 'Urgency Recognition Challenge',
+          recommendedDifficulty: progress.adaptiveTraining?.recommendedDifficulty || 'Beginner'
+        },
         dbStatus: getDatabaseStatus()
       };
     }
@@ -464,6 +491,238 @@ class StorageService {
       writeDiskData(db);
       return report;
     }
+  }
+
+  // --- SIMULATOR ATTEMPTS ---
+  async saveSimulatorAttempt(attemptData) {
+    const record = {
+      sessionId: attemptData.sessionId || 'anonymous-session',
+      scenarioId: attemptData.scenarioId,
+      stage: Number(attemptData.stage) || 1,
+      difficulty: attemptData.difficulty || 'Beginner',
+      category: attemptData.category || 'General',
+      selectedAction: attemptData.selectedAction || '',
+      actionId: attemptData.actionId || 'A',
+      correct: Boolean(attemptData.correct),
+      score: Number(attemptData.score) || 0,
+      missedSignals: attemptData.missedSignals || [],
+      conceptsTested: attemptData.conceptsTested || [],
+      conceptsMissed: attemptData.conceptsMissed || [],
+      feedback: attemptData.feedback || {},
+      isDemo: Boolean(attemptData.isDemo),
+      completedAt: new Date()
+    };
+
+    if (this.isMongoActive()) {
+      const created = await SimulatorAttempt.create(record);
+      return created.toObject();
+    } else {
+      const db = readDiskData();
+      if (!db.simulatorAttempts) db.simulatorAttempts = [];
+      db.simulatorAttempts.unshift(record);
+      if (db.simulatorAttempts.length > 5000) db.simulatorAttempts.pop();
+      writeDiskData(db);
+      return record;
+    }
+  }
+
+  async getSimulatorProgress(sessionId = null, includeDemo = false) {
+    let attempts = [];
+    if (this.isMongoActive()) {
+      const match = {};
+      if (sessionId) match.sessionId = sessionId;
+      if (!includeDemo) match.isDemo = false;
+      attempts = await SimulatorAttempt.find(match).sort({ completedAt: -1 }).lean();
+    } else {
+      const db = readDiskData();
+      const all = db.simulatorAttempts || [];
+      attempts = all.filter(a => {
+        if (sessionId && a.sessionId !== sessionId) return false;
+        if (!includeDemo && a.isDemo) return false;
+        return true;
+      });
+    }
+
+    const totalCompleted = attempts.length;
+    let totalScore = 0;
+    let safeCount = 0;
+    let riskyCount = 0;
+    const categoryStats = {};
+
+    // Initialize concept analytics across all 11 concepts
+    const conceptStats = {};
+    for (const key of Object.keys(TRAINING_CONCEPTS)) {
+      conceptStats[key] = {
+        concept: key,
+        label: TRAINING_CONCEPTS[key].label,
+        description: TRAINING_CONCEPTS[key].description,
+        tested: 0,
+        mistakes: 0,
+        safe: 0,
+        mastery: 100
+      };
+    }
+
+    for (const att of attempts) {
+      totalScore += (att.score || 0);
+      if (att.correct) safeCount++;
+      else riskyCount++;
+
+      const cat = att.category || 'General';
+      if (!categoryStats[cat]) {
+        categoryStats[cat] = { category: cat, total: 0, scoreSum: 0, safe: 0, risky: 0 };
+      }
+      categoryStats[cat].total++;
+      categoryStats[cat].scoreSum += (att.score || 0);
+      if (att.correct) categoryStats[cat].safe++;
+      else categoryStats[cat].risky++;
+
+      // Aggregate concept mastery
+      const testedList = att.conceptsTested || [];
+      const missedList = att.conceptsMissed || [];
+
+      for (const c of testedList) {
+        if (conceptStats[c]) {
+          conceptStats[c].tested++;
+          if (att.correct) {
+            conceptStats[c].safe++;
+          }
+        }
+      }
+      for (const m of missedList) {
+        if (conceptStats[m]) {
+          conceptStats[m].mistakes++;
+        }
+      }
+    }
+
+    const awarenessScore = totalCompleted > 0 ? Math.round(totalScore / totalCompleted) : 0;
+    const categoriesArray = Object.values(categoryStats).map(c => ({
+      category: c.category,
+      attempts: c.total,
+      avgScore: Math.round(c.scoreSum / c.total),
+      safePercentage: Math.round((c.safe / c.total) * 100)
+    }));
+
+    categoriesArray.sort((a, b) => b.avgScore - a.avgScore);
+    const strongestCategory = categoriesArray.length > 0 ? categoriesArray[0].category : "None Yet";
+    const weakestCategory = categoriesArray.length > 0 ? categoriesArray[categoriesArray.length - 1].category : "None Yet";
+
+    // Format concepts array with mastery %
+    const conceptsArray = Object.values(conceptStats).map(c => {
+      const mastery = c.tested > 0 
+        ? Math.max(0, Math.round(((c.tested - c.mistakes) / c.tested) * 100))
+        : 100;
+      return {
+        ...c,
+        mastery
+      };
+    });
+
+    // --- ADAPTIVE FOCUS AREA DETECTION ---
+    // Concepts with mistakes sorted by mistake count desc, then lowest mastery
+    const conceptsWithMistakes = conceptsArray.filter(c => c.mistakes > 0);
+    conceptsWithMistakes.sort((a, b) => {
+      if (b.mistakes !== a.mistakes) return b.mistakes - a.mistakes;
+      return a.mastery - b.mastery;
+    });
+
+    let focusConceptObj = conceptsWithMistakes.length > 0 ? conceptsWithMistakes[0] : null;
+    if (!focusConceptObj) {
+      focusConceptObj = conceptsArray.find(c => c.concept === 'urgency') || conceptsArray[0];
+    }
+
+    const focusConcept = focusConceptObj.concept;
+    const focusLabel = focusConceptObj.label;
+    const focusProgress = focusConceptObj.mastery;
+
+    // --- DIFFICULTY ADAPTATION ---
+    // Beginner -> Intermediate -> Expert based on consistent performance
+    // Struggles -> reinforce without penalty
+    let recommendedDifficulty = 'Beginner';
+    const recentAttempts = attempts.slice(0, 4);
+    const recentAvgScore = recentAttempts.length > 0 
+      ? Math.round(recentAttempts.reduce((acc, a) => acc + (a.score || 0), 0) / recentAttempts.length)
+      : 0;
+
+    if (totalCompleted >= 4 && (awarenessScore >= 80 || recentAvgScore >= 85) && focusConceptObj.mistakes === 0) {
+      recommendedDifficulty = 'Expert';
+    } else if (totalCompleted >= 2 && (awarenessScore >= 70 || recentAvgScore >= 70)) {
+      recommendedDifficulty = 'Intermediate';
+    } else {
+      recommendedDifficulty = 'Beginner';
+    }
+
+    // --- MULTI-STEP CHALLENGE READINESS ---
+    // Trigger multi-step when user is Intermediate/Expert, or weakness is multi-stage vector
+    const shouldRecommendMultiStep = (recommendedDifficulty !== 'Beginner') || ['payment_safety', 'payment_pressure', 'social_pressure', 'authority_impersonation'].includes(focusConcept);
+
+    // --- TARGETED SCENARIO RECOMMENDATION ---
+    let candidateScenarios = SIMULATOR_SCENARIOS.filter(s => s.concepts && s.concepts.includes(focusConcept));
+    if (candidateScenarios.length === 0) candidateScenarios = SIMULATOR_SCENARIOS;
+
+    // Prioritize multi-step if ready, matching difficulty
+    let recommendedScen = candidateScenarios.find(s => {
+      if (shouldRecommendMultiStep && !s.isMultiStep) return false;
+      return s.difficulty.toLowerCase() === recommendedDifficulty.toLowerCase();
+    });
+
+    if (!recommendedScen) {
+      recommendedScen = candidateScenarios.find(s => s.difficulty.toLowerCase() === recommendedDifficulty.toLowerCase()) || candidateScenarios[0];
+    }
+
+    // --- PERSONALIZED TRAINING INSIGHT ---
+    // Strictly grounded in simulator metrics: identify a strength vs a weakness
+    const strongConcept = conceptsArray.find(c => c.tested >= 2 && c.mistakes === 0);
+    let trainingInsight = '';
+    if (focusConceptObj.mistakes > 0) {
+      if (strongConcept) {
+        trainingInsight = `You've correctly identified ${strongConcept.label.toLowerCase()} several times, but ${focusLabel.toLowerCase()}-based scams are still challenging.`;
+      } else {
+        trainingInsight = `Simulator decisions show that ${focusLabel.toLowerCase()} is your primary focus area. Practice recognizing psychological pressure signals.`;
+      }
+    } else if (totalCompleted > 0) {
+      trainingInsight = `You've demonstrated solid defensive discipline across ${totalCompleted} evaluated scenario${totalCompleted > 1 ? 's' : ''}. Ready to challenge your instincts against ${recommendedDifficulty} scenarios.`;
+    } else {
+      trainingInsight = `Begin your cybersecurity training with foundational scenarios to calibrate your defensive baseline.`;
+    }
+
+    const adaptiveTraining = {
+      focusConcept,
+      focusLabel,
+      progress: focusProgress,
+      recommendedDifficulty,
+      recommendedScenarioId: recommendedScen.id,
+      recommendedScenarioTitle: recommendedScen.title,
+      isMultiStep: Boolean(recommendedScen.isMultiStep),
+      trainingInsight
+    };
+
+    let legacyRecommended = null;
+    if (categoriesArray.length > 0 && categoriesArray[categoriesArray.length - 1].avgScore < 80) {
+      const weakest = categoriesArray[categoriesArray.length - 1];
+      legacyRecommended = {
+        category: weakest.category,
+        reason: `Your training score in ${weakest.category} is ${weakest.avgScore}%. Practice more scenarios in this category to eliminate social engineering vulnerabilities.`
+      };
+    }
+
+    return {
+      awarenessScore,
+      scenariosCompleted: totalCompleted,
+      totalAttempts: totalCompleted,
+      safeDecisions: safeCount,
+      riskyDecisions: riskyCount,
+      safeRatio: totalCompleted > 0 ? Math.round((safeCount / totalCompleted) * 100) : 100,
+      strongestCategory,
+      weakestCategory,
+      recommendedScenario: legacyRecommended,
+      categories: categoriesArray,
+      conceptMastery: conceptsArray,
+      adaptiveTraining,
+      attempts: attempts,
+      recentAttempts: attempts.slice(0, 10)
+    };
   }
 
   // --- SEED SAMPLE TEST RECORD (Exclusively tagged as isDemo: true) ---

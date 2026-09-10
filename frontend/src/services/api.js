@@ -166,3 +166,40 @@ export async function askAdvisor(message, history = []) {
   }
   return await res.json();
 }
+
+export async function getSimulatorScenarios(difficulty = 'all') {
+  const params = new URLSearchParams({ difficulty });
+  const res = await fetch(`${BASE_URL}/api/simulator/scenarios?${params.toString()}`);
+  if (!res.ok) throw new Error("Failed to fetch simulator scenarios");
+  const data = await res.json();
+  return data.data;
+}
+
+export async function getSimulatorScenario(id) {
+  const res = await fetch(`${BASE_URL}/api/simulator/scenarios/${id}`);
+  if (!res.ok) throw new Error("Failed to fetch scenario details");
+  const data = await res.json();
+  return data.data;
+}
+
+export async function evaluateSimulatorDecision({ scenarioId, actionId, stage = 1, isDemo = false, useAi = true }) {
+  const res = await fetch(`${BASE_URL}/api/simulator/evaluate`, {
+    method: 'POST',
+    headers: getHeaders(),
+    body: JSON.stringify({ scenarioId, actionId, stage, isDemo, useAi })
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.error || "Failed to evaluate decision");
+  }
+  return await res.json();
+}
+
+export async function getSimulatorProgress(includeDemo = false) {
+  const res = await fetch(`${BASE_URL}/api/simulator/progress?includeDemo=${includeDemo}`, {
+    headers: getHeaders()
+  });
+  if (!res.ok) throw new Error("Failed to fetch simulator progress");
+  const data = await res.json();
+  return data.data;
+}

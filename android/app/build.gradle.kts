@@ -16,15 +16,15 @@ android {
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
-        // Default development backend endpoint (Android Emulator to Host loopback)
+        // Production backend endpoint by default (https://scamshield-udqs.onrender.com)
         // Can be overridden via project property or environment variable SCAMSHIELD_API_BASE_URL
         val configuredBaseUrl = project.findProperty("SCAMSHIELD_API_BASE_URL") as? String 
             ?: System.getenv("SCAMSHIELD_API_BASE_URL") 
-            ?: "http://10.0.2.2:5000"
+            ?: "https://scamshield-udqs.onrender.com"
 
         val configuredWebUrl = project.findProperty("SCAMSHIELD_WEB_BASE_URL") as? String
             ?: System.getenv("SCAMSHIELD_WEB_BASE_URL")
-            ?: "http://10.0.2.2:3000"
+            ?: "https://scamshield-mocha.vercel.app"
 
         buildConfigField("String", "DEFAULT_API_BASE_URL", "\"$configuredBaseUrl\"")
         buildConfigField("String", "DEFAULT_WEB_BASE_URL", "\"$configuredWebUrl\"")
@@ -33,6 +33,7 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
+            signingConfig = signingConfigs.getByName("debug")
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"

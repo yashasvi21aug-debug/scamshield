@@ -11,7 +11,8 @@ import {
   Menu, 
   X, 
   Flag,
-  Server
+  Server,
+  GraduationCap
 } from 'lucide-react';
 
 export default function Navbar({ activePage, setActivePage, onOpenReportModal }) {
@@ -21,6 +22,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReportModal })
     { id: 'landing', label: 'Home', icon: Shield },
     { id: 'dashboard', label: 'Command Center', icon: Activity },
     { id: 'analyze', label: 'Analyze Center', icon: Search, highlight: true },
+    { id: 'simulator', label: 'Scam Simulator', icon: GraduationCap },
     { id: 'community', label: 'Community Intel', icon: Users },
     { id: 'categories', label: 'Threat Dossier', icon: Layers },
     { id: 'history', label: 'History', icon: History },

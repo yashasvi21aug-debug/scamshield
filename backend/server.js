@@ -16,6 +16,12 @@ import {
   getEmergencyResources 
 } from './controllers/dashboardController.js';
 import { handleAdvisorChat } from './controllers/advisorController.js';
+import { 
+  getScenarios, 
+  getScenario, 
+  evaluateDecision, 
+  getProgress 
+} from './controllers/simulatorController.js';
 import { threatIntelManager } from './services/threatIntel/threatIntelManager.js';
 import { aiService } from './services/aiService.js';
 
@@ -126,6 +132,12 @@ app.post('/api/community/reports/:id/upvote', upvoteCommunityReport);
 
 // AI / Local Cybersecurity Advisor
 app.post('/api/advisor/chat', handleAdvisorChat);
+
+// Scam Simulator Educational Training Endpoints
+app.get('/api/simulator/scenarios', getScenarios);
+app.get('/api/simulator/scenarios/:id', getScenario);
+app.post('/api/simulator/evaluate', evaluateDecision);
+app.get('/api/simulator/progress', getProgress);
 
 // Global Error Handler (Sanitizes stack traces from client exposure)
 app.use((err, req, res, next) => {

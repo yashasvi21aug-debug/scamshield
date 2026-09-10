@@ -300,6 +300,134 @@ Direct users to official cybercrime helplines (such as 1930 in India or local au
       recommendations
     };
   }
+
+  async generateSimulatorFeedback({
+    scenarioTitle,
+    category,
+    simulatedMessage,
+    chosenActionText,
+    isSafe,
+    score,
+    redFlags = [],
+    missedSignals = [],
+    safeAction,
+    lesson
+  }) {
+    const deterministicResult = {
+      decision: isSafe ? "safe" : "risky",
+      score,
+      explanation: isSafe
+        ? `Excellent decision. You safely recognized this simulated ${category} threat and avoided the trap.`
+        : `Risky decision. Selecting this action would expose you to the deceptive tactics in this simulated ${category} scenario.`,
+      missedSignals: missedSignals,
+      lesson: lesson || "Always verify communication independently through verified official channels.",
+      recommendedAction: safeAction || "Do not interact with unsolicited links or requests. Verify via official apps or portals.",
+      engine: "Deterministic Rule Engine (Offline Safe)"
+    };
+
+    if (!this.isConfigured()) {
+      return deterministicResult;
+    }
+
+    const systemPrompt = `You are ScamShield AI Cyber Coach, providing personalized cybersecurity training feedback.
+Analyze the user's decision in this simulated training scenario.
+The scenario was: "${scenarioTitle}" (${category}).
+Simulated scam message: "${simulatedMessage}".
+User's chosen action: "${chosenActionText}".
+Authoritative correctness: ${isSafe ? 'SAFE' : 'RISKY'} (Score: ${score}/100).
+Known red flags in scenario: ${JSON.stringify(redFlags)}.
+Specific missed signals: ${JSON.stringify(missedSignals)}.
+Target safe action: "${safeAction}".
+Core lesson: "${lesson}".
+
+Provide engaging, respectful, coaching-oriented feedback in this exact JSON structure:
+{
+  "decision": "${isSafe ? 'safe' : 'risky'}",
+  "score": ${score},
+  "explanation": "<2-3 sentence personalized evaluation of why this action was safe or risky in this specific situation>",
+  "missedSignals": ${JSON.stringify(missedSignals)},
+  "lesson": "<1-2 sentence memorable cybersecurity takeaway>",
+  "recommendedAction": "<1 actionable defensive step for the future>"
+}
+Return ONLY valid JSON matching this schema.`;
+
+    try {
+      const controller = new AbortController();
+      const timeout = setTimeout(() => controller.abort(), 12000);
+
+      let responseText = '';
+      let usedModel = this.model;
+
+      if (this.provider === 'gemini') {
+        const fetchGemini = async (modelName) => {
+          const url = `${this.baseUrl}/models/${modelName}:generateContent?key=${this.apiKey}`;
+          return await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            signal: controller.signal,
+            body: JSON.stringify({
+              contents: [{ role: 'user', parts: [{ text: systemPrompt }] }],
+              generationConfig: { response_mime_type: "application/json", temperature: 0.2 }
+            })
+          });
+        };
+
+        let res = await fetchGemini(this.model);
+        if (res.status === 503 || res.status === 429) {
+          usedModel = 'gemini-3.5-flash';
+          res = await fetchGemini('gemini-3.5-flash');
+        }
+        if (res.status === 503 || res.status === 429) {
+          usedModel = 'gemini-3.1-flash-lite';
+          res = await fetchGemini('gemini-3.1-flash-lite');
+        }
+
+        clearTimeout(timeout);
+        if (res.ok) {
+          const data = await res.json();
+          responseText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
+        }
+      } else {
+        const endpoint = `${this.baseUrl}/chat/completions`;
+        const res = await fetch(endpoint, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${this.apiKey}`
+          },
+          signal: controller.signal,
+          body: JSON.stringify({
+            model: this.model,
+            messages: [{ role: 'user', content: systemPrompt }],
+            response_format: { type: "json_object" },
+            temperature: 0.2
+          })
+        });
+        clearTimeout(timeout);
+        if (res.ok) {
+          const data = await res.json();
+          responseText = data.choices?.[0]?.message?.content || '';
+        }
+      }
+
+      if (responseText) {
+        const parsed = JSON.parse(responseText.replace(/```json/g, '').replace(/```/g, '').trim());
+        return {
+          decision: isSafe ? "safe" : "risky",
+          score,
+          explanation: parsed.explanation || deterministicResult.explanation,
+          missedSignals: Array.isArray(parsed.missedSignals) && parsed.missedSignals.length > 0 ? parsed.missedSignals : missedSignals,
+          lesson: parsed.lesson || deterministicResult.lesson,
+          recommendedAction: parsed.recommendedAction || deterministicResult.recommendedAction,
+          engine: `AI Personalized Feedback: Gemini (${usedModel})`
+        };
+      }
+    } catch (err) {
+      console.warn(`[Simulator AI Feedback Notice] ${err.message}. Falling back to deterministic lesson.`);
+    }
+
+    return deterministicResult;
+  }
 }
 
 export const aiService = new AIService();

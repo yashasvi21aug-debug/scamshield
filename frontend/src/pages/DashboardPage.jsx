@@ -10,7 +10,9 @@ import {
   ArrowUpRight,
   RotateCcw,
   Database,
-  Inbox
+  Inbox,
+  GraduationCap,
+  ChevronRight
 } from 'lucide-react';
 import { 
   AreaChart, 
@@ -215,6 +217,76 @@ export default function DashboardPage({ onNavigate, onInspectScan }) {
             </div>
           );
         })}
+      </div>
+
+      {/* Cybersecurity Training Section: Scam Simulator */}
+      <div className="p-6 rounded-3xl bg-gradient-to-r from-cyber-900 via-cyber-850 to-cyber-900 border border-cyber-700/80 backdrop-blur-md shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div className="flex items-start sm:items-center gap-4">
+          <div className="p-3 rounded-2xl bg-cyan-500/15 border border-cyan-500/30 text-cyan-400 shrink-0">
+            <GraduationCap className="w-8 h-8" />
+          </div>
+          <div>
+            <div className="flex items-center gap-2 mb-1">
+              <span className="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30">
+                Cybersecurity Training
+              </span>
+              <span className="text-[10px] uppercase font-bold tracking-widest px-2 py-0.5 rounded bg-amber-500/10 text-amber-300 border border-amber-500/30">
+                Safe Simulator
+              </span>
+            </div>
+            <h2 className="text-xl font-black text-white tracking-tight">
+              Scam Simulator — Train Before You Get Scammed
+            </h2>
+            <p className="text-xs text-slate-400 mt-1 max-w-xl">
+              Sharpen your defensive instincts with realistic interactive attack scenarios. Get scored on decision safety and receive instant Gemini AI tactical feedback.
+            </p>
+            {stats?.trainingSummary?.recommendedChallenge && (
+              <div className="mt-2 flex items-center gap-2 text-[11px] text-slate-400">
+                <span className="text-cyan-400 font-mono font-bold uppercase tracking-wider">Adaptive Target:</span>
+                <span className="text-white font-medium truncate max-w-xs">{stats.trainingSummary.recommendedChallenge}</span>
+                <span className="px-1.5 py-0.5 rounded text-[10px] bg-cyan-500/10 text-cyan-300 border border-cyan-500/20 font-mono">
+                  {stats.trainingSummary.recommendedDifficulty || 'Adaptive'}
+                </span>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="flex items-center gap-6 self-stretch md:self-auto justify-between md:justify-end border-t md:border-t-0 pt-4 md:pt-0 border-cyber-800">
+          <div className="flex items-center gap-5">
+            <div className="text-left">
+              <div className="text-[10px] uppercase tracking-wider text-slate-400 font-mono">Completed</div>
+              <div className="text-lg font-black text-white font-mono">
+                {stats?.trainingSummary?.scenariosCompleted || 0}
+              </div>
+            </div>
+            <div className="w-px h-8 bg-cyber-800" />
+            <div className="text-left">
+              <div className="text-[10px] uppercase tracking-wider text-slate-400 font-mono">Awareness</div>
+              <div className="text-lg font-black text-cyan-400 font-mono">
+                {stats?.trainingSummary?.averageScore !== undefined ? `${stats.trainingSummary.averageScore}%` : '100%'}
+              </div>
+            </div>
+            <div className="w-px h-8 bg-cyber-800" />
+            <div className="text-left">
+              <div className="text-[10px] uppercase tracking-wider text-slate-400 font-mono">Focus Area</div>
+              <div className="text-xs font-bold text-amber-300 font-mono truncate max-w-[130px]" title={stats?.trainingSummary?.currentFocus || 'All Concepts'}>
+                {stats?.trainingSummary?.currentFocus || stats?.trainingSummary?.weakestCategory || 'All Concepts'}
+              </div>
+              <div className="text-[10px] text-slate-500 font-mono">
+                {stats?.trainingSummary?.conceptProgress !== undefined ? `${stats.trainingSummary.conceptProgress}% Mastery` : '100% Mastery'}
+              </div>
+            </div>
+          </div>
+
+          <button
+            onClick={() => onNavigate('simulator')}
+            className="px-4 py-2.5 rounded-xl bg-cyan-500 hover:bg-cyan-400 text-cyber-950 font-black text-xs uppercase tracking-wider transition-all shadow-md shadow-cyan-500/20 flex items-center gap-1.5 shrink-0"
+          >
+            <span>Open Simulator</span>
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        </div>
       </div>
 
       {/* If 0 scans in database, show clear, honest Empty State */}

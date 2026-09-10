@@ -11,7 +11,7 @@
     <string name="backend_status_connected">Connected to ScamShield Engine</string>
     <string name="backend_status_unreachable">ScamShield couldn\'t reach the analysis server.</string>
     <string name="configure_server">Configure Backend URL</string>
-    <string name="server_url_hint">http://10.0.2.2:5000 or https://...</string>
+    <string name="server_url_hint">https://scamshield-udqs.onrender.com</string>
     <string name="save">Save</string>
     <string name="cancel">Cancel</string>
 

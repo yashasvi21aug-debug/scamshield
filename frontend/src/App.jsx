@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar';
 import LandingPage from './pages/LandingPage';
 import DashboardPage from './pages/DashboardPage';
@@ -7,19 +7,54 @@ import CommunityPage from './pages/CommunityPage';
 import CategoriesPage from './pages/CategoriesPage';
 import HistoryPage from './pages/HistoryPage';
 import AdvisorPage from './pages/AdvisorPage';
+import SimulatorPage from './pages/SimulatorPage';
 import StatusPage from './pages/StatusPage';
 import EmergencyPage from './pages/EmergencyPage';
 import ReportScamModal from './components/ReportScamModal';
 import { Shield } from 'lucide-react';
 
 export default function App() {
-  const [activePage, setActivePage] = useState('landing');
+  const getInitialPage = () => {
+    if (typeof window !== 'undefined') {
+      const path = window.location.pathname.replace('/', '').toLowerCase();
+      if (path === 'simulator') return 'simulator';
+      if (path === 'dashboard') return 'dashboard';
+      if (path === 'analyze') return 'analyze';
+      if (path === 'community') return 'community';
+      if (path === 'categories') return 'categories';
+      if (path === 'history') return 'history';
+      if (path === 'advisor') return 'advisor';
+      if (path === 'status') return 'status';
+      if (path === 'emergency') return 'emergency';
+    }
+    return 'landing';
+  };
+
+  const [activePage, setActivePage] = useState(getInitialPage);
   const [isReportModalOpen, setIsReportModalOpen] = useState(false);
   const [inspectedScan, setInspectedScan] = useState(null);
 
+  const handleNavigate = (page) => {
+    setActivePage(page);
+    if (typeof window !== 'undefined' && window.history) {
+      const newUrl = page === 'landing' ? '/' : `/${page}`;
+      if (window.location.pathname !== newUrl) {
+        window.history.pushState({ page }, '', newUrl);
+      }
+    }
+  };
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setActivePage(getInitialPage());
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
   const handleInspectScan = (scan) => {
     setInspectedScan(scan);
-    setActivePage('history');
+    handleNavigate('history');
   };
 
   return (
@@ -27,19 +62,19 @@ export default function App() {
       {/* Global Navigation */}
       <Navbar
         activePage={activePage}
-        setActivePage={setActivePage}
+        setActivePage={handleNavigate}
         onOpenReportModal={() => setIsReportModalOpen(true)}
       />
 
       {/* Main Content Area */}
       <main className="flex-1">
         {activePage === 'landing' && (
-          <LandingPage onNavigate={setActivePage} />
+          <LandingPage onNavigate={handleNavigate} />
         )}
 
         {activePage === 'dashboard' && (
           <DashboardPage 
-            onNavigate={setActivePage}
+            onNavigate={handleNavigate}
             onInspectScan={handleInspectScan}
           />
         )}
@@ -56,7 +91,7 @@ export default function App() {
         )}
 
         {activePage === 'categories' && (
-          <CategoriesPage onNavigate={setActivePage} />
+          <CategoriesPage onNavigate={handleNavigate} />
         )}
 
         {activePage === 'history' && (
@@ -68,6 +103,10 @@ export default function App() {
 
         {activePage === 'advisor' && (
           <AdvisorPage />
+        )}
+
+        {activePage === 'simulator' && (
+          <SimulatorPage onNavigate={handleNavigate} />
         )}
 
         {activePage === 'status' && (
@@ -107,25 +146,28 @@ export default function App() {
             </div>
 
             <div className="flex flex-wrap justify-center gap-6 text-xs text-slate-400 font-medium">
-              <button onClick={() => setActivePage('dashboard')} className="hover:text-cyan-400 transition-colors">
+              <button onClick={() => handleNavigate('dashboard')} className="hover:text-cyan-400 transition-colors">
                 Command Center
               </button>
-              <button onClick={() => setActivePage('analyze')} className="hover:text-cyan-400 transition-colors">
+              <button onClick={() => handleNavigate('analyze')} className="hover:text-cyan-400 transition-colors">
                 Analyze Center
               </button>
-              <button onClick={() => setActivePage('community')} className="hover:text-cyan-400 transition-colors">
+              <button onClick={() => handleNavigate('simulator')} className="hover:text-cyan-400 text-cyan-300 font-semibold transition-colors">
+                Scam Simulator
+              </button>
+              <button onClick={() => handleNavigate('community')} className="hover:text-cyan-400 transition-colors">
                 Community Intel
               </button>
-              <button onClick={() => setActivePage('categories')} className="hover:text-cyan-400 transition-colors">
+              <button onClick={() => handleNavigate('categories')} className="hover:text-cyan-400 transition-colors">
                 Threat Dossier
               </button>
-              <button onClick={() => setActivePage('advisor')} className="hover:text-cyan-400 transition-colors">
+              <button onClick={() => handleNavigate('advisor')} className="hover:text-cyan-400 transition-colors">
                 AI Advisor
               </button>
-              <button onClick={() => setActivePage('status')} className="hover:text-cyan-400 transition-colors">
+              <button onClick={() => handleNavigate('status')} className="hover:text-cyan-400 transition-colors">
                 System Status
               </button>
-              <button onClick={() => setActivePage('emergency')} className="text-red-400 hover:text-red-300 transition-colors">
+              <button onClick={() => handleNavigate('emergency')} className="text-red-400 hover:text-red-300 transition-colors">
                 Emergency 1930
               </button>
             </div>
