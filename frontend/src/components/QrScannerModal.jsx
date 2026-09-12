@@ -146,34 +146,34 @@ export default function QrScannerModal({ isOpen, onClose, onPayloadDecoded }) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-white border border-[#E2E2D9] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+      <div className="bg-white border border-[#E2E2D9] rounded-3xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-[#E2E2D9] bg-[#F9F9F6]">
-          <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-[#118AB2]/10 text-[#118AB2] border border-[#118AB2]/30">
+        <div className="flex items-center justify-between p-6 bg-[#464B71] text-white">
+          <div className="flex items-center gap-3">
+            <div className="p-2.5 rounded-2xl bg-white/10 text-[#7CD5C7] border border-white/10">
               <Smartphone className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-[#464B71]">QR Code Scanner</h3>
-              <p className="text-xs text-slate-500">Decode and extract destination from QR images or webcam</p>
+              <h3 className="text-base font-bold text-white tracking-tight">QR Code Scanner</h3>
+              <p className="text-xs text-slate-300">Decode and extract destination from QR images or webcam</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
+            className="p-2 rounded-xl text-slate-300 hover:text-white hover:bg-white/10 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Tab Buttons */}
-        <div className="flex border-b border-[#E2E2D9] bg-[#F2F2ED]/50">
+        <div className="flex border-b border-[#E2E2D9] bg-[#F9F9F6]">
           <button
             onClick={() => setActiveTab('upload')}
-            className={`flex-1 py-3 text-xs font-semibold flex items-center justify-center gap-2 transition-colors ${
+            className={`flex-1 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all ${
               activeTab === 'upload' 
                 ? 'text-[#118AB2] border-b-2 border-[#118AB2] bg-white' 
-                : 'text-slate-500 hover:text-slate-700'
+                : 'text-slate-500 hover:text-slate-800'
             }`}
           >
             <Upload className="w-4 h-4" />
@@ -181,10 +181,10 @@ export default function QrScannerModal({ isOpen, onClose, onPayloadDecoded }) {
           </button>
           <button
             onClick={() => setActiveTab('camera')}
-            className={`flex-1 py-3 text-xs font-semibold flex items-center justify-center gap-2 transition-colors ${
+            className={`flex-1 py-3.5 text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all ${
               activeTab === 'camera' 
                 ? 'text-[#118AB2] border-b-2 border-[#118AB2] bg-white' 
-                : 'text-slate-500 hover:text-slate-700'
+                : 'text-slate-500 hover:text-slate-800'
             }`}
           >
             <Camera className="w-4 h-4" />

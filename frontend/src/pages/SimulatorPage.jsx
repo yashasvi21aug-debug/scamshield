@@ -24,7 +24,11 @@ import {
   Check,
   Flame,
   HelpCircle,
-  X
+  X,
+  Smartphone,
+  MessageSquareWarning,
+  SlidersHorizontal,
+  ChevronDown
 } from 'lucide-react';
 import { 
   getSimulatorScenarios, 
@@ -169,29 +173,31 @@ export default function SimulatorPage({ onNavigate }) {
     }) || scenarios[0];
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-10">
       {/* SIMULATION ACTIVE VIEW */}
       {activeScenario ? (
-        <div className="space-y-6">
+        <div className="space-y-6 animate-in fade-in duration-300">
           {/* Prominent Non-Real-Scam Security Stripe */}
-          <div className="p-4 rounded-2xl bg-amber-50 border-2 border-amber-300 text-amber-900 flex items-center justify-between flex-wrap gap-4 shadow-sm animate-pulse-glow">
-            <div className="flex items-center gap-3">
-              <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0" />
+          <div className="p-4 sm:p-5 rounded-2xl bg-amber-50 border-2 border-amber-300 text-amber-900 flex items-center justify-between flex-wrap gap-4 shadow-sm">
+            <div className="flex items-center gap-3.5">
+              <div className="p-2 bg-amber-100 rounded-xl border border-amber-300 text-amber-700 shrink-0">
+                <AlertTriangle className="w-6 h-6" />
+              </div>
               <div>
-                <div className="font-black tracking-wider uppercase text-sm sm:text-base flex items-center gap-2 text-amber-950">
+                <div className="font-extrabold tracking-wider uppercase text-sm sm:text-base flex items-center gap-2 text-amber-950">
                   <span>SIMULATION — NOT A REAL SCAM</span>
-                  <span className="text-[11px] px-2 py-0.5 rounded bg-amber-100 border border-amber-300 font-mono text-amber-800">
+                  <span className="text-[11px] px-2 py-0.5 rounded-full bg-amber-200 border border-amber-400 font-mono text-amber-900 font-bold">
                     SAFE SANDBOX
                   </span>
                 </div>
-                <p className="text-xs text-amber-800/90">
-                  This simulated attack is designed for cybersecurity defense training. No actual data or funds are at risk.
+                <p className="text-xs text-amber-800 mt-0.5">
+                  This simulated attack is generated strictly for cybersecurity defense training. No credentials, accounts, or funds are exposed.
                 </p>
               </div>
             </div>
             <button
               onClick={handleCloseScenario}
-              className="px-3.5 py-1.5 rounded-xl bg-white border border-amber-300 text-amber-900 hover:bg-amber-50 text-xs font-bold transition-colors flex items-center gap-1.5"
+              className="px-4 py-2 rounded-xl bg-white border border-amber-300 hover:bg-amber-100 text-amber-950 text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm"
             >
               <X className="w-4 h-4" />
               <span>Exit Simulation</span>
@@ -199,13 +205,13 @@ export default function SimulatorPage({ onNavigate }) {
           </div>
 
           {/* Scenario Header Card */}
-          <div className="p-6 rounded-3xl bg-white border border-[#E2E2D9] shadow-sm">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E2D9] shadow-sm">
             <div className="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-[#E2E2D9]">
-              <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#118AB2]/10 text-[#118AB2] border border-[#118AB2]/30">
+              <div className="flex items-center gap-2.5 flex-wrap">
+                <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#118AB2]/10 text-[#118AB2] border border-[#118AB2]/25">
                   {activeScenario.category}
                 </span>
-                <span className={`px-3 py-1 rounded-xl text-xs font-bold uppercase tracking-wider border ${
+                <span className={`px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider border ${
                   activeScenario.difficulty === 'Beginner' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
                   activeScenario.difficulty === 'Intermediate' ? 'bg-amber-50 text-amber-700 border-amber-200' :
                   'bg-red-50 text-red-700 border-red-200'
@@ -213,21 +219,21 @@ export default function SimulatorPage({ onNavigate }) {
                   {activeScenario.difficulty} Difficulty
                 </span>
                 {activeScenario.isMultiStep && (
-                  <span className="px-3 py-1 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#464B71]/10 text-[#464B71] border border-[#464B71]/30">
+                  <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#464B71]/10 text-[#464B71] border border-[#464B71]/25">
                     Multi-Stage Chain ({activeScenario.currentStage || currentStage}/{activeScenario.totalStages || 2})
                   </span>
                 )}
               </div>
               <div className="text-xs text-slate-500 font-mono">
-                Scenario ID: <span className="text-[#464B71] font-semibold">{activeScenario.id}</span>
+                Scenario ID: <strong className="text-[#464B71]">{activeScenario.id}</strong>
               </div>
             </div>
 
             <div className="mt-4">
-              <h1 className="text-2xl sm:text-3xl font-black text-[#464B71]">
+              <h1 className="text-2xl sm:text-3xl font-extrabold text-[#464B71] tracking-tight">
                 {activeScenario.title}
               </h1>
-              <p className="text-sm text-slate-600 mt-2 leading-relaxed">
+              <p className="text-sm text-slate-600 mt-2 leading-relaxed max-w-3xl">
                 {activeScenario.subtitle}
               </p>
             </div>
@@ -235,52 +241,55 @@ export default function SimulatorPage({ onNavigate }) {
 
           {/* Main Simulation Workspace Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-            {/* Left: Realistic Simulated Notification / Attack Mockup */}
+            {/* Left: Realistic Simulated Phone / Notification Mockup */}
             <div className="lg:col-span-6 space-y-4">
-              <div className="p-5 rounded-3xl bg-cyber-900/95 border border-cyber-700/80 shadow-xl relative overflow-hidden">
-                <div className="flex items-center justify-between mb-3 text-xs text-slate-400 pb-2 border-b border-cyber-800">
+              <div className="p-6 rounded-3xl bg-[#2B304D] border-2 border-[#464B71] text-white shadow-xl relative overflow-hidden">
+                {/* Simulated Phone Top Bar */}
+                <div className="flex items-center justify-between mb-4 pb-3 border-b border-white/10 text-xs text-slate-300">
                   <div className="flex items-center gap-2">
-                    <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 animate-ping" />
-                    <span className="font-bold text-slate-200 font-mono uppercase">
-                      Incoming Notification ({activeScenario.senderMockup?.channel || 'SMS'})
+                    <Smartphone className="w-4 h-4 text-[#7CD5C7]" />
+                    <span className="font-mono font-bold tracking-wider uppercase text-slate-100">
+                      Incoming {activeScenario.senderMockup?.channel || 'SMS'}
                     </span>
                   </div>
-                  <span className="font-mono text-cyan-400 text-[11px]">
+                  <span className="font-mono text-[#7CD5C7] text-xs font-bold px-2 py-0.5 rounded bg-white/10">
                     STAGE {activeScenario.currentStage || currentStage} OF {activeScenario.totalStages || 1}
                   </span>
                 </div>
 
                 {/* Simulated Device Screen Mockup */}
-                <div className="p-4 rounded-2xl bg-cyber-950 border border-cyber-800 space-y-3 font-sans shadow-inner">
+                <div className="p-4 sm:p-5 rounded-2xl bg-[#22263E] border border-white/10 space-y-4 font-sans shadow-inner">
                   {/* Sender Pill */}
-                  <div className="flex items-center justify-between bg-cyber-900/90 p-2.5 rounded-xl border border-cyber-800">
-                    <div className="flex items-center gap-2.5">
-                      <div className="w-8 h-8 rounded-full bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 flex items-center justify-center font-bold text-xs">
-                        {(activeScenario.senderMockup?.senderName || 'ALERT').substring(0, 2)}
+                  <div className="flex items-center justify-between bg-[#2B304D] p-3 rounded-xl border border-white/10">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded-full bg-[#118AB2]/30 text-[#7CD5C7] border border-[#7CD5C7]/40 flex items-center justify-center font-black text-xs">
+                        {(activeScenario.senderMockup?.senderName || 'AL').substring(0, 2)}
                       </div>
                       <div>
                         <div className="text-xs font-bold text-white font-mono">
-                          {activeScenario.senderMockup?.senderName || 'UNKNOWN'}
+                          {activeScenario.senderMockup?.senderName || 'UNKNOWN SENDER'}
                         </div>
-                        <div className="text-[10px] text-slate-400">
-                          {activeScenario.senderMockup?.timestamp || 'Just Now'} • {activeScenario.senderMockup?.channel || 'Simulated Dispatch'}
+                        <div className="text-[11px] text-slate-400">
+                          {activeScenario.senderMockup?.timestamp || 'Just Now'} • {activeScenario.senderMockup?.channel || 'Simulated Push'}
                         </div>
                       </div>
                     </div>
-                    <span className="text-[10px] text-slate-500 font-mono">Simulated</span>
+                    <span className="text-[10px] text-slate-400 font-mono uppercase px-2 py-0.5 rounded bg-white/5">
+                      Simulated
+                    </span>
                   </div>
 
                   {/* Message Bubble */}
-                  <div className="p-4 rounded-xl bg-cyber-900 border border-cyber-700/60 text-slate-200 text-sm whitespace-pre-wrap leading-relaxed font-sans select-none">
+                  <div className="p-4 rounded-2xl bg-[#343A5D] border border-white/15 text-slate-100 text-sm whitespace-pre-wrap leading-relaxed font-sans shadow-sm select-none">
                     {activeScenario.simulatedMessage}
                   </div>
 
                   {/* Context Note */}
                   {activeScenario.context && (
-                    <div className="p-3 rounded-xl bg-cyber-950/80 border border-cyber-800/80 text-xs text-slate-400 flex items-start gap-2">
-                      <Info className="w-4 h-4 text-cyan-400 shrink-0 mt-0.5" />
+                    <div className="p-3.5 rounded-xl bg-[#2B304D]/80 border border-white/10 text-xs text-slate-300 flex items-start gap-2.5">
+                      <Info className="w-4 h-4 text-[#7CD5C7] shrink-0 mt-0.5" />
                       <span>
-                        <strong className="text-slate-300">Context: </strong>
+                        <strong className="text-white">Attack Scenario Context: </strong>
                         {activeScenario.context}
                       </span>
                     </div>
@@ -288,12 +297,12 @@ export default function SimulatorPage({ onNavigate }) {
                 </div>
 
                 {/* Training Disclaimer Tag */}
-                <div className="mt-4 p-3 rounded-xl bg-cyber-950/60 border border-cyber-800 text-xs text-slate-400 flex items-center justify-between">
+                <div className="mt-4 p-3 rounded-xl bg-white/5 border border-white/10 text-xs text-slate-300 flex items-center justify-between">
                   <span className="flex items-center gap-1.5">
-                    <Brain className="w-3.5 h-3.5 text-cyan-400" />
-                    <span>Cybersecurity Defense Exercise</span>
+                    <Brain className="w-3.5 h-3.5 text-[#7CD5C7]" />
+                    <span>Cybersecurity Defense Sandbox</span>
                   </span>
-                  <span className="font-mono text-cyan-300 font-bold">
+                  <span className="font-mono text-[#7CD5C7] font-bold">
                     Safe Educational Simulation
                   </span>
                 </div>
@@ -304,42 +313,42 @@ export default function SimulatorPage({ onNavigate }) {
             <div className="lg:col-span-6 space-y-4">
               {!evaluationResult ? (
                 /* Decision Choice Panel */
-                <div className="p-6 rounded-3xl bg-cyber-900/95 border border-cyber-700/80 shadow-xl space-y-5">
+                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E2D9] shadow-sm space-y-6">
                   <div>
-                    <div className="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider font-mono">
+                    <div className="flex items-center gap-2 text-[#118AB2] text-xs font-bold uppercase tracking-wider font-mono">
                       <Zap className="w-4 h-4" />
-                      <span>Immediate Decision Required</span>
+                      <span>Immediate Tactical Decision Required</span>
                     </div>
-                    <h2 className="text-lg font-bold text-white mt-1">
+                    <h2 className="text-xl font-extrabold text-[#464B71] mt-1.5">
                       {activeScenario.question || "How would you handle this situation?"}
                     </h2>
-                    <p className="text-xs text-slate-400 mt-1">
-                      Select the single action that safest protects your identity, credentials, and financial accounts.
+                    <p className="text-xs text-slate-600 mt-1">
+                      Choose the single safest action to protect your identity, credentials, and financial accounts.
                     </p>
                   </div>
 
                   {/* Options List */}
-                  <div className="space-y-2.5">
+                  <div className="space-y-3">
                     {activeScenario.options?.map((option) => {
                       const isSelected = selectedActionId === option.id;
                       return (
                         <div
                           key={option.id}
                           onClick={() => setSelectedActionId(option.id)}
-                          className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-start gap-3 select-none ${
+                          className={`p-4 rounded-2xl border transition-all cursor-pointer flex items-start gap-3.5 select-none ${
                             isSelected
-                              ? 'bg-cyan-500/15 border-cyan-400 shadow-md shadow-cyan-500/10 text-white'
-                              : 'bg-cyber-950/70 border-cyber-800 hover:border-cyber-700 text-slate-300 hover:bg-cyber-950'
+                              ? 'bg-[#118AB2]/10 border-[#118AB2] shadow-sm text-[#2A2E45]'
+                              : 'bg-[#F9F9F6] border-[#E2E2D9] hover:border-[#118AB2]/40 hover:bg-white text-slate-700'
                           }`}
                         >
                           <div className={`w-6 h-6 rounded-lg flex items-center justify-center font-bold text-xs shrink-0 transition-colors ${
                             isSelected 
-                              ? 'bg-cyan-400 text-cyber-950' 
-                              : 'bg-cyber-900 text-slate-400 border border-cyber-700'
+                              ? 'bg-[#118AB2] text-white' 
+                              : 'bg-white text-slate-500 border border-[#E2E2D9]'
                           }`}>
                             {option.id.toUpperCase()}
                           </div>
-                          <div className="text-xs sm:text-sm leading-snug flex-1">
+                          <div className="text-xs sm:text-sm font-medium leading-snug flex-1">
                             {option.text}
                           </div>
                         </div>
@@ -351,16 +360,16 @@ export default function SimulatorPage({ onNavigate }) {
                   <button
                     onClick={handleSubmitDecision}
                     disabled={!selectedActionId || evaluating}
-                    className="w-full py-3.5 px-6 rounded-2xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 disabled:from-slate-800 disabled:to-slate-800 disabled:text-slate-500 disabled:cursor-not-allowed text-cyber-950 font-black text-sm uppercase tracking-wider transition-all shadow-lg shadow-cyan-500/20 flex items-center justify-center gap-2"
+                    className="w-full py-4 px-6 rounded-2xl bg-[#118AB2] hover:bg-[#0E7490] disabled:bg-slate-300 disabled:text-slate-500 disabled:cursor-not-allowed text-white font-bold text-sm uppercase tracking-wider transition-all shadow-md shadow-[#118AB2]/25 flex items-center justify-center gap-2"
                   >
                     {evaluating ? (
                       <>
-                        <RefreshCw className="w-4 h-4 animate-spin text-cyber-950" />
-                        <span>AI Assessing Decision Tactics...</span>
+                        <RefreshCw className="w-4 h-4 animate-spin text-white" />
+                        <span>AI Evaluating Decision Tactics...</span>
                       </>
                     ) : (
                       <>
-                        <Check className="w-4 h-4 text-cyber-950" />
+                        <Check className="w-4 h-4" />
                         <span>Confirm & Submit Decision</span>
                       </>
                     )}
@@ -368,22 +377,22 @@ export default function SimulatorPage({ onNavigate }) {
                 </div>
               ) : (
                 /* Immediate AI Decision Feedback Panel */
-                <div className="p-6 rounded-3xl bg-cyber-900/95 border border-cyber-700/80 shadow-2xl space-y-6">
+                <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E2D9] shadow-sm space-y-6">
                   {/* Result Status Banner */}
                   <div className={`p-5 rounded-2xl border flex items-center justify-between gap-4 ${
                     evaluationResult.isSafe 
-                      ? 'bg-emerald-500/15 border-emerald-500/40 text-emerald-300' 
+                      ? 'bg-emerald-50 border-emerald-200 text-emerald-800' 
                       : evaluationResult.score >= 40 
-                      ? 'bg-amber-500/15 border-amber-500/40 text-amber-300' 
-                      : 'bg-red-500/15 border-red-500/40 text-red-300'
+                      ? 'bg-amber-50 border-amber-200 text-amber-800' 
+                      : 'bg-red-50 border-red-200 text-red-800'
                   }`}>
                     <div className="flex items-center gap-3">
                       {evaluationResult.isSafe ? (
-                        <CheckCircle2 className="w-8 h-8 text-emerald-400 shrink-0" />
+                        <CheckCircle2 className="w-8 h-8 text-emerald-600 shrink-0" />
                       ) : evaluationResult.score >= 40 ? (
-                        <AlertTriangle className="w-8 h-8 text-amber-400 shrink-0" />
+                        <AlertTriangle className="w-8 h-8 text-amber-600 shrink-0" />
                       ) : (
-                        <XCircle className="w-8 h-8 text-red-400 shrink-0" />
+                        <XCircle className="w-8 h-8 text-red-600 shrink-0" />
                       )}
                       <div>
                         <div className="text-xs uppercase font-mono font-bold tracking-wider">
@@ -410,73 +419,73 @@ export default function SimulatorPage({ onNavigate }) {
 
                   {/* AI Explanation */}
                   <div className="space-y-2">
-                    <div className="flex items-center gap-2 text-cyan-400 text-xs font-bold uppercase tracking-wider font-mono">
+                    <div className="flex items-center gap-2 text-[#118AB2] text-xs font-bold uppercase tracking-wider font-mono">
                       <Sparkles className="w-3.5 h-3.5" />
                       <span>Gemini AI Tactical Evaluation</span>
                     </div>
-                    <div className="p-4 rounded-2xl bg-cyber-950 border border-cyber-800 text-slate-200 text-xs sm:text-sm leading-relaxed">
+                    <div className="p-4 rounded-2xl bg-[#F9F9F6] border border-[#E2E2D9] text-[#2A2E45] text-xs sm:text-sm leading-relaxed">
                       {evaluationResult.feedback?.explanation || evaluationResult.reason}
                     </div>
                   </div>
 
                   {/* Red Flags & Missed Signals */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div className="p-3.5 rounded-xl bg-cyber-950 border border-cyber-800 space-y-1.5">
-                      <div className="text-[11px] font-bold text-red-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <div className="p-4 rounded-2xl bg-red-50 border border-red-200 space-y-1.5">
+                      <div className="text-[11px] font-bold text-red-700 uppercase tracking-wider flex items-center gap-1.5">
                         <AlertTriangle className="w-3.5 h-3.5" />
                         <span>Signals Missed / Risky</span>
                       </div>
-                      <ul className="text-xs text-slate-300 space-y-1 list-disc list-inside">
+                      <ul className="text-xs text-red-900 space-y-1 list-disc list-inside">
                         {(evaluationResult.feedback?.missedSignals || evaluationResult.missedSignals || []).map((signal, idx) => (
                           <li key={idx} className="leading-snug">{signal}</li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="p-3.5 rounded-xl bg-cyber-950 border border-cyber-800 space-y-1.5">
-                      <div className="text-[11px] font-bold text-cyan-400 uppercase tracking-wider flex items-center gap-1.5">
+                    <div className="p-4 rounded-2xl bg-[#7CD5C7]/15 border border-[#7CD5C7]/40 space-y-1.5">
+                      <div className="text-[11px] font-bold text-[#0F766E] uppercase tracking-wider flex items-center gap-1.5">
                         <ShieldCheck className="w-3.5 h-3.5" />
                         <span>Safer Action Recommended</span>
                       </div>
-                      <p className="text-xs text-slate-300 leading-snug">
-                        {evaluationResult.feedback?.recommendedAction || "Always verify independently through official apps or dialed support numbers."}
+                      <p className="text-xs text-[#0F766E] leading-snug">
+                        {evaluationResult.feedback?.recommendedAction || "Always verify independently through official banking apps or verified numbers."}
                       </p>
                     </div>
                   </div>
 
                   {/* Educational Takeaway Lesson */}
-                  <div className="p-4 rounded-2xl bg-gradient-to-r from-cyan-950/40 to-blue-950/30 border border-cyan-500/30">
-                    <div className="text-xs font-bold text-cyan-300 uppercase tracking-wider flex items-center gap-1.5 mb-1">
-                      <GraduationCap className="w-4 h-4 text-cyan-400" />
+                  <div className="p-4 rounded-2xl bg-[#118AB2]/10 border border-[#118AB2]/25">
+                    <div className="text-xs font-bold text-[#118AB2] uppercase tracking-wider flex items-center gap-1.5 mb-1">
+                      <GraduationCap className="w-4 h-4 text-[#118AB2]" />
                       <span>Core Cybersecurity Rule</span>
                     </div>
-                    <p className="text-xs sm:text-sm text-slate-200 font-medium">
+                    <p className="text-xs sm:text-sm text-[#464B71] font-semibold">
                       "{evaluationResult.feedback?.lesson || activeScenario.lesson}"
                     </p>
                   </div>
 
                   {/* Adaptive Training Insight & Recommended Next Challenge */}
-                  <div className="p-5 rounded-2xl bg-gradient-to-r from-purple-950/40 via-cyber-950 to-purple-950/20 border border-purple-500/30 space-y-3">
+                  <div className="p-5 rounded-2xl bg-[#F9F9F6] border border-[#E2E2D9] space-y-3">
                     <div className="flex items-center justify-between gap-2 flex-wrap">
-                      <div className="flex items-center gap-2 text-purple-300 font-bold text-xs uppercase tracking-wider font-mono">
-                        <Brain className="w-4 h-4 text-purple-400" />
-                        <span>Your Training Insight</span>
+                      <div className="flex items-center gap-2 text-[#464B71] font-bold text-xs uppercase tracking-wider font-mono">
+                        <Brain className="w-4 h-4 text-[#118AB2]" />
+                        <span>Adaptive Training Insight</span>
                       </div>
                       {evaluationResult.adaptiveTraining?.focusLabel && (
-                        <span className="text-[10px] px-2 py-0.5 rounded bg-purple-500/20 text-purple-300 border border-purple-500/40 font-mono">
+                        <span className="text-[10px] px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-mono font-bold">
                           Focus: {evaluationResult.adaptiveTraining.focusLabel}
                         </span>
                       )}
                     </div>
-                    <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-sans">
-                      {evaluationResult.trainingInsight || evaluationResult.adaptiveTraining?.trainingInsight || "Your decision patterns are dynamically evaluated to calibrate your defense training."}
+                    <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">
+                      {evaluationResult.trainingInsight || evaluationResult.adaptiveTraining?.trainingInsight || "Your decision patterns are dynamically evaluated to calibrate future training difficulty."}
                     </p>
                     {evaluationResult.adaptiveTraining?.recommendedScenarioTitle && (
-                      <div className="pt-3 border-t border-purple-500/20 flex items-center justify-between gap-3 flex-wrap">
-                        <div className="text-xs text-slate-300">
-                          <span className="text-slate-400">Recommended Next Training: </span>
-                          <strong className="text-white">{evaluationResult.adaptiveTraining.recommendedScenarioTitle}</strong>
-                          <span className="text-purple-300 font-mono text-[11px] ml-2">
+                      <div className="pt-3 border-t border-[#E2E2D9] flex items-center justify-between gap-3 flex-wrap">
+                        <div className="text-xs text-slate-700">
+                          <span className="text-slate-500">Recommended Next Training: </span>
+                          <strong className="text-[#464B71]">{evaluationResult.adaptiveTraining.recommendedScenarioTitle}</strong>
+                          <span className="text-[#118AB2] font-mono text-[11px] ml-2 font-bold">
                             ({evaluationResult.adaptiveTraining.recommendedDifficulty})
                           </span>
                         </div>
@@ -485,7 +494,7 @@ export default function SimulatorPage({ onNavigate }) {
                             const nextScen = scenarios.find(s => s.id === evaluationResult.adaptiveTraining.recommendedScenarioId);
                             if (nextScen) handleStartScenario(nextScen);
                           }}
-                          className="px-3.5 py-1.5 rounded-xl bg-purple-500 hover:bg-purple-400 text-slate-950 text-xs font-black uppercase tracking-wider transition-colors flex items-center gap-1 shrink-0 shadow-md shadow-purple-500/20"
+                          className="px-4 py-2 rounded-xl bg-[#118AB2] hover:bg-[#0E7490] text-white text-xs font-bold uppercase tracking-wider transition-colors flex items-center gap-1 shrink-0 shadow-sm"
                         >
                           <span>Launch Challenge</span>
                           <ChevronRight className="w-3.5 h-3.5" />
@@ -499,23 +508,22 @@ export default function SimulatorPage({ onNavigate }) {
                     <div className="pt-2">
                       <button
                         onClick={handleNextStage}
-                        className="w-full py-3.5 px-6 rounded-2xl bg-cyan-500 hover:bg-cyan-400 text-cyber-950 font-black text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-lg shadow-cyan-500/20"
+                        className="w-full py-4 px-6 rounded-2xl bg-[#118AB2] hover:bg-[#0E7490] text-white font-bold text-sm uppercase tracking-wider transition-all flex items-center justify-center gap-2 shadow-md shadow-[#118AB2]/25"
                       >
                         <span>Advance to Stage {currentStage + 1} (The Escalation)</span>
                         <ArrowRight className="w-4 h-4" />
                       </button>
                     </div>
                   ) : activeScenario.multiStage && currentStage > 1 ? (
-                    /* Final Multi-Step Chain Post-Mortem */
-                    <div className="p-4 rounded-2xl bg-purple-950/40 border border-purple-500/40 space-y-2">
-                      <div className="flex items-center gap-2 text-purple-300 font-black uppercase text-xs tracking-wider">
-                        <Zap className="w-4 h-4 text-purple-400" />
+                    <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 space-y-1.5">
+                      <div className="flex items-center gap-2 text-amber-900 font-bold uppercase text-xs tracking-wider">
+                        <Zap className="w-4 h-4 text-amber-600" />
                         <span>SCAM CHAIN DETECTED — POST-MORTEM</span>
                       </div>
-                      <p className="text-xs text-slate-300 leading-relaxed">
+                      <p className="text-xs text-amber-800 leading-relaxed">
                         This attack exploited a two-step psychological sequence: 
-                        <strong className="text-white"> Stage 1 </strong> established false credibility or confusion, while 
-                        <strong className="text-white"> Stage 2 </strong> leveraged urgent payment authorization or credential harvesting before you had time to verify.
+                        <strong className="text-amber-950"> Stage 1 </strong> established false credibility or confusion, while 
+                        <strong className="text-amber-950"> Stage 2 </strong> leveraged urgent payment authorization or credential harvesting before you had time to verify.
                       </p>
                     </div>
                   ) : null}
@@ -527,14 +535,14 @@ export default function SimulatorPage({ onNavigate }) {
                         setSelectedActionId(null);
                         setEvaluationResult(null);
                       }}
-                      className="px-4 py-2 rounded-xl bg-cyber-950 border border-cyber-700 text-slate-300 hover:text-white hover:border-cyan-400 text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                      className="px-4 py-2.5 rounded-xl bg-[#F9F9F6] border border-[#E2E2D9] text-slate-700 hover:text-[#464B71] hover:border-[#118AB2] text-xs font-bold flex items-center gap-1.5 transition-colors"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
                       <span>Try This Stage Again</span>
                     </button>
                     <button
                       onClick={handleCloseScenario}
-                      className="px-5 py-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/20 text-xs font-bold transition-colors"
+                      className="px-5 py-2.5 rounded-xl bg-[#118AB2]/10 border border-[#118AB2]/30 text-[#118AB2] hover:bg-[#118AB2] hover:text-white text-xs font-bold transition-all"
                     >
                       Back to Simulator Hub
                     </button>
@@ -548,31 +556,28 @@ export default function SimulatorPage({ onNavigate }) {
         /* SIMULATOR HUB VIEW */
         <div className="space-y-8">
           {/* Header Banner */}
-          <div className="relative p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E2D9] shadow-md overflow-hidden">
-            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E2D9] shadow-sm">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  <span className="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-[#118AB2]/10 text-[#118AB2] border border-[#118AB2]/30 flex items-center gap-1.5">
+                  <span className="px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-[#118AB2]/10 text-[#118AB2] border border-[#118AB2]/25 flex items-center gap-1.5 font-mono">
                     <GraduationCap className="w-3.5 h-3.5 text-[#118AB2]" />
                     Interactive Cybersecurity Training
                   </span>
-                  <span className="px-2.5 py-1 rounded-lg text-[10px] font-black uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200">
+                  <span className="px-2.5 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-50 text-amber-700 border border-amber-200">
                     SAFE SANDBOX
                   </span>
                 </div>
-                <h1 className="text-3xl sm:text-4xl font-black text-[#464B71] tracking-tight">
-                  Scam Simulator
-                </h1>
-                <p className="text-base sm:text-lg font-bold text-[#118AB2]">
+                <h1 className="text-3xl sm:text-4xl font-extrabold text-[#464B71] tracking-tight">
                   Train Before You Get Scammed
-                </p>
-                <p className="text-xs sm:text-sm text-slate-600 max-w-2xl leading-relaxed">
-                  Experience realistic social engineering, fake KYC alerts, refund deception, and impersonation attacks. Practice your defensive responses with instant Gemini AI post-mortems and deterministic cybersecurity scoring.
+                </h1>
+                <p className="text-sm text-slate-600 max-w-2xl leading-relaxed">
+                  Practice recognizing manipulation before you encounter it in real life. Experience realistic social engineering, fake KYC alerts, inverted UPI traps, and impersonation attacks with deterministic scoring and Gemini AI feedback.
                 </p>
               </div>
 
-              {/* Awareness Score Card */}
-              <div className="p-5 rounded-2xl bg-[#F9F9F6] border border-[#E2E2D9] min-w-[240px] flex flex-col items-center text-center shadow-inner">
+              {/* Top Awareness Score Card */}
+              <div className="p-6 rounded-3xl bg-[#F9F9F6] border border-[#E2E2D9] min-w-[240px] flex flex-col items-center text-center shadow-sm">
                 <div className="text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
                   Scam Awareness Score
                 </div>
@@ -589,7 +594,6 @@ export default function SimulatorPage({ onNavigate }) {
                 <div className="text-[11px] text-slate-500 mt-1">
                   {progress?.scenariosCompleted || 0} of {scenarios.length || 8} Scenarios Completed
                 </div>
-                {/* Ratio Bar */}
                 <div className="w-full bg-[#E2E2D9] rounded-full h-2 mt-3 overflow-hidden">
                   <div 
                     className="bg-[#118AB2] h-full rounded-full transition-all duration-500" 
@@ -600,27 +604,27 @@ export default function SimulatorPage({ onNavigate }) {
             </div>
           </div>
 
-          {/* Quick Metrics Bar & Personalized Training Recommendation */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          {/* Quick Metrics Bar & Adaptive Recommendation */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {/* Safe Decision Ratio */}
-            <div className="p-5 rounded-2xl bg-white border border-[#E2E2D9] shadow-sm flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-[#7CD5C7]/20 text-[#0F766E] border border-[#7CD5C7]/50">
+            <div className="p-6 rounded-3xl bg-white border border-[#E2E2D9] shadow-sm flex items-center gap-4">
+              <div className="p-3.5 rounded-2xl bg-[#7CD5C7]/20 text-[#0F766E] border border-[#7CD5C7]/50">
                 <ShieldCheck className="w-6 h-6" />
               </div>
               <div>
                 <div className="text-xs text-slate-500 font-medium">Safe Decision Rate</div>
-                <div className="text-xl font-black text-[#464B71] font-mono mt-0.5">
+                <div className="text-2xl font-black text-[#464B71] font-mono mt-0.5">
                   {progress?.safeRatio !== undefined ? `${progress.safeRatio}%` : '100%'}
                 </div>
-                <div className="text-[10px] text-slate-500">
-                  {progress?.safeDecisions || 0} Safe / {progress?.riskyDecisions || 0} Risky
+                <div className="text-[11px] text-slate-500">
+                  {progress?.safeDecisions || 0} Safe / {progress?.riskyDecisions || 0} Risky choices
                 </div>
               </div>
             </div>
 
             {/* Adaptive Training Focus Area */}
-            <div className="p-5 rounded-2xl bg-white border border-[#E2E2D9] shadow-sm flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-[#464B71]/10 text-[#464B71] border border-[#464B71]/20">
+            <div className="p-6 rounded-3xl bg-white border border-[#E2E2D9] shadow-sm flex items-center gap-4">
+              <div className="p-3.5 rounded-2xl bg-[#464B71]/10 text-[#464B71] border border-[#464B71]/20">
                 <Target className="w-6 h-6" />
               </div>
               <div className="flex-1 min-w-0">
@@ -633,11 +637,11 @@ export default function SimulatorPage({ onNavigate }) {
                   )}
                 </div>
                 <div className="flex items-center gap-2 mt-1 truncate">
-                  <span className="text-xs px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200 font-bold font-mono truncate">
+                  <span className="text-xs px-2.5 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 font-bold font-mono truncate">
                     {progress?.adaptiveTraining?.focusLabel || progress?.weakestCategory || 'Urgency Recognition'}
                   </span>
                 </div>
-                <div className="text-[10px] text-slate-500 mt-1 truncate">
+                <div className="text-[11px] text-slate-500 mt-1 truncate">
                   Target: {progress?.adaptiveTraining?.recommendedDifficulty || 'Adaptive'} Progression
                 </div>
               </div>
@@ -645,7 +649,7 @@ export default function SimulatorPage({ onNavigate }) {
 
             {/* Recommended Challenge */}
             {recommendedScenario && (
-              <div className="p-5 rounded-2xl bg-[#7CD5C7]/15 border border-[#7CD5C7]/40 flex items-center justify-between gap-4 shadow-sm">
+              <div className="p-6 rounded-3xl bg-[#7CD5C7]/15 border border-[#7CD5C7]/40 flex items-center justify-between gap-4 shadow-sm">
                 <div className="space-y-1 min-w-0">
                   <div className="text-[11px] font-bold text-[#118AB2] uppercase tracking-wider flex items-center gap-1.5">
                     <Sparkles className="w-3.5 h-3.5 animate-pulse" />
@@ -654,8 +658,8 @@ export default function SimulatorPage({ onNavigate }) {
                   <div className="text-sm font-bold text-[#464B71] truncate max-w-[200px]" title={recommendedScenario.title}>
                     {recommendedScenario.title}
                   </div>
-                  <div className="text-[11px] text-slate-500 flex items-center gap-1.5">
-                    <span className="px-1.5 py-0.5 rounded bg-white text-[#118AB2] border border-[#E2E2D9] text-[10px] font-mono">
+                  <div className="text-[11px] text-slate-600 flex items-center gap-1.5">
+                    <span className="px-2 py-0.5 rounded-full bg-white text-[#118AB2] border border-[#E2E2D9] text-[10px] font-mono font-bold">
                       {progress?.adaptiveTraining?.recommendedDifficulty || recommendedScenario.difficulty}
                     </span>
                     <span>•</span>
@@ -664,7 +668,7 @@ export default function SimulatorPage({ onNavigate }) {
                 </div>
                 <button
                   onClick={() => handleStartScenario(recommendedScenario)}
-                  className="px-3.5 py-2 rounded-xl bg-[#118AB2] hover:bg-[#0E7490] text-white font-bold text-xs uppercase tracking-wider transition-all shrink-0 flex items-center gap-1 shadow-sm hover:scale-[1.02]"
+                  className="px-4 py-2 rounded-xl bg-[#118AB2] hover:bg-[#0E7490] text-white font-bold text-xs uppercase tracking-wider transition-all shrink-0 flex items-center gap-1 shadow-sm hover:scale-[1.02]"
                 >
                   <span>Launch</span>
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -673,7 +677,7 @@ export default function SimulatorPage({ onNavigate }) {
             )}
           </div>
 
-          {/* Difficulty Filter Tabs & Demo Mode Toggle */}
+          {/* Difficulty Filter Pills & Demo Mode Toggle */}
           <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pb-2 border-b border-[#E2E2D9]">
             <div className="flex items-center gap-2 flex-wrap">
               {['all', 'beginner', 'intermediate', 'expert'].map((lvl) => {
@@ -684,8 +688,8 @@ export default function SimulatorPage({ onNavigate }) {
                     onClick={() => setSelectedDifficulty(lvl)}
                     className={`px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all border ${
                       isActive
-                        ? 'bg-[#118AB2] text-white border-[#118AB2] shadow-sm'
-                        : 'bg-white text-slate-600 border-[#E2E2D9] hover:text-[#464B71]'
+                        ? 'bg-[#118AB2] text-white border-[#118AB2] shadow-sm scale-[1.02]'
+                        : 'bg-white text-slate-600 border-[#E2E2D9] hover:text-[#464B71] hover:bg-[#F2F2ED]'
                     }`}
                   >
                     {lvl === 'all' ? 'All Scenarios' : lvl}
@@ -702,7 +706,7 @@ export default function SimulatorPage({ onNavigate }) {
                   onChange={(e) => setIsDemo(e.target.checked)}
                   className="w-3.5 h-3.5 rounded bg-white border-[#E2E2D9] text-[#118AB2] focus:ring-0"
                 />
-                <span>Demo Sandbox Mode</span>
+                <span className="font-medium">Demo Sandbox Mode</span>
               </label>
               <button
                 onClick={loadData}
@@ -739,26 +743,26 @@ export default function SimulatorPage({ onNavigate }) {
                 return (
                   <div
                     key={scenario.id}
-                    className="p-6 rounded-3xl bg-white border border-[#E2E2D9] hover:border-[#118AB2]/50 transition-all duration-200 flex flex-col justify-between group relative overflow-hidden shadow-sm hover:shadow-md"
+                    className="p-6 rounded-3xl bg-white border border-[#E2E2D9] hover:border-[#118AB2] transition-all duration-200 flex flex-col justify-between group relative overflow-hidden shadow-sm hover:shadow-md hover:-translate-y-1"
                   >
                     <div>
                       {/* Top Badges */}
                       <div className="flex items-center justify-between gap-2 mb-3">
-                        <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-[#118AB2]/10 text-[#118AB2] border border-[#118AB2]/20 font-mono">
+                        <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-[#118AB2]/10 text-[#118AB2] border border-[#118AB2]/20 font-mono">
                           {scenario.category}
                         </span>
                         <div className="flex items-center gap-1.5 flex-wrap justify-end">
                           {progress?.adaptiveTraining?.focusConcept && scenario.concepts?.includes(progress.adaptiveTraining.focusConcept) && (
-                            <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded bg-amber-50 text-amber-700 border border-amber-200 animate-pulse">
+                            <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-amber-50 text-amber-700 border border-amber-200 animate-pulse">
                               Target Focus
                             </span>
                           )}
                           {scenario.multiStage && (
-                            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-[#464B71]/10 text-[#464B71] border border-[#464B71]/20">
+                            <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#464B71]/10 text-[#464B71] border border-[#464B71]/20">
                               Multi-Stage
                             </span>
                           )}
-                          <span className={`text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${
+                          <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
                             scenario.difficulty === 'Beginner' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
                             scenario.difficulty === 'Intermediate' ? 'bg-amber-50 text-amber-700 border-amber-200' :
                             'bg-red-50 text-red-700 border-red-200'
@@ -776,13 +780,20 @@ export default function SimulatorPage({ onNavigate }) {
                         {scenario.description}
                       </p>
 
+                      {/* Simulated Message Preview Box */}
+                      {scenario.previewMessage && (
+                        <div className="mt-3 p-3 rounded-2xl bg-[#F9F9F6] border border-[#E2E2D9] text-[11px] text-slate-700 font-sans italic line-clamp-2">
+                          "{scenario.previewMessage}"
+                        </div>
+                      )}
+
                       {/* Concept Tags */}
                       {scenario.concepts && scenario.concepts.length > 0 && (
                         <div className="flex flex-wrap gap-1.5 mt-3">
                           {scenario.concepts.slice(0, 3).map((conceptKey) => (
                             <span
                               key={conceptKey}
-                              className="text-[9px] font-mono px-2 py-0.5 rounded bg-[#F9F9F6] text-slate-600 border border-[#E2E2D9]"
+                              className="text-[9px] font-mono px-2 py-0.5 rounded-full bg-[#F9F9F6] text-slate-600 border border-[#E2E2D9]"
                             >
                               #{conceptKey.replace(/_/g, ' ')}
                             </span>
@@ -792,8 +803,8 @@ export default function SimulatorPage({ onNavigate }) {
 
                       {/* Safe Simulation Indicator */}
                       <div className="mt-4 pt-3 border-t border-[#E2E2D9] flex items-center justify-between text-[11px] text-slate-500">
-                        <span className="text-amber-700 font-mono font-bold">
-                          SIMULATION SCENARIO
+                        <span className="text-amber-700 font-mono font-bold text-[10px]">
+                          SIMULATION — NOT A REAL SCAM
                         </span>
                         <span>{scenario.stagesCount > 1 ? `${scenario.stagesCount} Stages` : 'Single Stage'}</span>
                       </div>
@@ -804,18 +815,22 @@ export default function SimulatorPage({ onNavigate }) {
                       {isCompleted ? (
                         <div className="flex items-center gap-1.5 text-xs text-[#0F766E] font-mono font-bold">
                           <CheckCircle2 className="w-4 h-4" />
-                          <span>Attempted: {userAttempt.score}/100</span>
+                          <span>Score: {userAttempt.score}/100</span>
                         </div>
                       ) : (
-                        <span className="text-xs text-slate-500 font-medium">Unattempted</span>
+                        <span className="text-xs text-slate-400 font-medium">Unattempted</span>
                       )}
 
                       <button
                         onClick={() => handleStartScenario(scenario)}
-                        className="px-4 py-2 rounded-xl bg-[#118AB2]/10 hover:bg-[#118AB2] text-[#118AB2] hover:text-white font-bold text-xs uppercase tracking-wider border border-[#118AB2]/30 hover:border-[#118AB2] transition-all flex items-center gap-1.5"
+                        className={`px-4 py-2 rounded-xl font-bold text-xs uppercase tracking-wider transition-all flex items-center gap-1.5 ${
+                          isCompleted
+                            ? 'bg-[#F9F9F6] hover:bg-[#F2F2ED] text-[#464B71] border border-[#E2E2D9]'
+                            : 'bg-[#118AB2] hover:bg-[#0E7490] text-white shadow-sm shadow-[#118AB2]/20'
+                        }`}
                       >
                         <Play className="w-3.5 h-3.5 fill-current" />
-                        <span>{isCompleted ? 'Replay' : 'Start'}</span>
+                        <span>{isCompleted ? 'Replay' : 'Start Simulation'}</span>
                       </button>
                     </div>
                   </div>
@@ -828,3 +843,4 @@ export default function SimulatorPage({ onNavigate }) {
     </div>
   );
 }
+
