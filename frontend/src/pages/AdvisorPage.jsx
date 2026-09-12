@@ -92,17 +92,17 @@ Ask questions regarding suspicious communications, emergency containment, or ver
   return (
     <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-6 flex flex-col h-[calc(100vh-5rem)]">
       {/* Advisor Header */}
-      <div className="flex items-center justify-between p-5 rounded-3xl bg-cyber-900/80 border border-cyber-700/80 backdrop-blur-md shrink-0">
+      <div className="flex items-center justify-between p-5 rounded-3xl bg-white border border-[#E2E2D9] shadow-sm shrink-0">
         <div className="flex items-center gap-3">
-          <div className="p-2.5 rounded-2xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+          <div className="p-2.5 rounded-2xl bg-[#118AB2]/10 text-[#118AB2] border border-[#118AB2]/30">
             <Bot className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-lg font-bold text-white flex items-center gap-2">
+            <h2 className="text-lg font-bold text-[#464B71] flex items-center gap-2">
               FraudLens AI Advisor
-              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+              <span className="w-2 h-2 rounded-full bg-[#7CD5C7] animate-pulse" />
             </h2>
-            <p className="text-xs text-slate-400">
+            <p className="text-xs text-slate-600">
               Conversational fraud prevention guidance & incident triage
             </p>
           </div>
@@ -111,7 +111,7 @@ Ask questions regarding suspicious communications, emergency containment, or ver
         <div className="flex items-center gap-2">
           <button
             onClick={() => setMessages([messages[0]])}
-            className="p-2 rounded-xl bg-cyber-950 border border-cyber-800 text-slate-400 hover:text-white hover:border-cyan-400 text-xs flex items-center gap-1.5 transition-colors"
+            className="p-2 rounded-xl bg-[#F2F2ED] border border-[#E2E2D9] text-[#2A2E45] hover:bg-white hover:border-[#118AB2] text-xs flex items-center gap-1.5 transition-colors font-medium"
             title="Reset Conversation"
           >
             <RotateCcw className="w-3.5 h-3.5" />
@@ -121,7 +121,7 @@ Ask questions regarding suspicious communications, emergency containment, or ver
       </div>
 
       {/* Chat Messages Log */}
-      <div className="flex-1 bg-cyber-900/60 rounded-3xl border border-cyber-700/80 backdrop-blur-md p-6 overflow-y-auto space-y-4">
+      <div className="flex-1 bg-white/90 rounded-3xl border border-[#E2E2D9] shadow-sm backdrop-blur-md p-6 overflow-y-auto space-y-4">
         {messages.map((msg, index) => {
           const isUser = msg.role === 'user';
           return (
@@ -131,33 +131,35 @@ Ask questions regarding suspicious communications, emergency containment, or ver
             >
               <div className={`p-2 rounded-xl h-fit shrink-0 ${
                 isUser 
-                  ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40' 
-                  : 'bg-cyber-800 text-cyan-400 border border-cyber-700'
+                  ? 'bg-[#118AB2] text-white' 
+                  : 'bg-[#464B71]/10 text-[#464B71] border border-[#464B71]/20'
               }`}>
                 {isUser ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
               </div>
 
               <div className={`p-4 rounded-2xl text-xs leading-relaxed ${
                 isUser 
-                  ? 'bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-tr-sm shadow-md' 
-                  : 'bg-cyber-950/80 border border-cyber-800 text-slate-200 rounded-tl-sm shadow-inner'
+                  ? 'bg-[#118AB2] text-white rounded-tr-sm shadow-md' 
+                  : 'bg-[#F9F9F6] border border-[#E2E2D9] text-[#2A2E45] rounded-tl-sm shadow-sm'
               }`}>
                 {/* Advisor Mode Tag */}
                 {!isUser && msg.advisorMode && msg.advisorMode !== 'system-intro' && (
                   <div className="mb-2 flex items-center gap-1.5">
                     {msg.isAiGenerated ? (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-purple-500/20 text-purple-300 border border-purple-500/30 flex items-center gap-1">
-                        <Sparkles className="w-3 h-3" /> AI Advisor ({msg.model || 'LLM'})
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-purple-100 text-purple-800 border border-purple-200 flex items-center gap-1">
+                        <Sparkles className="w-3 h-3 text-purple-600" /> AI Advisor ({msg.model || 'LLM'})
                       </span>
                     ) : (
-                      <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-cyber-800 text-slate-300 border border-cyber-700 flex items-center gap-1">
-                        <BookOpen className="w-3 h-3 text-cyan-400" /> Local Safety Advisor (Knowledge Rules)
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase tracking-wider bg-[#F2F2ED] text-[#464B71] border border-[#E2E2D9] flex items-center gap-1">
+                        <BookOpen className="w-3 h-3 text-[#118AB2]" /> Local Safety Advisor (Knowledge Rules)
                       </span>
                     )}
                   </div>
                 )}
 
-                <div className="prose prose-invert prose-xs max-w-none space-y-2 whitespace-pre-wrap">
+                <div className={`prose prose-xs max-w-none space-y-2 whitespace-pre-wrap ${
+                  isUser ? 'prose-invert text-white' : 'text-[#2A2E45]'
+                }`}>
                   {msg.content}
                 </div>
               </div>
@@ -167,11 +169,11 @@ Ask questions regarding suspicious communications, emergency containment, or ver
 
         {loading && (
           <div className="flex gap-3 max-w-xl mr-auto">
-            <div className="p-2 rounded-xl bg-cyber-800 text-cyan-400 border border-cyber-700 h-fit">
+            <div className="p-2 rounded-xl bg-[#464B71]/10 text-[#464B71] border border-[#464B71]/20 h-fit">
               <Bot className="w-4 h-4 animate-spin" />
             </div>
-            <div className="p-4 rounded-2xl bg-cyber-950/80 border border-cyber-800 text-xs text-slate-400 flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
+            <div className="p-4 rounded-2xl bg-[#F9F9F6] border border-[#E2E2D9] text-xs text-slate-600 flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#118AB2] animate-ping" />
               <span>Consulting advisor knowledge base...</span>
             </div>
           </div>
@@ -182,14 +184,14 @@ Ask questions regarding suspicious communications, emergency containment, or ver
 
       {/* Suggested Prompts */}
       <div className="flex items-center gap-2 overflow-x-auto pb-1 shrink-0">
-        <span className="text-[11px] text-slate-400 font-semibold flex items-center gap-1 shrink-0">
-          <Sparkles className="w-3.5 h-3.5 text-cyan-400" /> Topic:
+        <span className="text-[11px] text-[#464B71] font-semibold flex items-center gap-1 shrink-0">
+          <Sparkles className="w-3.5 h-3.5 text-[#118AB2]" /> Topic:
         </span>
         {quickPrompts.map((prompt, i) => (
           <button
             key={i}
             onClick={() => handleSend(prompt)}
-            className="px-3 py-1.5 rounded-xl bg-cyber-900 hover:bg-cyber-800 text-slate-300 hover:text-cyan-300 border border-cyber-700 text-xs whitespace-nowrap transition-colors"
+            className="px-3 py-1.5 rounded-xl bg-white hover:bg-[#F2F2ED] text-slate-700 hover:text-[#118AB2] border border-[#E2E2D9] text-xs whitespace-nowrap transition-colors shadow-xs"
           >
             {prompt}
           </button>
@@ -209,12 +211,12 @@ Ask questions regarding suspicious communications, emergency containment, or ver
           placeholder="Ask a question about a suspicious message, phone call, or incident..."
           value={inputText}
           onChange={(e) => setInputText(e.target.value)}
-          className="flex-1 px-4 py-3.5 bg-cyber-900 border border-cyber-700 rounded-2xl text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 transition-colors"
+          className="flex-1 px-4 py-3.5 bg-white border border-[#E2E2D9] rounded-2xl text-xs text-[#2A2E45] placeholder:text-slate-400 focus:outline-none focus:border-[#118AB2] shadow-xs transition-colors"
         />
         <button
           type="submit"
           disabled={loading || !inputText.trim()}
-          className="px-6 py-3.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white rounded-2xl text-xs font-bold uppercase tracking-wider flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed shadow-lg shadow-cyan-500/20 transition-all"
+          className="px-6 py-3.5 bg-[#118AB2] hover:bg-[#0e7490] text-white rounded-2xl text-xs font-bold uppercase tracking-wider flex items-center gap-2 disabled:opacity-40 disabled:cursor-not-allowed shadow-md transition-all"
         >
           <Send className="w-4 h-4" />
           <span className="hidden sm:inline">Ask</span>

@@ -5,22 +5,22 @@ export default function ActionChecklist({ recommendations = [], onOpenEmergency 
   if (!recommendations || recommendations.length === 0) return null;
 
   return (
-    <div className="p-6 bg-cyber-900/80 rounded-2xl border border-cyan-500/20 backdrop-blur-md shadow-xl">
+    <div className="p-6 bg-white rounded-2xl border border-[#E2E2D9] backdrop-blur-md shadow-md">
       <div className="flex items-center justify-between mb-5 flex-wrap gap-2">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-emerald-500/10 text-emerald-400 rounded-xl border border-emerald-500/30">
+          <div className="p-2 bg-[#7CD5C7]/20 text-[#0F766E] rounded-xl border border-[#7CD5C7]/50">
             <ShieldCheck className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white">Recommended Safety Actions</h3>
-            <p className="text-xs text-slate-400">Immediate protective measures based on identified threat indicators</p>
+            <h3 className="text-lg font-bold text-[#464B71]">Recommended Safety Actions</h3>
+            <p className="text-xs text-slate-500">Immediate protective measures based on identified threat indicators</p>
           </div>
         </div>
 
         {onOpenEmergency && (
           <button
             onClick={onOpenEmergency}
-            className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400 border border-red-500/30 transition-colors"
+            className="flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-700 border border-red-200 transition-colors"
           >
             <LifeBuoy className="w-3.5 h-3.5" />
             <span>Emergency Protocol</span>
@@ -30,21 +30,21 @@ export default function ActionChecklist({ recommendations = [], onOpenEmergency 
 
       <div className="space-y-3">
         {recommendations.map((rec, idx) => {
-          let badgeBorder = "border-cyber-800 bg-cyber-950/60";
-          let iconColor = "text-cyan-400";
+          let badgeBorder = "border-[#E2E2D9] bg-[#F9F9F6]";
+          let iconBg = "bg-white text-[#118AB2] border-[#E2E2D9]";
 
           if (rec.type === 'critical') {
-            badgeBorder = "border-red-500/30 bg-red-950/20";
-            iconColor = "text-red-400";
+            badgeBorder = "border-red-200 bg-red-50/60";
+            iconBg = "bg-white text-red-600 border-red-200";
           } else if (rec.type === 'warning') {
-            badgeBorder = "border-amber-500/30 bg-amber-950/20";
-            iconColor = "text-amber-400";
+            badgeBorder = "border-amber-200 bg-amber-50/60";
+            iconBg = "bg-white text-amber-600 border-amber-200";
           } else if (rec.type === 'emergency') {
-            badgeBorder = "border-pink-500/30 bg-pink-950/20";
-            iconColor = "text-pink-400";
+            badgeBorder = "border-rose-200 bg-rose-50/60";
+            iconBg = "bg-white text-rose-600 border-rose-200";
           } else if (rec.type === 'safe') {
-            badgeBorder = "border-emerald-500/30 bg-emerald-950/20";
-            iconColor = "text-emerald-400";
+            badgeBorder = "border-emerald-200 bg-emerald-50/60";
+            iconBg = "bg-white text-emerald-600 border-emerald-200";
           }
 
           return (
@@ -52,7 +52,7 @@ export default function ActionChecklist({ recommendations = [], onOpenEmergency 
               key={idx}
               className={`p-4 rounded-xl border ${badgeBorder} flex items-start gap-3.5 transition-all`}
             >
-              <div className={`p-1.5 rounded-lg bg-cyber-900 border border-cyber-700 shrink-0 ${iconColor} mt-0.5`}>
+              <div className={`p-1.5 rounded-lg border shrink-0 ${iconBg} mt-0.5 shadow-sm`}>
                 {rec.type === 'critical' ? (
                   <AlertOctagon className="w-4 h-4" />
                 ) : (
@@ -61,10 +61,10 @@ export default function ActionChecklist({ recommendations = [], onOpenEmergency 
               </div>
 
               <div className="flex-1 min-w-0">
-                <h4 className="text-sm font-semibold text-slate-100 mb-1">
+                <h4 className="text-sm font-semibold text-[#2A2E45] mb-1">
                   {rec.action}
                 </h4>
-                <p className="text-xs text-slate-400 leading-relaxed">
+                <p className="text-xs text-slate-600 leading-relaxed">
                   {rec.description}
                 </p>
               </div>

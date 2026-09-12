@@ -260,7 +260,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="14dp"
-                            app:cardBackgroundColor="#0F172A"
+                            app:cardBackgroundColor="@color/background_dark"
                             app:cardCornerRadius="10dp"
                             app:cardElevation="0dp">
 
@@ -274,7 +274,7 @@
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:text="@string/recommended_action_label"
-                                    android:textColor="@color/primary"
+                                    android:textColor="@color/secondary"
                                     android:textSize="12sp"
                                     android:textStyle="bold" />
 

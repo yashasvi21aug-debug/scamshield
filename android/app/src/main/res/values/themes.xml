@@ -7,6 +7,7 @@
         <item name="android:windowBackground">@color/background_dark</item>
         <item name="android:statusBarColor">@color/background_dark</item>
         <item name="android:navigationBarColor">@color/background_dark</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
     <!-- Dialog / BottomSheet Overlay Theme for QuickScanActivity -->
@@ -16,7 +17,8 @@
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:backgroundDimEnabled">true</item>
-        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:backgroundDimAmount">0.5</item>
         <item name="android:statusBarColor">@color/background_dark</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 </resources>

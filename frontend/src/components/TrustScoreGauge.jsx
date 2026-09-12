@@ -26,29 +26,29 @@ export default function TrustScoreGauge({ score = 50, risk, size = 220 }) {
   }, [score]);
 
   // Color mappings
-  let color = "#ef4444"; // red
-  let glowColor = "rgba(239, 68, 68, 0.4)";
+  let color = "#dc2626"; // red
+  let glowColor = "rgba(220, 38, 38, 0.25)";
   let statusText = "HIGH RISK";
-  let statusBadgeClass = "bg-red-500/20 text-red-400 border-red-500/40";
+  let statusBadgeClass = "bg-red-50 text-red-700 border-red-200";
   let Icon = ShieldX;
 
   if (score > 80) {
-    color = "#10b981"; // emerald
-    glowColor = "rgba(16, 185, 129, 0.4)";
+    color = "#0f766e"; // emerald/teal
+    glowColor = "rgba(124, 213, 199, 0.35)";
     statusText = "LIKELY SAFE";
-    statusBadgeClass = "bg-emerald-500/20 text-emerald-400 border-emerald-500/40";
+    statusBadgeClass = "bg-[#7CD5C7]/20 text-[#0f766e] border-[#7CD5C7]/50";
     Icon = ShieldCheck;
   } else if (score > 60) {
-    color = "#eab308"; // yellow
-    glowColor = "rgba(234, 179, 8, 0.4)";
+    color = "#d97706"; // yellow/amber
+    glowColor = "rgba(217, 119, 6, 0.25)";
     statusText = "CAUTION";
-    statusBadgeClass = "bg-yellow-500/20 text-yellow-400 border-yellow-500/40";
+    statusBadgeClass = "bg-amber-50 text-amber-700 border-amber-200";
     Icon = AlertTriangle;
   } else if (score > 30) {
-    color = "#f97316"; // orange/amber
-    glowColor = "rgba(249, 115, 22, 0.4)";
+    color = "#ea580c"; // orange
+    glowColor = "rgba(234, 88, 12, 0.25)";
     statusText = "SUSPICIOUS";
-    statusBadgeClass = "bg-orange-500/20 text-orange-400 border-orange-500/40";
+    statusBadgeClass = "bg-orange-50 text-orange-700 border-orange-200";
     Icon = ShieldAlert;
   }
 
@@ -61,10 +61,10 @@ export default function TrustScoreGauge({ score = 50, risk, size = 220 }) {
   const strokeDashoffset = totalLength - (totalLength * (animatedScore / 100));
 
   return (
-    <div className="flex flex-col items-center justify-center p-6 bg-cyber-900/80 rounded-2xl border border-cyber-700/60 shadow-2xl relative overflow-hidden backdrop-blur-md">
+    <div className="flex flex-col items-center justify-center p-6 bg-white rounded-2xl border border-[#E2E2D9] shadow-md relative overflow-hidden backdrop-blur-md">
       {/* Background glow radial */}
       <div 
-        className="absolute w-44 h-44 rounded-full filter blur-3xl opacity-20 pointer-events-none -top-10 -right-10"
+        className="absolute w-44 h-44 rounded-full filter blur-3xl opacity-10 pointer-events-none -top-10 -right-10"
         style={{ backgroundColor: color }}
       />
 
@@ -79,7 +79,7 @@ export default function TrustScoreGauge({ score = 50, risk, size = 220 }) {
             cx={size / 2}
             cy={size / 2}
             r={radius}
-            stroke="#1b2a4e"
+            stroke="#E2E2D9"
             strokeWidth={strokeWidth}
             fill="transparent"
             strokeDasharray={circumference}
@@ -99,7 +99,7 @@ export default function TrustScoreGauge({ score = 50, risk, size = 220 }) {
             strokeLinecap="round"
             className="transition-all duration-700 ease-out"
             style={{
-              filter: `drop-shadow(0 0 10px ${glowColor})`
+              filter: `drop-shadow(0 0 8px ${glowColor})`
             }}
           />
         </svg>
@@ -108,12 +108,12 @@ export default function TrustScoreGauge({ score = 50, risk, size = 220 }) {
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
           <Icon className="w-8 h-8 mb-1" style={{ color }} />
           <div className="flex items-baseline justify-center">
-            <span className="text-4xl sm:text-5xl font-extrabold tracking-tight text-white font-mono">
+            <span className="text-4xl sm:text-5xl font-extrabold tracking-tight text-[#464B71] font-mono">
               {animatedScore}
             </span>
-            <span className="text-slate-400 text-lg font-medium ml-1">/100</span>
+            <span className="text-slate-500 text-lg font-medium ml-1">/100</span>
           </div>
-          <span className="text-xs uppercase tracking-widest text-slate-400 mt-0.5 font-semibold">
+          <span className="text-xs uppercase tracking-widest text-slate-500 mt-0.5 font-semibold">
             Trust Score
           </span>
         </div>
@@ -126,8 +126,8 @@ export default function TrustScoreGauge({ score = 50, risk, size = 220 }) {
           <span>{statusText}</span>
         </div>
 
-        <p className="text-xs text-slate-400 mt-2.5 max-w-xs flex items-center justify-center gap-1.5">
-          <Info className="w-3.5 h-3.5 text-cyan-400 shrink-0" />
+        <p className="text-xs text-slate-500 mt-2.5 max-w-xs flex items-center justify-center gap-1.5">
+          <Info className="w-3.5 h-3.5 text-[#118AB2] shrink-0" />
           <span>Risk assessment based on available threat indicators and behavioral pattern heuristics.</span>
         </p>
       </div>

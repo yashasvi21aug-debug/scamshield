@@ -58,7 +58,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-cyber-950 text-slate-100 flex flex-col selection:bg-cyan-500/30 selection:text-cyan-200">
+    <div className="min-h-screen bg-[#F2F2ED] text-[#2A2E45] flex flex-col selection:bg-[#7CD5C7]/30 selection:text-[#118AB2]">
       {/* Global Navigation */}
       <Navbar
         activePage={activePage}
@@ -128,56 +128,56 @@ export default function App() {
       />
 
       {/* Footer */}
-      <footer className="border-t border-cyber-800 bg-cyber-950/90 py-10 mt-12">
+      <footer className="border-t border-[#383C5A] bg-[#464B71] text-white py-10 mt-12 shadow-inner">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-cyber-900">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-8 border-b border-[#383C5A]/80">
             <div className="flex items-center gap-3">
-              <div className="p-2 rounded-xl bg-cyan-500/10 border border-cyan-500/30 text-cyan-400">
+              <div className="p-2 rounded-xl bg-[#7CD5C7]/15 border border-[#7CD5C7]/30 text-[#7CD5C7]">
                 <Shield className="w-5 h-5" />
               </div>
               <div>
                 <span className="font-black text-base tracking-wider text-white">
-                  FRAUDLENS<span className="text-cyan-400 ml-1">AI</span>
+                  FRAUDLENS<span className="text-[#7CD5C7] ml-1">AI</span>
                 </span>
-                <p className="text-xs text-slate-400">
+                <p className="text-xs text-slate-200">
                   See the Fraud Before You Trust It.
                 </p>
               </div>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-6 text-xs text-slate-400 font-medium">
-              <button onClick={() => handleNavigate('dashboard')} className="hover:text-cyan-400 transition-colors">
+            <div className="flex flex-wrap justify-center gap-6 text-xs text-slate-300 font-medium">
+              <button onClick={() => handleNavigate('dashboard')} className="hover:text-[#7CD5C7] transition-colors">
                 Command Center
               </button>
-              <button onClick={() => handleNavigate('analyze')} className="hover:text-cyan-400 transition-colors">
+              <button onClick={() => handleNavigate('analyze')} className="hover:text-[#7CD5C7] transition-colors">
                 Analyze Center
               </button>
-              <button onClick={() => handleNavigate('simulator')} className="hover:text-cyan-400 text-cyan-300 font-semibold transition-colors">
+              <button onClick={() => handleNavigate('simulator')} className="hover:text-[#7CD5C7] text-[#7CD5C7] font-semibold transition-colors">
                 Scam Simulator
               </button>
-              <button onClick={() => handleNavigate('community')} className="hover:text-cyan-400 transition-colors">
+              <button onClick={() => handleNavigate('community')} className="hover:text-[#7CD5C7] transition-colors">
                 Community Intel
               </button>
-              <button onClick={() => handleNavigate('categories')} className="hover:text-cyan-400 transition-colors">
+              <button onClick={() => handleNavigate('categories')} className="hover:text-[#7CD5C7] transition-colors">
                 Threat Dossier
               </button>
-              <button onClick={() => handleNavigate('advisor')} className="hover:text-cyan-400 transition-colors">
+              <button onClick={() => handleNavigate('advisor')} className="hover:text-[#7CD5C7] transition-colors">
                 AI Advisor
               </button>
-              <button onClick={() => handleNavigate('status')} className="hover:text-cyan-400 transition-colors">
+              <button onClick={() => handleNavigate('status')} className="hover:text-[#7CD5C7] transition-colors">
                 System Status
               </button>
-              <button onClick={() => handleNavigate('emergency')} className="text-red-400 hover:text-red-300 transition-colors">
+              <button onClick={() => handleNavigate('emergency')} className="text-rose-300 hover:text-rose-200 transition-colors">
                 Emergency 1930
               </button>
             </div>
           </div>
 
-          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+          <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-300">
             <p>
               © {new Date().getFullYear()} FraudLens AI. The Trust Score is a risk assessment and does not guarantee safety.
             </p>
-            <div className="text-slate-400 text-[11px]">
+            <div className="text-slate-300 text-[11px]">
               Multi-Tier Evidence Architecture • Standalone Ready
             </div>
           </div>

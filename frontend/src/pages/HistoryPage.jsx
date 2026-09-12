@@ -57,25 +57,25 @@ export default function HistoryPage({ initialScan, onClearInitialScan }) {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
       {/* Header Banner */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 sm:p-8 rounded-3xl bg-cyber-900/80 border border-cyber-700/80 backdrop-blur-md">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E2D9] shadow-sm">
         <div>
           <div className="flex items-center gap-2 mb-2">
-            <History className="w-4 h-4 text-cyan-400" />
-            <span className="text-xs uppercase font-bold tracking-wider text-cyan-400 font-mono">
+            <History className="w-4 h-4 text-[#118AB2]" />
+            <span className="text-xs uppercase font-bold tracking-wider text-[#118AB2] font-mono">
               Database Audit Trail
             </span>
           </div>
-          <h1 className="text-2xl sm:text-4xl font-black text-white tracking-tight">
+          <h1 className="text-2xl sm:text-4xl font-black text-[#464B71] tracking-tight">
             Threat Analysis History
           </h1>
-          <p className="text-xs sm:text-sm text-slate-400 mt-2 max-w-2xl">
+          <p className="text-xs sm:text-sm text-slate-600 mt-2 max-w-2xl">
             Real scans stored persistently in database storage. Every record includes the full explainable evidence breakdown.
           </p>
         </div>
 
         <button
           onClick={fetchHistoryData}
-          className="p-2.5 rounded-xl bg-cyber-950 border border-cyber-700 text-slate-300 hover:text-white hover:border-cyan-400 transition-colors text-xs flex items-center gap-2 self-start md:self-auto"
+          className="p-2.5 rounded-xl bg-[#F2F2ED] border border-[#E2E2D9] text-[#2A2E45] hover:bg-white hover:border-[#118AB2] transition-colors text-xs flex items-center gap-2 self-start md:self-auto font-medium"
         >
           <RotateCcw className="w-3.5 h-3.5" />
           <span>Refresh Records</span>
@@ -85,36 +85,36 @@ export default function HistoryPage({ initialScan, onClearInitialScan }) {
       {/* Filter and Search Bar */}
       <div className="flex flex-col md:flex-row gap-3 items-center justify-between">
         <div className="relative w-full md:w-80">
-          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500" />
+          <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input
             type="text"
             placeholder="Search input, category, or scan ID..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pl-10 pr-4 py-2 bg-cyber-900 border border-cyber-700 rounded-xl text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400"
+            className="w-full pl-10 pr-4 py-2 bg-white border border-[#E2E2D9] rounded-xl text-xs text-[#2A2E45] placeholder:text-slate-400 focus:outline-none focus:border-[#118AB2] shadow-xs"
           />
         </div>
 
         <div className="flex items-center gap-3 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
-          <label className="flex items-center gap-2 text-xs text-slate-300 cursor-pointer select-none whitespace-nowrap">
+          <label className="flex items-center gap-2 text-xs text-[#2A2E45] cursor-pointer select-none whitespace-nowrap font-medium">
             <input
               type="checkbox"
               checked={includeDemo}
               onChange={(e) => setIncludeDemo(e.target.checked)}
-              className="w-3.5 h-3.5 rounded bg-cyber-900 border-cyber-700 text-cyan-500 focus:ring-0 cursor-pointer"
+              className="w-3.5 h-3.5 rounded bg-white border-[#E2E2D9] text-[#118AB2] focus:ring-[#118AB2] cursor-pointer"
             />
             <span>Include Synthetic Demo Records</span>
           </label>
 
-          <span className="text-xs text-slate-400 font-medium whitespace-nowrap">Type:</span>
+          <span className="text-xs text-slate-600 font-medium whitespace-nowrap">Type:</span>
           {['all', 'sms', 'url', 'qr'].map((t) => (
             <button
               key={t}
               onClick={() => setTypeFilter(t)}
               className={`px-3 py-1.5 rounded-xl text-xs font-semibold uppercase tracking-wider transition-colors border ${
                 typeFilter === t
-                  ? 'bg-cyan-500/10 text-cyan-300 border-cyan-500/40'
-                  : 'bg-cyber-900 text-slate-400 border-cyber-800 hover:text-slate-200'
+                  ? 'bg-[#118AB2] text-white border-[#118AB2]'
+                  : 'bg-white text-slate-600 border-[#E2E2D9] hover:text-[#464B71]'
               }`}
             >
               {t}
@@ -124,23 +124,23 @@ export default function HistoryPage({ initialScan, onClearInitialScan }) {
       </div>
 
       {/* History Table */}
-      <div className="p-6 rounded-3xl bg-cyber-900/80 border border-cyber-700/80 backdrop-blur-md shadow-xl overflow-hidden">
+      <div className="p-6 rounded-3xl bg-white border border-[#E2E2D9] shadow-sm overflow-hidden">
         {loading ? (
           <div className="py-20 text-center">
-            <div className="w-10 h-10 border-2 border-cyan-400 border-t-transparent rounded-full animate-spin mx-auto mb-3" />
-            <p className="text-xs text-slate-400 font-mono">Querying database scan logs...</p>
+            <div className="w-10 h-10 border-2 border-[#118AB2] border-t-transparent rounded-full animate-spin mx-auto mb-3" />
+            <p className="text-xs text-slate-500 font-mono">Querying database scan logs...</p>
           </div>
         ) : historyList.length === 0 ? (
-          <div className="py-16 text-center text-slate-400 text-xs space-y-2">
-            <Inbox className="w-8 h-8 mx-auto text-slate-600" />
-            <p className="font-semibold text-slate-300">No matching scan records found in database.</p>
+          <div className="py-16 text-center text-slate-500 text-xs space-y-2">
+            <Inbox className="w-8 h-8 mx-auto text-slate-400" />
+            <p className="font-semibold text-[#464B71]">No matching scan records found in database.</p>
             <p className="text-slate-500">Run a scan in Analyze Center to populate real audit records.</p>
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left text-xs">
               <thead>
-                <tr className="border-b border-cyber-800 text-slate-400 uppercase font-semibold">
+                <tr className="border-b border-[#E2E2D9] text-slate-500 uppercase font-semibold">
                   <th className="py-3 px-3">Type</th>
                   <th className="py-3 px-3">Analyzed Input</th>
                   <th className="py-3 px-3">Category</th>
@@ -150,12 +150,12 @@ export default function HistoryPage({ initialScan, onClearInitialScan }) {
                   <th className="py-3 px-3 text-right">Action</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-cyber-900">
+              <tbody className="divide-y divide-[#E2E2D9]">
                 {historyList.map((item) => {
-                  let badgeClass = "bg-emerald-500/10 text-emerald-400 border-emerald-500/30";
-                  if (item.riskLevel === "HIGH RISK") badgeClass = "bg-red-500/10 text-red-400 border-red-500/30";
-                  else if (item.riskLevel === "SUSPICIOUS") badgeClass = "bg-amber-500/10 text-amber-400 border-amber-500/30";
-                  else if (item.riskLevel === "CAUTION") badgeClass = "bg-yellow-500/10 text-yellow-400 border-yellow-500/30";
+                  let badgeClass = "bg-emerald-50 text-emerald-700 border-emerald-200";
+                  if (item.riskLevel === "HIGH RISK") badgeClass = "bg-red-50 text-red-700 border-red-200";
+                  else if (item.riskLevel === "SUSPICIOUS") badgeClass = "bg-orange-50 text-orange-700 border-orange-200";
+                  else if (item.riskLevel === "CAUTION") badgeClass = "bg-amber-50 text-amber-700 border-amber-200";
 
                   const formattedDate = new Date(item.createdAt || item.date).toLocaleString([], {
                     month: 'short',
@@ -165,20 +165,20 @@ export default function HistoryPage({ initialScan, onClearInitialScan }) {
                   });
 
                   return (
-                    <tr key={item.scanId} className="hover:bg-cyber-950/60 transition-colors">
-                      <td className="py-3 px-3 uppercase font-mono font-bold text-cyan-400">
+                    <tr key={item.scanId} className="hover:bg-[#F2F2ED]/60 transition-colors">
+                      <td className="py-3 px-3 uppercase font-mono font-bold text-[#118AB2]">
                         {item.type}
                         {item.isDemo && (
-                          <span className="ml-1 text-[9px] text-amber-400 font-normal">[DEMO]</span>
+                          <span className="ml-1 text-[9px] text-amber-700 font-normal bg-amber-50 px-1 py-0.5 rounded border border-amber-200">[DEMO]</span>
                         )}
                       </td>
-                      <td className="py-3 px-3 text-slate-200 font-medium max-w-xs truncate" title={item.sanitizedInput}>
+                      <td className="py-3 px-3 text-[#2A2E45] font-medium max-w-xs truncate" title={item.sanitizedInput}>
                         {item.sanitizedInput}
                       </td>
-                      <td className="py-3 px-3 text-slate-300">
+                      <td className="py-3 px-3 text-slate-600">
                         {item.detectedCategory}
                       </td>
-                      <td className="py-3 px-3 font-mono font-bold text-white">
+                      <td className="py-3 px-3 font-mono font-bold text-[#464B71]">
                         {item.trustScore}/100
                       </td>
                       <td className="py-3 px-3">
@@ -186,13 +186,13 @@ export default function HistoryPage({ initialScan, onClearInitialScan }) {
                           {item.riskLevel}
                         </span>
                       </td>
-                      <td className="py-3 px-3 text-slate-400 whitespace-nowrap">
+                      <td className="py-3 px-3 text-slate-500 whitespace-nowrap">
                         {formattedDate}
                       </td>
                       <td className="py-3 px-3 text-right">
                         <button
                           onClick={() => setSelectedScan(item)}
-                          className="px-3 py-1 rounded-lg bg-cyber-800 hover:bg-cyan-500 hover:text-slate-950 text-slate-300 border border-cyber-700 transition-all text-xs font-semibold flex items-center gap-1.5 ml-auto"
+                          className="px-3 py-1 rounded-lg bg-[#F2F2ED] hover:bg-[#118AB2] hover:text-white text-[#464B71] border border-[#E2E2D9] transition-all text-xs font-semibold flex items-center gap-1.5 ml-auto"
                         >
                           <Eye className="w-3.5 h-3.5" />
                           <span>View Breakdown</span>
@@ -209,14 +209,14 @@ export default function HistoryPage({ initialScan, onClearInitialScan }) {
 
       {/* Detail Inspection Modal */}
       {selectedScan && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-cyber-900 border border-cyber-700/80 rounded-3xl w-full max-w-4xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
-            <div className="flex items-center justify-between p-5 border-b border-cyber-800 bg-cyber-950/50">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-in fade-in duration-200">
+          <div className="bg-white border border-[#E2E2D9] rounded-3xl w-full max-w-4xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+            <div className="flex items-center justify-between p-5 border-b border-[#E2E2D9] bg-[#F2F2ED]/60">
               <div className="flex items-center gap-2.5">
-                <span className="text-xs font-mono uppercase font-bold text-cyan-400 px-2 py-0.5 rounded bg-cyan-500/10 border border-cyan-500/30">
+                <span className="text-xs font-mono uppercase font-bold text-[#118AB2] px-2 py-0.5 rounded bg-[#118AB2]/10 border border-[#118AB2]/30">
                   {selectedScan.type}
                 </span>
-                <h3 className="text-base font-bold text-white">
+                <h3 className="text-base font-bold text-[#464B71]">
                   Historical Scan Dossier: {selectedScan.scanId}
                 </h3>
               </div>
@@ -225,7 +225,7 @@ export default function HistoryPage({ initialScan, onClearInitialScan }) {
                   setSelectedScan(null);
                   if (onClearInitialScan) onClearInitialScan();
                 }}
-                className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-cyber-800 transition-colors"
+                className="p-1.5 rounded-lg text-slate-400 hover:text-[#464B71] hover:bg-[#E2E2D9]/60 transition-colors"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -233,11 +233,11 @@ export default function HistoryPage({ initialScan, onClearInitialScan }) {
 
             <div className="p-6 overflow-y-auto space-y-6">
               {/* Input snippet */}
-              <div className="p-4 rounded-xl bg-cyber-950 border border-cyber-800 text-xs">
-                <span className="text-slate-400 uppercase font-bold text-[10px] block mb-1">
+              <div className="p-4 rounded-xl bg-[#F2F2ED] border border-[#E2E2D9] text-xs">
+                <span className="text-slate-500 uppercase font-bold text-[10px] block mb-1">
                   Target Analyzed:
                 </span>
-                <span className="text-slate-200 font-mono break-all leading-relaxed">
+                <span className="text-[#2A2E45] font-mono break-all leading-relaxed">
                   {selectedScan.sanitizedInput}
                 </span>
               </div>

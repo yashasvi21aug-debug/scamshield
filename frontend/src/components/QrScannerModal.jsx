@@ -145,35 +145,35 @@ export default function QrScannerModal({ isOpen, onClose, onPayloadDecoded }) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-cyber-900 border border-cyber-700/80 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="bg-white border border-[#E2E2D9] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-cyber-800 bg-cyber-950/40">
+        <div className="flex items-center justify-between p-5 border-b border-[#E2E2D9] bg-[#F9F9F6]">
           <div className="flex items-center gap-2.5">
-            <div className="p-2 rounded-lg bg-cyan-500/10 text-cyan-400 border border-cyan-500/30">
+            <div className="p-2 rounded-lg bg-[#118AB2]/10 text-[#118AB2] border border-[#118AB2]/30">
               <Smartphone className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">QR Code Scanner</h3>
-              <p className="text-xs text-slate-400">Decode and extract destination from QR images or webcam</p>
+              <h3 className="text-base font-bold text-[#464B71]">QR Code Scanner</h3>
+              <p className="text-xs text-slate-500">Decode and extract destination from QR images or webcam</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-cyber-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Tab Buttons */}
-        <div className="flex border-b border-cyber-800 bg-cyber-950/20">
+        <div className="flex border-b border-[#E2E2D9] bg-[#F2F2ED]/50">
           <button
             onClick={() => setActiveTab('upload')}
             className={`flex-1 py-3 text-xs font-semibold flex items-center justify-center gap-2 transition-colors ${
               activeTab === 'upload' 
-                ? 'text-cyan-400 border-b-2 border-cyan-400 bg-cyber-800/40' 
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'text-[#118AB2] border-b-2 border-[#118AB2] bg-white' 
+                : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             <Upload className="w-4 h-4" />
@@ -183,8 +183,8 @@ export default function QrScannerModal({ isOpen, onClose, onPayloadDecoded }) {
             onClick={() => setActiveTab('camera')}
             className={`flex-1 py-3 text-xs font-semibold flex items-center justify-center gap-2 transition-colors ${
               activeTab === 'camera' 
-                ? 'text-cyan-400 border-b-2 border-cyan-400 bg-cyber-800/40' 
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'text-[#118AB2] border-b-2 border-[#118AB2] bg-white' 
+                : 'text-slate-500 hover:text-slate-700'
             }`}
           >
             <Camera className="w-4 h-4" />
@@ -195,8 +195,8 @@ export default function QrScannerModal({ isOpen, onClose, onPayloadDecoded }) {
         {/* Modal Body */}
         <div className="p-5 overflow-y-auto space-y-4">
           {errorMsg && (
-            <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl flex items-center gap-2.5 text-xs text-red-300">
-              <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
+            <div className="p-3 bg-red-50 border border-red-200 rounded-xl flex items-center gap-2.5 text-xs text-red-700">
+              <AlertTriangle className="w-4 h-4 text-red-600 shrink-0" />
               <span>{errorMsg}</span>
             </div>
           )}
@@ -206,7 +206,7 @@ export default function QrScannerModal({ isOpen, onClose, onPayloadDecoded }) {
               onDragOver={(e) => e.preventDefault()}
               onDrop={handleDrop}
               onClick={() => fileInputRef.current?.click()}
-              className="border-2 border-dashed border-cyber-700 hover:border-cyan-500/50 rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-colors bg-cyber-950/40 hover:bg-cyber-950/70"
+              className="border-2 border-dashed border-[#E2E2D9] hover:border-[#118AB2]/50 rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-colors bg-[#F9F9F6] hover:bg-[#F2F2ED]"
             >
               <input
                 ref={fileInputRef}
@@ -221,21 +221,21 @@ export default function QrScannerModal({ isOpen, onClose, onPayloadDecoded }) {
                   <img
                     src={previewUrl}
                     alt="Uploaded QR Preview"
-                    className="w-40 h-40 object-contain rounded-lg border border-cyber-700 shadow-md mb-3"
+                    className="w-40 h-40 object-contain rounded-lg border border-[#E2E2D9] shadow-md mb-3"
                   />
-                  <span className="text-xs text-cyan-400 font-medium flex items-center gap-1.5">
+                  <span className="text-xs text-[#118AB2] font-medium flex items-center gap-1.5">
                     <RefreshCw className="w-3.5 h-3.5" /> Click to choose another image
                   </span>
                 </div>
               ) : (
                 <>
-                  <div className="p-4 rounded-2xl bg-cyber-900 border border-cyber-700 text-cyan-400 mb-3 shadow-inner">
+                  <div className="p-4 rounded-2xl bg-white border border-[#E2E2D9] text-[#118AB2] mb-3 shadow-sm">
                     <Upload className="w-8 h-8" />
                   </div>
-                  <p className="text-sm font-semibold text-slate-200">
+                  <p className="text-sm font-semibold text-[#2A2E45]">
                     Click to browse or drag & drop QR image
                   </p>
-                  <p className="text-xs text-slate-400 mt-1">
+                  <p className="text-xs text-slate-500 mt-1">
                     Supports PNG, JPG, WebP screenshots or downloaded images
                   </p>
                 </>
@@ -244,7 +244,7 @@ export default function QrScannerModal({ isOpen, onClose, onPayloadDecoded }) {
           )}
 
           {activeTab === 'camera' && (
-            <div className="relative rounded-2xl overflow-hidden bg-black aspect-video flex items-center justify-center border border-cyber-700">
+            <div className="relative rounded-2xl overflow-hidden bg-black aspect-video flex items-center justify-center border border-[#E2E2D9]">
               <video
                 ref={videoRef}
                 className="w-full h-full object-cover"
@@ -254,26 +254,25 @@ export default function QrScannerModal({ isOpen, onClose, onPayloadDecoded }) {
               {/* Scanning visual reticle */}
               {isCameraActive && (
                 <div className="absolute inset-0 pointer-events-none flex items-center justify-center">
-                  <div className="w-48 h-48 border-2 border-cyan-400/80 rounded-xl relative animate-pulse">
-                    <div className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-cyan-400" />
-                    <div className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-cyan-400" />
-                    <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-cyan-400" />
-                    <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-cyan-400" />
-                    <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-cyan-400 to-transparent top-1/2 animate-scan-line" />
+                  <div className="w-48 h-48 border-2 border-[#118AB2]/80 rounded-xl relative animate-pulse">
+                    <div className="absolute -top-1 -left-1 w-4 h-4 border-t-2 border-l-2 border-[#118AB2]" />
+                    <div className="absolute -top-1 -right-1 w-4 h-4 border-t-2 border-r-2 border-[#118AB2]" />
+                    <div className="absolute -bottom-1 -left-1 w-4 h-4 border-b-2 border-l-2 border-[#118AB2]" />
+                    <div className="absolute -bottom-1 -right-1 w-4 h-4 border-b-2 border-r-2 border-[#118AB2]" />
+                    <div className="absolute inset-x-0 h-0.5 bg-gradient-to-r from-transparent via-[#118AB2] to-transparent top-1/2 animate-scan-line" />
                   </div>
                 </div>
               )}
             </div>
           )}
 
-          {/* Decoded Output Box */}
           {decodedResult && (
-            <div className="p-4 rounded-xl bg-cyan-950/30 border border-cyan-500/40 space-y-2 animate-in fade-in duration-150">
-              <div className="flex items-center gap-2 text-xs font-bold text-cyan-400 uppercase tracking-wider">
-                <CheckCircle className="w-4 h-4 text-cyan-400" />
+            <div className="p-4 rounded-xl bg-[#7CD5C7]/15 border border-[#7CD5C7]/50 space-y-2 animate-in fade-in duration-150">
+              <div className="flex items-center gap-2 text-xs font-bold text-[#0F766E] uppercase tracking-wider">
+                <CheckCircle className="w-4 h-4 text-[#0F766E]" />
                 <span>QR Payload Decoded Successfully</span>
               </div>
-              <div className="p-3 bg-cyber-950 rounded-lg border border-cyber-800 text-xs font-mono text-slate-200 break-all max-h-24 overflow-y-auto">
+              <div className="p-3 bg-white rounded-lg border border-[#E2E2D9] text-xs font-mono text-[#2A2E45] break-all max-h-24 overflow-y-auto">
                 {decodedResult}
               </div>
             </div>
@@ -281,17 +280,17 @@ export default function QrScannerModal({ isOpen, onClose, onPayloadDecoded }) {
         </div>
 
         {/* Footer */}
-        <div className="p-4 border-t border-cyber-800 bg-cyber-950/40 flex items-center justify-end gap-3">
+        <div className="p-4 border-t border-[#E2E2D9] bg-[#F9F9F6] flex items-center justify-end gap-3">
           <button
             onClick={onClose}
-            className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-cyber-800 transition-colors"
+            className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
           >
             Cancel
           </button>
           <button
             disabled={!decodedResult}
             onClick={handleConfirmAndAnalyze}
-            className="px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white shadow-lg shadow-cyan-500/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
+            className="px-5 py-2 rounded-xl text-xs font-bold uppercase tracking-wider bg-[#118AB2] hover:bg-[#0E7490] text-white shadow-lg shadow-[#118AB2]/20 disabled:opacity-40 disabled:cursor-not-allowed transition-all"
           >
             Load into Scanner
           </button>

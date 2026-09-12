@@ -41,22 +41,22 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-cyber-900 border border-cyber-700/80 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="bg-white border border-[#E2E2D9] rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
         {/* Header */}
-        <div className="flex items-center justify-between p-5 border-b border-cyber-800 bg-cyber-950/50">
+        <div className="flex items-center justify-between p-5 border-b border-[#E2E2D9] bg-[#F9F9F6]">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-xl bg-red-500/10 text-red-400 border border-red-500/30">
+            <div className="p-2 rounded-xl bg-red-50 text-red-600 border border-red-200">
               <Flag className="w-5 h-5" />
             </div>
             <div>
-              <h3 className="text-base font-bold text-white">Report Suspicious Threat</h3>
-              <p className="text-xs text-slate-400">Contribute to the decentralized community fraud defense network</p>
+              <h3 className="text-base font-bold text-[#464B71]">Report Suspicious Threat</h3>
+              <p className="text-xs text-slate-500">Contribute to the decentralized community fraud defense network</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-cyber-800 transition-colors"
+            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition-colors"
           >
             <X className="w-5 h-5" />
           </button>
@@ -65,21 +65,21 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
         {/* Content */}
         <form onSubmit={handleSubmit} className="p-5 overflow-y-auto space-y-4">
           {errorMsg && (
-            <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-xl flex items-center gap-2 text-xs text-red-300">
-              <AlertTriangle className="w-4 h-4 text-red-400 shrink-0" />
+            <div className="p-3 bg-red-50 border border-red-200 rounded-xl flex items-center gap-2 text-xs text-red-700">
+              <AlertTriangle className="w-4 h-4 text-red-600 shrink-0" />
               <span>{errorMsg}</span>
             </div>
           )}
 
           {successMsg && (
-            <div className="p-3 bg-emerald-500/10 border border-emerald-500/30 rounded-xl flex items-center gap-2 text-xs text-emerald-300">
-              <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+            <div className="p-3 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center gap-2 text-xs text-emerald-700">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>{successMsg}</span>
             </div>
           )}
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-[#464B71] mb-1">
               Campaign / Threat Title
             </label>
             <input
@@ -87,19 +87,19 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
               placeholder="e.g. Fake Electricity Bill Disconnection SMS"
               value={formData.title}
               onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-              className="w-full px-3.5 py-2.5 bg-cyber-950 border border-cyber-700 rounded-xl text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400"
+              className="w-full px-3.5 py-2.5 bg-[#F9F9F6] border border-[#E2E2D9] rounded-xl text-xs text-[#2A2E45] placeholder:text-slate-400 focus:outline-none focus:border-[#118AB2]"
             />
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#464B71] mb-1">
                 Threat Category
               </label>
               <select
                 value={formData.category}
                 onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                className="w-full px-3.5 py-2.5 bg-cyber-950 border border-cyber-700 rounded-xl text-xs text-slate-200 focus:outline-none focus:border-cyan-400"
+                className="w-full px-3.5 py-2.5 bg-[#F9F9F6] border border-[#E2E2D9] rounded-xl text-xs text-[#2A2E45] focus:outline-none focus:border-[#118AB2]"
               >
                 <option value="Banking Fraud">Banking Fraud</option>
                 <option value="UPI / Payment Scam">UPI / Payment Scam</option>
@@ -113,13 +113,13 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
             </div>
 
             <div>
-              <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">
+              <label className="block text-xs font-semibold uppercase tracking-wider text-[#464B71] mb-1">
                 Threat Vector
               </label>
               <select
                 value={formData.threatType}
                 onChange={(e) => setFormData({ ...formData, threatType: e.target.value })}
-                className="w-full px-3.5 py-2.5 bg-cyber-950 border border-cyber-700 rounded-xl text-xs text-slate-200 focus:outline-none focus:border-cyan-400"
+                className="w-full px-3.5 py-2.5 bg-[#F9F9F6] border border-[#E2E2D9] rounded-xl text-xs text-[#2A2E45] focus:outline-none focus:border-[#118AB2]"
               >
                 <option value="SMS Text">SMS Text</option>
                 <option value="Phishing URL">Phishing URL</option>
@@ -131,7 +131,7 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-[#464B71] mb-1">
               Target Identifier (Phone / Link / UPI ID / Handle) *
             </label>
             <input
@@ -140,12 +140,12 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
               placeholder="e.g. +91 98214 09182, http://sbi-kyc.top, or refund@okaxis"
               value={formData.targetIdentifier}
               onChange={(e) => setFormData({ ...formData, targetIdentifier: e.target.value })}
-              className="w-full px-3.5 py-2.5 bg-cyber-950 border border-cyber-700 rounded-xl text-xs text-white font-mono placeholder:text-slate-500 focus:outline-none focus:border-cyan-400"
+              className="w-full px-3.5 py-2.5 bg-[#F9F9F6] border border-[#E2E2D9] rounded-xl text-xs text-[#2A2E45] font-mono placeholder:text-slate-400 focus:outline-none focus:border-[#118AB2]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-[#464B71] mb-1">
               Geographic Region / City (Optional)
             </label>
             <input
@@ -153,12 +153,12 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
               placeholder="e.g. Maharashtra, Delhi NCR, Pan-India"
               value={formData.region}
               onChange={(e) => setFormData({ ...formData, region: e.target.value })}
-              className="w-full px-3.5 py-2.5 bg-cyber-950 border border-cyber-700 rounded-xl text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400"
+              className="w-full px-3.5 py-2.5 bg-[#F9F9F6] border border-[#E2E2D9] rounded-xl text-xs text-[#2A2E45] placeholder:text-slate-400 focus:outline-none focus:border-[#118AB2]"
             />
           </div>
 
           <div>
-            <label className="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-1">
+            <label className="block text-xs font-semibold uppercase tracking-wider text-[#464B71] mb-1">
               Incident Details & Modus Operandi *
             </label>
             <textarea
@@ -167,12 +167,12 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
               placeholder="Describe how the fraudster contacted you, what urgency or lure was used, and any specific demands."
               value={formData.description}
               onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-              className="w-full px-3.5 py-2 bg-cyber-950 border border-cyber-700 rounded-xl text-xs text-white placeholder:text-slate-500 focus:outline-none focus:border-cyan-400 resize-none"
+              className="w-full px-3.5 py-2 bg-[#F9F9F6] border border-[#E2E2D9] rounded-xl text-xs text-[#2A2E45] placeholder:text-slate-400 focus:outline-none focus:border-[#118AB2] resize-none"
             />
           </div>
 
           {/* Privacy statement */}
-          <p className="text-[11px] text-slate-400 bg-cyber-950/60 p-2.5 rounded-lg border border-cyber-800">
+          <p className="text-[11px] text-slate-600 bg-[#F2F2ED] p-2.5 rounded-lg border border-[#E2E2D9]">
             🔒 <strong>Privacy Assurance:</strong> FraudLens does not collect or publish personal contact credentials. Submissions are anonymized and aggregated into threat indicators.
           </p>
 
@@ -180,14 +180,14 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
             <button
               type="button"
               onClick={onClose}
-              className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-300 hover:text-white hover:bg-cyber-800 transition-colors"
+              className="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors"
             >
               Cancel
             </button>
             <button
               type="submit"
               disabled={isSubmitting}
-              className="px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-red-500 to-amber-600 hover:from-red-400 hover:to-amber-500 text-white shadow-lg shadow-red-500/20 disabled:opacity-50 flex items-center gap-2 transition-all"
+              className="px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 text-white shadow-md shadow-red-500/20 disabled:opacity-50 flex items-center gap-2 transition-all"
             >
               <Send className="w-3.5 h-3.5" />
               <span>{isSubmitting ? 'Publishing...' : 'Submit Threat Report'}</span>

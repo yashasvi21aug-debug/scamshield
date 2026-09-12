@@ -48,27 +48,27 @@ export default function UrlRiskBreakdown({ urlDetails = {}, breakdownMeters = {}
   };
 
   return (
-    <div className="p-6 bg-cyber-900/80 rounded-2xl border border-cyber-700/70 backdrop-blur-md shadow-xl space-y-6">
+    <div className="p-6 bg-white rounded-2xl border border-[#E2E2D9] backdrop-blur-md shadow-md space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between flex-wrap gap-3 pb-4 border-b border-cyber-800">
+      <div className="flex items-center justify-between flex-wrap gap-3 pb-4 border-b border-[#E2E2D9]">
         <div className="flex items-center gap-3">
-          <div className="p-2 bg-blue-500/10 text-cyan-400 rounded-xl border border-cyan-500/30">
+          <div className="p-2 bg-[#118AB2]/10 text-[#118AB2] rounded-xl border border-[#118AB2]/30">
             <Globe className="w-5 h-5" />
           </div>
           <div>
-            <h3 className="text-lg font-bold text-white">URL Intelligence Dossier</h3>
-            <p className="text-xs text-slate-400">Static structural domain analysis and protocol verification</p>
+            <h3 className="text-lg font-bold text-[#464B71]">URL Intelligence Dossier</h3>
+            <p className="text-xs text-slate-500">Static structural domain analysis and protocol verification</p>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
           {isHttps ? (
-            <span className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30">
+            <span className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200">
               <Lock className="w-3.5 h-3.5" />
               <span>TLS / HTTPS Active</span>
             </span>
           ) : (
-            <span className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-red-500/10 text-red-400 border border-red-500/30 animate-pulse">
+            <span className="flex items-center gap-1.5 text-xs font-semibold px-2.5 py-1 rounded-full bg-red-50 text-red-700 border border-red-200 animate-pulse">
               <Unlock className="w-3.5 h-3.5" />
               <span>Insecure HTTP</span>
             </span>
@@ -78,41 +78,41 @@ export default function UrlRiskBreakdown({ urlDetails = {}, breakdownMeters = {}
 
       {/* Target Domain Metadata Badges */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <div className="p-3 bg-cyber-950/60 rounded-xl border border-cyber-800">
-          <span className="text-[11px] text-slate-400 font-medium block uppercase tracking-wider">Host Domain</span>
-          <span className="text-sm font-semibold text-slate-200 truncate block mt-0.5" title={hostname}>
+        <div className="p-3 bg-[#F9F9F6] rounded-xl border border-[#E2E2D9]">
+          <span className="text-[11px] text-slate-500 font-medium block uppercase tracking-wider">Host Domain</span>
+          <span className="text-sm font-semibold text-[#2A2E45] truncate block mt-0.5" title={hostname}>
             {hostname}
           </span>
         </div>
 
-        <div className="p-3 bg-cyber-950/60 rounded-xl border border-cyber-800">
-          <span className="text-[11px] text-slate-400 font-medium block uppercase tracking-wider">TLD Category</span>
-          <span className="text-sm font-semibold text-cyan-300 block mt-0.5">
+        <div className="p-3 bg-[#F9F9F6] rounded-xl border border-[#E2E2D9]">
+          <span className="text-[11px] text-slate-500 font-medium block uppercase tracking-wider">TLD Category</span>
+          <span className="text-sm font-semibold text-[#118AB2] block mt-0.5">
             {matchedTld}
           </span>
         </div>
 
-        <div className="p-3 bg-cyber-950/60 rounded-xl border border-cyber-800">
-          <span className="text-[11px] text-slate-400 font-medium block uppercase tracking-wider">IP Hostname</span>
-          <span className={`text-sm font-semibold block mt-0.5 ${isIpv4 ? 'text-red-400' : 'text-slate-300'}`}>
+        <div className="p-3 bg-[#F9F9F6] rounded-xl border border-[#E2E2D9]">
+          <span className="text-[11px] text-slate-500 font-medium block uppercase tracking-wider">IP Hostname</span>
+          <span className={`text-sm font-semibold block mt-0.5 ${isIpv4 ? 'text-red-700' : 'text-slate-700'}`}>
             {isIpv4 ? "Direct IP (High Risk)" : "Standard DNS"}
           </span>
         </div>
 
-        <div className="p-3 bg-cyber-950/60 rounded-xl border border-cyber-800">
-          <span className="text-[11px] text-slate-400 font-medium block uppercase tracking-wider">Shortener / Mask</span>
-          <span className={`text-sm font-semibold block mt-0.5 ${isShortener ? 'text-amber-400' : 'text-slate-300'}`}>
+        <div className="p-3 bg-[#F9F9F6] rounded-xl border border-[#E2E2D9]">
+          <span className="text-[11px] text-slate-500 font-medium block uppercase tracking-wider">Shortener / Mask</span>
+          <span className={`text-sm font-semibold block mt-0.5 ${isShortener ? 'text-amber-700' : 'text-slate-700'}`}>
             {isShortener ? "Shortener Detected" : "Direct Link"}
           </span>
         </div>
       </div>
 
       {brandSpoofed && (
-        <div className="p-3.5 bg-red-500/10 rounded-xl border border-red-500/30 flex items-center gap-3">
-          <ShieldAlert className="w-5 h-5 text-red-400 shrink-0" />
+        <div className="p-3.5 bg-red-50 rounded-xl border border-red-200 flex items-center gap-3">
+          <ShieldAlert className="w-5 h-5 text-red-600 shrink-0" />
           <div className="text-xs">
-            <span className="font-bold text-red-300">Brand Impersonation Alert: </span>
-            <span className="text-slate-300">
+            <span className="font-bold text-red-800">Brand Impersonation Alert: </span>
+            <span className="text-slate-700">
               This domain closely mimics official <strong>{brandSpoofed}</strong> services but does not belong to authorized brand infrastructure.
             </span>
           </div>
@@ -121,25 +121,25 @@ export default function UrlRiskBreakdown({ urlDetails = {}, breakdownMeters = {}
 
       {/* Visual Risk Breakdown Bars */}
       <div>
-        <h4 className="text-xs uppercase tracking-wider font-semibold text-slate-300 mb-3.5 flex items-center gap-2">
-          <Activity className="w-3.5 h-3.5 text-cyan-400" />
+        <h4 className="text-xs uppercase tracking-wider font-semibold text-[#464B71] mb-3.5 flex items-center gap-2">
+          <Activity className="w-3.5 h-3.5 text-[#118AB2]" />
           <span>URL Risk Breakdown</span>
         </h4>
 
         <div className="space-y-3.5">
           {meters.map((meter, i) => (
-            <div key={i} className="p-3 rounded-xl bg-cyber-950/50 border border-cyber-800/80">
+            <div key={i} className="p-3 rounded-xl bg-[#F9F9F6] border border-[#E2E2D9]">
               <div className="flex justify-between items-center mb-1.5 text-xs">
-                <span className="font-medium text-slate-300">{meter.label}</span>
-                <span className="font-mono font-bold text-slate-200">{meter.score}%</span>
+                <span className="font-medium text-[#2A2E45]">{meter.label}</span>
+                <span className="font-mono font-bold text-[#464B71]">{meter.score}%</span>
               </div>
-              <div className="w-full bg-cyber-900 rounded-full h-2.5 overflow-hidden p-0.5 border border-cyber-800">
+              <div className="w-full bg-[#E2E2D9] rounded-full h-2.5 overflow-hidden p-0.5">
                 <div 
                   className={`h-full rounded-full transition-all duration-700 ${getMeterColor(meter.score, meter.invertColor)}`}
                   style={{ width: `${meter.score}%` }}
                 />
               </div>
-              <p className="text-[11px] text-slate-400 mt-1">{meter.description}</p>
+              <p className="text-[11px] text-slate-500 mt-1">{meter.description}</p>
             </div>
           ))}
         </div>
