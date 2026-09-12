@@ -325,7 +325,7 @@ export async function processQrAnalysis(payload, { useAi = true, isDemo = false 
   if (localQr.qrType === 'upi_payment') {
     recommendations.unshift({
       action: "⚠️ Verify the recipient name and payment details before completing a payment",
-      description: "ScamShield cannot guarantee the identity of the payment recipient solely from QR content. Never enter your UPI PIN to receive money.",
+      description: "FraudLens cannot guarantee the identity of the payment recipient solely from QR content. Never enter your UPI PIN to receive money.",
       type: "warning",
       priority: 0
     });

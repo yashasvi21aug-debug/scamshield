@@ -35,7 +35,7 @@ export default function UrlRiskBreakdown({ urlDetails = {}, breakdownMeters = {}
       label: "Community Threat Reports",
       score: breakdownMeters.communityThreats ?? 20,
       invertColor: true, // higher is worse
-      description: "Incidents reported across the decentralized ScamShield network"
+      description: "Incidents reported across the decentralized FraudLens network"
     }
   ];
 

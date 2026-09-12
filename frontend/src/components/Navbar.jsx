@@ -54,7 +54,7 @@ export default function Navbar({ activePage, setActivePage, onOpenReportModal })
             <div>
               <div className="flex items-center gap-1.5">
                 <span className="font-black text-lg tracking-wider text-white">
-                  SCAMSHIELD<span className="text-cyan-400 ml-1">AI</span>
+                  FRAUDLENS<span className="text-cyan-400 ml-1">AI</span>
                 </span>
                 <span className="text-[10px] uppercase font-bold tracking-widest px-1.5 py-0.5 rounded bg-cyan-500/10 text-cyan-300 border border-cyan-500/30 hidden sm:inline">
                   PRO

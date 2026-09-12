@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
 
-        <!-- Share Target Activity: Appears in system Share sheet as 🛡️ ScamShield Quick Scan -->
+        <!-- Share Target Activity: Appears in system Share sheet as 🛡️ FraudLens Quick Scan -->
         <activity
             android:name=".ui.QuickScanActivity"
             android:exported="true"

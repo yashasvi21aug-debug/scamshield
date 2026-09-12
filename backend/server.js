@@ -42,7 +42,7 @@ const allowedOrigins = process.env.FRONTEND_URL
 
 app.use(cors({
   origin: (origin, callback) => {
-    // Allow mobile apps (like ScamShield Quick Scan), curl, or requests without Origin header
+    // Allow mobile apps (like FraudLens Quick Scan), curl, or requests without Origin header
     if (!origin) return callback(null, true);
     // Allow all if FRONTEND_URL is not set or set to wildcard
     if (!allowedOrigins || allowedOrigins.includes('*') || allowedOrigins.includes(origin)) {
@@ -52,7 +52,7 @@ app.use(cors({
     if (process.env.NODE_ENV !== 'production' && (origin.includes('localhost') || origin.includes('127.0.0.1'))) {
       return callback(null, true);
     }
-    return callback(new Error(`Origin ${origin} not allowed by ScamShield CORS policy`));
+    return callback(new Error(`Origin ${origin} not allowed by FraudLens CORS policy`));
   },
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'x-session-id']
@@ -151,7 +151,7 @@ app.use((err, req, res, next) => {
 app.listen(PORT, () => {
   const dbStatus = getDatabaseStatus();
   console.log(`====================================================`);
-  console.log(`🛡️  ScamShield AI Core Server running on port ${PORT}`);
+  console.log(`🛡️  FraudLens AI Core Server running on port ${PORT}`);
   console.log(`🛡️  Database: ${dbStatus.status} (${dbStatus.activeEngine})`);
   console.log(`🛡️  AI Provider: ${aiService.isConfigured() ? aiService.provider : 'Not configured (Local Safety Engine active)'}`);
   console.log(`====================================================`);

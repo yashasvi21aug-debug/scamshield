@@ -1,4 +1,4 @@
-// ScamShield Frontend API Client - Connected to Real Backend Endpoints
+// FraudLens Frontend API Client - Connected to Real Backend Endpoints
 
 const BASE_URL = import.meta.env.VITE_API_URL || '';
 

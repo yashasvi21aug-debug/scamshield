@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity() {
 
         AlertDialog.Builder(this)
             .setTitle(R.string.configure_server)
-            .setMessage("Set the ScamShield backend API endpoint. For Android Emulator use 10.0.2.2. For physical devices use your computer's local Wi-Fi IP address.")
+            .setMessage("Set the FraudLens backend API endpoint. For Android Emulator use 10.0.2.2. For physical devices use your computer's local Wi-Fi IP address.")
             .setView(input)
             .setPositiveButton(R.string.save) { _, _ ->
                 val newUrl = input.text.toString().trim()

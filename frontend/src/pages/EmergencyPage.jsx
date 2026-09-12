@@ -32,7 +32,7 @@ export default function EmergencyPage() {
 
   const generateReport = () => {
     return `=== CYBER FRAUD INCIDENT REPORT ===
-Generated via ScamShield AI Emergency Protocol
+Generated via FraudLens AI Emergency Protocol
 Timestamp: ${new Date().toISOString()}
 
 1. Incident Classification: ${incidentForm.fraudPlatform}
@@ -186,7 +186,7 @@ Defensive Actions Completed:
         </div>
 
         <p className="text-[11px] text-slate-400 bg-cyber-950/50 p-3 rounded-xl border border-cyber-800">
-          ⚠️ <em>Disclaimer: ScamShield AI is a proactive analysis tool. For active fund recovery or statutory police complaints, please report directly to official statutory portals.</em>
+          ⚠️ <em>Disclaimer: FraudLens AI is a proactive analysis tool. For active fund recovery or statutory police complaints, please report directly to official statutory portals.</em>
         </p>
       </div>
 

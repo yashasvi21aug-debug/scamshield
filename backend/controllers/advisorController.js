@@ -88,7 +88,7 @@ export async function handleAdvisorChat(req, res) {
    - Legitimate banks never abruptly block active accounts with an arbitrary "within 24 hours" ultimatum over SMS without formal registered communications.`;
     }
     else {
-      reply = `### 🛡️ ScamShield Safety Guidance
+      reply = `### 🛡️ FraudLens Safety Guidance
 
 Digital fraud predominantly exploits emotional urgency, authority impersonation, and panic.
 
@@ -96,7 +96,7 @@ Digital fraud predominantly exploits emotional urgency, authority impersonation,
 - **Pause Before Acting**: Any communication threatening immediate account freeze, power disconnection, or arrest warrants is designed to prevent rational verification.
 - **Never Share Confidential Credentials**: True service representatives will never demand OTPs, PINs, CVVs, or netbanking passwords over phone, SMS, or form.
 - **Verify Through Primary Channels**: Always navigate to the official app or website directly instead of tapping links provided in messages.
-- **Report Suspicions**: Submit the indicator to ScamShield Community Intelligence and report financial fraud immediately to your local authorities.`;
+- **Report Suspicions**: Submit the indicator to FraudLens Community Intelligence and report financial fraud immediately to your local authorities.`;
     }
 
     return res.json({

@@ -38,12 +38,12 @@ export default function LandingPage({ onNavigate }) {
 
           {/* Main Headline */}
           <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white leading-tight mb-6">
-            Detect the Scam Before You Take the <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">Risk.</span>
+            See the Fraud Before You Trust <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent">It.</span>
           </h1>
 
           {/* Subheading */}
           <p className="text-base sm:text-lg text-slate-300 leading-relaxed mb-10 max-w-2xl mx-auto">
-            ScamShield AI inspects suspicious SMS messages, QR codes, and URLs before you click, pay, or share credentials. Powered by an <strong>explainable Trust Score (0–100)</strong> that tells you exactly why a threat is dangerous.
+            FraudLens AI inspects suspicious SMS messages, QR codes, and URLs before you click, pay, or share credentials. Powered by an <strong>explainable Trust Score (0–100)</strong> that tells you exactly why a threat is dangerous.
           </p>
 
           {/* Primary Action Buttons */}

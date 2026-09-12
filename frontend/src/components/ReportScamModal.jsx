@@ -28,7 +28,7 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
     setErrorMsg(null);
     try {
       const newReport = await createCommunityReport(formData);
-      setSuccessMsg("Scam report successfully submitted to the ScamShield intelligence network!");
+      setSuccessMsg("Scam report successfully submitted to the FraudLens intelligence network!");
       setTimeout(() => {
         if (onReportSubmitted) onReportSubmitted(newReport);
         onClose();
@@ -51,7 +51,7 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
             </div>
             <div>
               <h3 className="text-base font-bold text-white">Report Suspicious Threat</h3>
-              <p className="text-xs text-slate-400">Contribute to the decentralized community scam shield</p>
+              <p className="text-xs text-slate-400">Contribute to the decentralized community fraud defense network</p>
             </div>
           </div>
           <button
@@ -173,7 +173,7 @@ export default function ReportScamModal({ isOpen, onClose, onReportSubmitted }) 
 
           {/* Privacy statement */}
           <p className="text-[11px] text-slate-400 bg-cyber-950/60 p-2.5 rounded-lg border border-cyber-800">
-            🔒 <strong>Privacy Assurance:</strong> ScamShield does not collect or publish personal contact credentials. Submissions are anonymized and aggregated into threat indicators.
+            🔒 <strong>Privacy Assurance:</strong> FraudLens does not collect or publish personal contact credentials. Submissions are anonymized and aggregated into threat indicators.
           </p>
 
           <div className="pt-2 flex items-center justify-end gap-3">

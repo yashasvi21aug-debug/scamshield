@@ -93,7 +93,7 @@ class ScamShieldApiClient(private val context: Context) {
                 if (scanResponse != null && scanResponse.success && scanResponse.data != null) {
                     Result.success(scanResponse.data)
                 } else {
-                    Result.failure(IOException(scanResponse?.error ?: "Invalid response from ScamShield server."))
+                    Result.failure(IOException(scanResponse?.error ?: "Invalid response from FraudLens server."))
                 }
             }
         } catch (e: IOException) {

@@ -42,7 +42,7 @@ export class AIService {
       };
     }
 
-    const systemPrompt = `You are ScamShield AI, an elite cybersecurity behavioral fraud analysis engine.
+    const systemPrompt = `You are FraudLens AI, an elite cybersecurity behavioral fraud analysis engine.
 Analyze the following ${type} input for:
 1. Social engineering manipulation (panic, false deadlines, artificial urgency)
 2. Brand or institutional impersonation (banks, postal services, police, tax agencies)
@@ -168,7 +168,7 @@ Return ONLY valid JSON matching this exact structure:
       };
     }
 
-    const systemPrompt = `You are ScamShield AI Advisor, an expert cybersecurity specialist.
+    const systemPrompt = `You are FraudLens AI Advisor, an expert cybersecurity specialist.
 Provide concise, protective, and actionable fraud prevention advice.
 Never advise opening suspicious links, disclosing credentials, or paying money.
 Format clearly with Markdown bullet points and bold highlights.
@@ -329,7 +329,7 @@ Direct users to official cybercrime helplines (such as 1930 in India or local au
       return deterministicResult;
     }
 
-    const systemPrompt = `You are ScamShield AI Cyber Coach, providing personalized cybersecurity training feedback.
+    const systemPrompt = `You are FraudLens AI Cyber Coach, providing personalized cybersecurity training feedback.
 Analyze the user's decision in this simulated training scenario.
 The scenario was: "${scenarioTitle}" (${category}).
 Simulated scam message: "${simulatedMessage}".

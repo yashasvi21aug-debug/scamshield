@@ -137,10 +137,10 @@ export default function App() {
               </div>
               <div>
                 <span className="font-black text-base tracking-wider text-white">
-                  SCAMSHIELD<span className="text-cyan-400 ml-1">AI</span>
+                  FRAUDLENS<span className="text-cyan-400 ml-1">AI</span>
                 </span>
                 <p className="text-xs text-slate-400">
-                  Detect the Scam Before You Take the Risk.
+                  See the Fraud Before You Trust It.
                 </p>
               </div>
             </div>
@@ -175,7 +175,7 @@ export default function App() {
 
           <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
             <p>
-              © {new Date().getFullYear()} ScamShield AI. The Trust Score is a risk assessment and does not guarantee safety.
+              © {new Date().getFullYear()} FraudLens AI. The Trust Score is a risk assessment and does not guarantee safety.
             </p>
             <div className="text-slate-400 text-[11px]">
               Multi-Tier Evidence Architecture • Standalone Ready

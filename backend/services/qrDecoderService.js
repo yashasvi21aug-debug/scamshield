@@ -114,7 +114,7 @@ export function analyzeQrPayload(payload) {
   if (qrType === "upi_payment") {
     recommendations.unshift({
       action: "⚠️ Verify Payee Name and Details Before Authorizing",
-      description: "ScamShield cannot guarantee the identity of the payment recipient solely from QR content. Always verify the recipient name and payment details in your UPI app before confirming a transaction.",
+      description: "FraudLens cannot guarantee the identity of the payment recipient solely from QR content. Always verify the recipient name and payment details in your UPI app before confirming a transaction.",
       type: "warning",
       priority: 0
     });

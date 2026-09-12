@@ -87,7 +87,7 @@ export default function AnalyzeCenter({ onNavigate, onOpenReportModal }) {
 
   const handleCopySummary = () => {
     if (!analysisResult) return;
-    const summary = `🛡️ ScamShield AI Analysis Dossier:
+    const summary = `🛡️ FraudLens AI Analysis Dossier:
 Target: ${analysisResult.sanitizedInput || analysisResult.input}
 Type: ${analysisResult.type?.toUpperCase()}
 Trust Score: ${analysisResult.trustScore}/100 (${analysisResult.risk?.level})
@@ -379,7 +379,7 @@ Top Action: ${analysisResult.recommendations?.[0]?.action || 'Standard digital a
                     UPI Payment Destination Warning
                   </h4>
                   <p className="text-xs text-amber-300">
-                    Verify the recipient name and payment details before completing a payment. ScamShield cannot guarantee the identity of the payment recipient solely from QR content.
+                    Verify the recipient name and payment details before completing a payment. FraudLens cannot guarantee the identity of the payment recipient solely from QR content.
                   </p>
                 </div>
               </div>

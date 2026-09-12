@@ -1,15 +1,15 @@
 <resources>
-    <string name="app_name">ScamShield Quick Scan</string>
-    <string name="share_target_title">🛡️ ScamShield Quick Scan</string>
-    <string name="home_subtitle">Share suspicious messages, links, or QR codes to ScamShield from any app.</string>
+    <string name="app_name">FraudLens Quick Scan</string>
+    <string name="share_target_title">🛡️ FraudLens Quick Scan</string>
+    <string name="home_subtitle">Share suspicious messages, links, or QR codes to FraudLens from any app.</string>
     <string name="how_it_works_title">How Quick Scan Works</string>
-    <string name="how_it_works_sms">1. In Messages/WhatsApp: Long press message → Share → 🛡️ ScamShield Quick Scan</string>
-    <string name="how_it_works_url">2. In Browser: Tap Menu → Share → 🛡️ ScamShield Quick Scan</string>
-    <string name="how_it_works_qr">3. In Gallery: Open QR screenshot → Share → 🛡️ ScamShield Quick Scan</string>
-    <string name="privacy_guarantee">🔒 ScamShield processes content only when you explicitly share it. No background SMS surveillance or permissions required.</string>
-    <string name="backend_status_checking">Checking ScamShield backend…</string>
-    <string name="backend_status_connected">Connected to ScamShield Engine</string>
-    <string name="backend_status_unreachable">ScamShield couldn\'t reach the analysis server.</string>
+    <string name="how_it_works_sms">1. In Messages/WhatsApp: Long press message → Share → 🛡️ FraudLens Quick Scan</string>
+    <string name="how_it_works_url">2. In Browser: Tap Menu → Share → 🛡️ FraudLens Quick Scan</string>
+    <string name="how_it_works_qr">3. In Gallery: Open QR screenshot → Share → 🛡️ FraudLens Quick Scan</string>
+    <string name="privacy_guarantee">🔒 FraudLens processes content only when you explicitly share it. No background SMS surveillance or permissions required.</string>
+    <string name="backend_status_checking">Checking FraudLens backend…</string>
+    <string name="backend_status_connected">Connected to FraudLens Engine</string>
+    <string name="backend_status_unreachable">FraudLens couldn\'t reach the analysis server.</string>
     <string name="configure_server">Configure Backend URL</string>
     <string name="server_url_hint">https://scamshield-udqs.onrender.com</string>
     <string name="save">Save</string>

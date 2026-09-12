@@ -1,6 +1,6 @@
-# 🛡️ ScamShield AI — Digital Fraud Detection & Prevention Platform
+# 🛡️ FraudLens AI — Digital Fraud Detection & Prevention Platform
 
-> **"Detect the Scam Before You Take the Risk."**
+> **"See the Fraud Before You Trust It."**
 > An AI-powered, explainable cybersecurity web application designed to evaluate suspicious SMS text, QR codes, and web URLs before clicking, paying, or disclosing confidential credentials.
 
 ---
@@ -20,8 +20,8 @@ Digital fraud is surging worldwide with sophisticated social engineering attacks
 - **Homoglyph & Phishing URLs:** Lookalike domains (`secure-hdfc-kyc.top`, `sbi-kyc-verify.xyz`) disguised as legitimate financial institutions.
 - **Opaque Traditional Checkers:** Most traditional security tools output a binary "Safe" or "Dangerous" label without explaining the underlying evidence or providing actionable defensive steps.
 
-### The ScamShield AI Solution
-ScamShield AI provides a centralized Security Command Center where users can inspect suspicious SMS text, URLs, and QR codes before taking action:
+### The FraudLens AI Solution
+FraudLens AI provides a centralized Security Command Center where users can inspect suspicious SMS text, URLs, and QR codes before taking action:
 1. **Explainable Trust Score (0–100):** Mathematical risk categorization (0–30 High Risk, 31–60 Suspicious, 61–80 Caution, 81–100 Likely Safe).
 2. **Granular Threat Breakdown:** Plain-English explanations of detected indicators (Urgency Manipulation, Credential Harvesting, Homoglyph Domains, Shortener Obfuscation, SSRF Risk).
 3. **Context-Aware Safety Recommendations:** Immediate, tailored defensive checklists based on the detected attack vector.
@@ -221,7 +221,7 @@ npm run dev             # Starts Vite server on http://localhost:3000
 ## 🔒 9. Security & Privacy Controls
 
 - **SSRF Protection:** Pre-flight validation blocks access to `localhost`, `127.0.0.1`, `::1`, `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16`, `169.254.0.0/16`, `.local`, and internal cloud metadata hostnames.
-- **Zero URL Execution:** URLs are analyzed statically. ScamShield never browses, renders, or executes target websites.
+- **Zero URL Execution:** URLs are analyzed statically. FraudLens never browses, renders, or executes target websites.
 - **HTTP Security Headers:** Powered by `helmet` to mitigate cross-site scripting and injection vectors.
 - **Rate Limiting:** `express-rate-limit` enforces strict request ceilings across all `/api/` endpoints.
 - **No Secret Leakage:** All API keys are loaded strictly on the backend. Frontend code contains zero secrets.
@@ -229,13 +229,13 @@ npm run dev             # Starts Vite server on http://localhost:3000
 
 ---
 
-## 📱 11. ScamShield Quick Scan — Native Android Companion
+## 📱 11. FraudLens Quick Scan — Native Android Companion
 
-ScamShield includes a lightweight, native Android companion in **Kotlin** (`android/`) called **ScamShield Quick Scan**. It integrates directly into the Android system Share menu (`ACTION_SEND`), allowing users to evaluate suspicious content instantly from any app without copying and pasting.
+FraudLens includes a lightweight, native Android companion in **Kotlin** (`android/`) called **FraudLens Quick Scan**. It integrates directly into the Android system Share menu (`ACTION_SEND`), allowing users to evaluate suspicious content instantly from any app without copying and pasting.
 
 ### Privacy & Security Guarantee
-- **Zero Background Surveillance:** ScamShield Quick Scan requests **no SMS reading permissions** (`READ_SMS` / `RECEIVE_SMS`). It processes content **only when the user explicitly taps "Share → 🛡️ ScamShield Quick Scan"**.
-- **No Client-Side Secrets:** Android contains no API keys or database credentials. All analysis is performed by the ScamShield backend.
+- **Zero Background Surveillance:** FraudLens Quick Scan requests **no SMS reading permissions** (`READ_SMS` / `RECEIVE_SMS`). It processes content **only when the user explicitly taps "Share → 🛡️ FraudLens Quick Scan"**.
+- **No Client-Side Secrets:** Android contains no API keys or database credentials. All analysis is performed by the FraudLens backend.
 - **Local QR Decoding:** Images are decoded locally via ZXing before sending only the extracted payload to the server.
 - **No Auto-Execution:** The app never automatically navigates to links or initiates UPI payments.
 
@@ -243,11 +243,11 @@ ScamShield includes a lightweight, native Android companion in **Kotlin** (`andr
 
 ### How to Use Quick Scan
 
-| Content Type | How to Share | What ScamShield Does |
+| Content Type | How to Share | What FraudLens Does |
 |---|---|---|
-| **Suspicious SMS / Text** | In Messages / WhatsApp: Long-press message → **Share** → **🛡️ ScamShield Quick Scan** | Analyzes urgency heuristics, brand impersonation, and embedded URLs via `/api/analyze/sms`. |
-| **Phishing / Banking URL** | In Chrome / Browser: Tap **⋮** → **Share** → **🛡️ ScamShield Quick Scan** | Inspects domain age, lookalikes, SSRF, and threat intel via `/api/analyze/url`. |
-| **Payment QR Screenshot** | In Gallery: Open QR screenshot → **Share** → **🛡️ ScamShield Quick Scan** | Decodes QR locally via ZXing, validates UPI fields (`pa`, `pn`, `am`, `tn`), and checks for fake refund traps via `/api/analyze/qr`. |
+| **Suspicious SMS / Text** | In Messages / WhatsApp: Long-press message → **Share** → **🛡️ FraudLens Quick Scan** | Analyzes urgency heuristics, brand impersonation, and embedded URLs via `/api/analyze/sms`. |
+| **Phishing / Banking URL** | In Chrome / Browser: Tap **⋮** → **Share** → **🛡️ FraudLens Quick Scan** | Inspects domain age, lookalikes, SSRF, and threat intel via `/api/analyze/url`. |
+| **Payment QR Screenshot** | In Gallery: Open QR screenshot → **Share** → **🛡️ FraudLens Quick Scan** | Decodes QR locally via ZXing, validates UPI fields (`pa`, `pn`, `am`, `tn`), and checks for fake refund traps via `/api/analyze/qr`. |
 
 ---
 
@@ -274,7 +274,7 @@ adb install -r android/app/build/outputs/apk/debug/app-debug.apk
 
 #### 3. Backend URL Configuration
 - **Android Emulator:** Defaults automatically to `http://10.0.2.2:5000` (which routes to your computer's `localhost:5000`).
-- **Physical Android Device:** Ensure phone and computer are on the same Wi-Fi network. Open ScamShield Quick Scan → Tap **"Configure Backend URL"** → Enter `http://<YOUR_COMPUTER_IP>:5000`.
+- **Physical Android Device:** Ensure phone and computer are on the same Wi-Fi network. Open FraudLens Quick Scan → Tap **"Configure Backend URL"** → Enter `http://<YOUR_COMPUTER_IP>:5000`.
 - **Production:** Set `SCAMSHIELD_API_BASE_URL=https://your-production-domain.com` at build time or configure via in-app settings.
 
 ---

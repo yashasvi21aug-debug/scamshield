@@ -16,7 +16,7 @@ export default function AdvisorPage() {
     {
       role: 'assistant',
       advisorMode: 'system-intro',
-      content: `### 👋 ScamShield Cybersecurity Safety Advisor
+      content: `### 👋 FraudLens AI Cybersecurity Safety Advisor
 Ask questions regarding suspicious communications, emergency containment, or verification steps.
 
 **Common Topics**:
@@ -99,7 +99,7 @@ Ask questions regarding suspicious communications, emergency containment, or ver
           </div>
           <div>
             <h2 className="text-lg font-bold text-white flex items-center gap-2">
-              ScamShield Advisor
+              FraudLens AI Advisor
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             </h2>
             <p className="text-xs text-slate-400">
